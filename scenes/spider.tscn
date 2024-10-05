@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://enxedkrpkosl"]
+
+[ext_resource type="Script" path="res://scripts/spider/spider.gd" id="1_l25br"]
+[ext_resource type="Script" path="res://scripts/spider/spider_movement.gd" id="1_pa2w3"]
+[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="2_xir6b"]
+[ext_resource type="Script" path="res://scripts/spider/spider_attack.gd" id="4_3jeog"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_my36a"]
+radius = 47.0106
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c088s"]
+radius = 97.0052
+
+[node name="Spider" type="Node2D" node_paths=PackedStringArray("spider_movement")]
+script = ExtResource("1_l25br")
+spider_movement = NodePath("SpiderMovement")
+
+[node name="SpiderAttack" type="Node" parent="."]
+script = ExtResource("4_3jeog")
+
+[node name="SpiderMovement" type="CharacterBody2D" parent="."]
+script = ExtResource("1_pa2w3")
+speed = 50
+
+[node name="SpiderSprite" type="Sprite2D" parent="SpiderMovement"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_xir6b")
+
+[node name="SpiderCollisionShape" type="CollisionShape2D" parent="SpiderMovement"]
+shape = SubResource("CircleShape2D_my36a")
+
+[node name="SpiderAttackArea" type="Area2D" parent="SpiderMovement"]
+
+[node name="SpiderAttackAreaCollisionShape" type="CollisionShape2D" parent="SpiderMovement/SpiderAttackArea"]
+shape = SubResource("CircleShape2D_c088s")
+debug_color = Color(0.984314, 0, 0.176471, 0.419608)
+
+[connection signal="body_entered" from="SpiderMovement/SpiderAttackArea" to="SpiderAttack" method="_on_spider_attack_area_body_entered"]
