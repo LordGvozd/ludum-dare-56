@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=20 format=3 uid="uid://6wm5prnpnwpg"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -115,8 +115,8 @@ speed_scale = 1.5
 rotation = 0.00393331
 scale = Vector2(0.399059, 0.399059)
 script = ExtResource("3_kqi1q")
-speed = 10
-acceleration = 10
+speed = 100
+acceleration = 30
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
 scale = Vector2(2.60542, 2.60542)
