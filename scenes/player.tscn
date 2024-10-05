@@ -1,10 +1,17 @@
+<<<<<<< HEAD
+[gd_scene load_steps=9 format=3 uid="uid://ddv6rylqccgfk"]
+=======
 [gd_scene load_steps=20 format=3 uid="uid://6wm5prnpnwpg"]
+>>>>>>> origin/main
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="3_kqi1q"]
 [ext_resource type="Texture2D" uid="uid://dvq31c0412vvm" path="res://sprites/player/idle/player_idle_down1.png" id="5_av6ti"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
+<<<<<<< HEAD
+[ext_resource type="Script" path="res://scripts/tasks/task_controller.gd" id="6_6g3kr"]
+=======
 [ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://player_lamp_light.png" id="6_4hfuy"]
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/player/idle/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/player/idle/player_idle_down3.png" id="7_g6ybp"]
@@ -13,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://kt56n6siyu2b" path="res://sprites/player/idle/player_idle_down6.png" id="10_it553"]
 [ext_resource type="Texture2D" uid="uid://cbjrfl4648ne6" path="res://sprites/player/idle/player_idle_down7.png" id="11_63vg4"]
 [ext_resource type="Texture2D" uid="uid://d4e2g6rld1t4k" path="res://sprites/player/idle/player_idle_down8.png" id="12_11wi2"]
+>>>>>>> origin/main
 
 [sub_resource type="Animation" id="Animation_l0tdl"]
 length = 0.001
@@ -134,6 +142,22 @@ shape = SubResource("CircleShape2D_rw34q")
 disabled = true
 debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
 
+<<<<<<< HEAD
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("task_text_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 644.0
+script = ExtResource("6_6g3kr")
+task_text_label = NodePath("Label")
+tasks_file = "res://storage/tasks/test_tasks.json"
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 41.0
+offset_top = 33.0
+offset_right = 320.0
+offset_bottom = 96.0
+=======
 [node name="PlayerCamera" type="Camera2D" parent="PlayerMovement"]
 rotation = -0.00393331
 zoom = Vector2(2.5, 2.5)
@@ -152,6 +176,7 @@ shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
 texture_scale = 4.0
+>>>>>>> origin/main
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]

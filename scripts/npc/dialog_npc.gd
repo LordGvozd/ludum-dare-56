@@ -16,7 +16,7 @@ func _load_dialog() -> void:
 		return
 		
 	var dialog_data_string = FileAccess.get_file_as_string(dialog_path)
-	var dialog_json: Dictionary = JSON.parse_string(dialog_data_string)
+	var dialog_json = JSON.parse_string(dialog_data_string)
 	
 	var dialog_events = dialog_json.keys()
 	dialog_events.reverse()
