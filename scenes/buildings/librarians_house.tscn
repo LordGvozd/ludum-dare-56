@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c202f72003knk"]
 
-[ext_resource type="PackedScene" uid="uid://6wm5prnpnwpg" path="res://scenes/player.tscn" id="1_nreka"]
-[ext_resource type="PackedScene" uid="uid://nwwf0aj4dan3" path="res://scenes/dialog_npc.tscn" id="2_cxwxy"]
+[ext_resource type="PackedScene" uid="uid://6wm5prnpnwpg" path="res://player.tscn" id="1_nreka"]
+[ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_cxwxy"]
 
 [node name="Library" type="Node2D"]
 
@@ -10,4 +10,4 @@ position = Vector2(559, 475)
 
 [node name="Npc" parent="." instance=ExtResource("2_cxwxy")]
 position = Vector2(561, 210)
-dialog_path = "res://dialogs/test_dialog.json"
+dialog_path = "res://storage/dialogs/test_dialog.json"
