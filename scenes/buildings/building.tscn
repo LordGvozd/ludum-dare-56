@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://vcyfov2y7acj"]
+
+[ext_resource type="Script" path="res://scripts/building/building_enter.gd" id="1_3jh2l"]
+[ext_resource type="Script" path="res://scripts/building/building.gd" id="1_8vu43"]
+[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="1_8xynl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83otd"]
+size = Vector2(71, 28)
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_8vu43")
+
+[node name="BuildingEnter" type="Node" parent="."]
+script = ExtResource("1_3jh2l")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+scale = Vector2(2.36, 2.36)
+texture = ExtResource("1_8xynl")
+
+[node name="BuildingEnterArea" type="Area2D" parent="."]
+
+[node name="BuildingEnterAreaCollisionShape" type="CollisionShape2D" parent="BuildingEnterArea"]
+position = Vector2(-0.5, 136)
+shape = SubResource("RectangleShape2D_83otd")
+
+[connection signal="body_entered" from="BuildingEnterArea" to="BuildingEnter" method="_on_building_enter_area_body_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://6wm5prnpnwpg"]
+[gd_scene load_steps=9 format=3 uid="uid://6wm5prnpnwpg"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="3_kqi1q"]
 [ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="4_vre1s"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
+[ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://player_lamp_light.png" id="6_4hfuy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04wun"]
 radius = 62.6498
@@ -43,6 +44,24 @@ shape = SubResource("CircleShape2D_04wun")
 shape = SubResource("CircleShape2D_rw34q")
 disabled = true
 debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
+
+[node name="PlayerCamera" type="Camera2D" parent="PlayerMovement"]
+rotation = -0.00393331
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
+position = Vector2(-16.9173, 21.0667)
+rotation = -0.00393331
+scale = Vector2(1.32, 1.32)
+color = Color(1, 0.627451, 0.333333, 0.611765)
+energy = 2.0
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.0
+texture = ExtResource("6_4hfuy")
+texture_scale = 6.2
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]

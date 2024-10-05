@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvu37d0ivuje6"]
+
+[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="1_ltvaj"]
+[ext_resource type="PackedScene" uid="uid://6wm5prnpnwpg" path="res://scenes/player.tscn" id="1_nreka"]
+[ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="2_2s78j"]
+
+[node name="Library" type="Node2D"]
+
+[node name="Necronomicon" type="Sprite2D" parent="."]
+position = Vector2(575, 228)
+scale = Vector2(0.519999, 0.519999)
+texture = ExtResource("1_ltvaj")
+
+[node name="EventTrigger" parent="Necronomicon" instance=ExtResource("2_2s78j")]
+position = Vector2(-1, -2)
+scale = Vector2(2.2, 2.2)
+event = "necronomicon"
+
+[node name="Player" parent="." instance=ExtResource("1_nreka")]
+position = Vector2(574.48, 538.96)
+scale = Vector2(1.144, 1.144)
