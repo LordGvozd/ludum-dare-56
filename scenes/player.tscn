@@ -10,7 +10,7 @@
 radius = 62.6498
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rw34q"]
-radius = 105.233
+radius = 122.037
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement")]
 script = ExtResource("1_cse06")
@@ -22,6 +22,9 @@ script = ExtResource("1_5hib8")
 
 [node name="PlayerAttack" type="Node" parent="."]
 script = ExtResource("5_kjhrr")
+
+[node name="PlayerAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="PlayerMovement" type="CharacterBody2D" parent="."]
 rotation = 0.00393331
@@ -41,8 +44,5 @@ shape = SubResource("CircleShape2D_rw34q")
 disabled = true
 debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
 
-[node name="PlayerAttackTimer" type="Timer" parent="."]
-wait_time = 0.5
-
-[connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
+[connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
