@@ -13,6 +13,7 @@ func _ready() -> void:
 func _load_dialog() -> void:
 	if not FileAccess.file_exists(dialog_path):
 		current_phrase = ""
+		return
 		
 	var dialog_data_string = FileAccess.get_file_as_string(dialog_path)
 	var dialog_json = JSON.parse_string(dialog_data_string)
@@ -29,11 +30,10 @@ func _load_dialog() -> void:
 			
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	_load_dialog()
 	_dialog_label.text = current_phrase
 	
 
-
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	_dialog_label.text = ""
