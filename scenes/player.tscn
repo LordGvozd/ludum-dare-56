@@ -1,14 +1,91 @@
-[gd_scene load_steps=9 format=3 uid="uid://6wm5prnpnwpg"]
+[gd_scene load_steps=20 format=3 uid="uid://6wm5prnpnwpg"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="3_kqi1q"]
-[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="4_vre1s"]
+[ext_resource type="Texture2D" uid="uid://dvq31c0412vvm" path="res://sprites/player/idle/player_idle_down1.png" id="5_av6ti"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
 [ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://player_lamp_light.png" id="6_4hfuy"]
+[ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/player/idle/player_idle_down2.png" id="6_p2t1l"]
+[ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/player/idle/player_idle_down3.png" id="7_g6ybp"]
+[ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/player/idle/player_idle_down4.png" id="8_gbfhm"]
+[ext_resource type="Texture2D" uid="uid://b22db26amtqs6" path="res://sprites/player/idle/player_idle_down5.png" id="9_55kpg"]
+[ext_resource type="Texture2D" uid="uid://kt56n6siyu2b" path="res://sprites/player/idle/player_idle_down6.png" id="10_it553"]
+[ext_resource type="Texture2D" uid="uid://cbjrfl4648ne6" path="res://sprites/player/idle/player_idle_down7.png" id="11_63vg4"]
+[ext_resource type="Texture2D" uid="uid://d4e2g6rld1t4k" path="res://sprites/player/idle/player_idle_down8.png" id="12_11wi2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_04wun"]
-radius = 62.6498
+[sub_resource type="Animation" id="Animation_l0tdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerMovement/PlayerLampPointLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-29.9916, 20.1653)]
+}
+
+[sub_resource type="Animation" id="Animation_mmnrt"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerMovement/PlayerLampPointLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.482968, 1, 1),
+"update": 0,
+"values": [Vector2(-30.0311, 10.1418), Vector2(-29.9916, 20.1653), Vector2(-30.0311, 10.1418)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5ybm"]
+_data = {
+"RESET": SubResource("Animation_l0tdl"),
+"idle": SubResource("Animation_mmnrt")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h17ug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_av6ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p2t1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g6ybp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gbfhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_55kpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_it553")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_63vg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_11wi2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jkqd"]
+radius = 17.5411
+height = 110.219
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rw34q"]
 radius = 122.037
@@ -27,16 +104,28 @@ script = ExtResource("5_kjhrr")
 [node name="PlayerAttackTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="PlayerLampAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o5ybm")
+}
+autoplay = "idle"
+speed_scale = 1.5
+
 [node name="PlayerMovement" type="CharacterBody2D" parent="."]
 rotation = 0.00393331
+scale = Vector2(0.399059, 0.399059)
 script = ExtResource("3_kqi1q")
 acceleration = 70
 
-[node name="PlayerSprite" type="Sprite2D" parent="PlayerMovement"]
-texture = ExtResource("4_vre1s")
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
+scale = Vector2(2.60542, 2.60542)
+sprite_frames = SubResource("SpriteFrames_h17ug")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0584485
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
-shape = SubResource("CircleShape2D_04wun")
+shape = SubResource("CapsuleShape2D_2jkqd")
 
 [node name="PlayerAttackArea" type="Area2D" parent="PlayerMovement"]
 
@@ -47,21 +136,22 @@ debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
 
 [node name="PlayerCamera" type="Camera2D" parent="PlayerMovement"]
 rotation = -0.00393331
+zoom = Vector2(2.5, 2.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
 [node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
-position = Vector2(-16.9173, 21.0667)
+position = Vector2(-29.9916, 20.1653)
 rotation = -0.00393331
 scale = Vector2(1.32, 1.32)
 color = Color(1, 0.627451, 0.333333, 0.611765)
-energy = 2.0
+energy = 3.0
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
-texture_scale = 6.2
+texture_scale = 4.0
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
