@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://6wm5prnpnwpg"]
+[gd_scene load_steps=8 format=3 uid="uid://6wm5prnpnwpg"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="3_kqi1q"]
 [ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="4_vre1s"]
+[ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04wun"]
 radius = 62.6498
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rw34q"]
+radius = 122.037
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement")]
 script = ExtResource("1_cse06")
@@ -16,7 +20,14 @@ player_movement = NodePath("PlayerMovement")
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("1_5hib8")
 
+[node name="PlayerAttack" type="Node" parent="."]
+script = ExtResource("5_kjhrr")
+
+[node name="PlayerAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="PlayerMovement" type="CharacterBody2D" parent="."]
+rotation = 0.00393331
 script = ExtResource("3_kqi1q")
 acceleration = 70
 
@@ -25,3 +36,13 @@ texture = ExtResource("4_vre1s")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CircleShape2D_04wun")
+
+[node name="PlayerAttackArea" type="Area2D" parent="PlayerMovement"]
+
+[node name="PlayerAttackAreaCollisionShape" type="CollisionShape2D" parent="PlayerMovement/PlayerAttackArea"]
+shape = SubResource("CircleShape2D_rw34q")
+disabled = true
+debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
+
+[connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
+[connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
