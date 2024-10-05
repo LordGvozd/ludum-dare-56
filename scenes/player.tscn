@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://6wm5prnpnwpg"]
+[gd_scene load_steps=9 format=3 uid="uid://ddv6rylqccgfk"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="3_kqi1q"]
 [ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="4_vre1s"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
+[ext_resource type="Script" path="res://scripts/tasks/task_controller.gd" id="6_6g3kr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04wun"]
 radius = 62.6498
@@ -43,6 +44,21 @@ shape = SubResource("CircleShape2D_04wun")
 shape = SubResource("CircleShape2D_rw34q")
 disabled = true
 debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("task_text_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 644.0
+script = ExtResource("6_6g3kr")
+task_text_label = NodePath("Label")
+tasks_file = "res://storage/tasks/test_tasks.json"
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 41.0
+offset_top = 33.0
+offset_right = 320.0
+offset_bottom = 96.0
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]

@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventsStorage="*res://scripts/events_storage.gd"
+EventsStorage="*res://scripts/events/events_storage.gd"
 
 [input]
 
