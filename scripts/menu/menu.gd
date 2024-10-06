@@ -5,7 +5,9 @@ extends Control
 
 
 func _ready() -> void:
-	var slider_start_value = db_to_linear(AudioServer.get_bus_index("Master"))
+	var slider_start_value = 30
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 30)
+
 	
 	$"CenterContainer/VBoxContainer/HSlider".value = slider_start_value
 
