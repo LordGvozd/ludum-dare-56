@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=49 format=3 uid="uid://dr5g1ggev5v5o"]
-
+[gd_scene load_steps=62 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -38,14 +36,25 @@
 [ext_resource type="Texture2D" uid="uid://bnfns4vvucmyg" path="res://sprites/player/walk/down/player_walk_down10.png" id="31_1yfdj"]
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
-
+[ext_resource type="Texture2D" uid="uid://cbxufn6gxvroe" path="res://sprites/player/walk/up/player_walk_top1.png" id="35_2mqy8"]
+[ext_resource type="Texture2D" uid="uid://cmd0m2ndjwqp0" path="res://sprites/player/walk/up/player_walk_top2.png" id="36_3rsnw"]
 [ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="37_o81mw"]
+[ext_resource type="Texture2D" uid="uid://cjqk45o0waa6t" path="res://sprites/player/walk/up/player_walk_top3.png" id="37_rgnqy"]
 [ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="37_rrsvo"]
-
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="38_04e5i"]
+[ext_resource type="Texture2D" uid="uid://bp7h4b5ackqon" path="res://sprites/player/walk/up/player_walk_top4.png" id="38_pm8qd"]
 [ext_resource type="Script" path="res://scripts/player/player_sound.gd" id="39_bfjfa"]
+[ext_resource type="Texture2D" uid="uid://k5hgnn0a1mvi" path="res://sprites/player/walk/up/player_walk_top5.png" id="39_gtwfe"]
 [ext_resource type="AudioStream" uid="uid://c6hnhn15dsl4b" path="res://audio/sounds/steps_outside.wav" id="40_76cvl"]
+[ext_resource type="Texture2D" uid="uid://cw8sv57kd2pce" path="res://sprites/player/walk/up/player_walk_top6.png" id="40_uep7m"]
+[ext_resource type="Texture2D" uid="uid://cvitl1qap0ukt" path="res://sprites/player/walk/up/player_walk_top7.png" id="41_lfndo"]
 [ext_resource type="AudioStream" uid="uid://cthhjihcgtnax" path="res://audio/sounds/ambients/rain.mp3" id="41_t86nb"]
+[ext_resource type="Texture2D" uid="uid://j4h2g0xm2e5l" path="res://sprites/player/walk/up/player_walk_top8.png" id="42_5vnj3"]
+[ext_resource type="AudioStream" uid="uid://clwasg834ig16" path="res://audio/sounds/hit.mp3" id="42_t6f25"]
+[ext_resource type="Texture2D" uid="uid://bmdlkkxyh5dok" path="res://sprites/player/walk/up/player_walk_top9.png" id="43_ylcqj"]
+[ext_resource type="Texture2D" uid="uid://cuq41qv6i5edw" path="res://sprites/player/walk/up/player_walk_top10.png" id="44_7nqw7"]
+[ext_resource type="Texture2D" uid="uid://b0jtnwy5yi308" path="res://sprites/player/walk/up/player_walk_top11.png" id="45_a18p7"]
+[ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2pcap"]
 load_path = "res://.godot/imported/player_bok.png-56c2b26f55a79a79ac51cd8e24856467.ctex"
@@ -169,16 +178,49 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_atnw8")
+"texture": ExtResource("35_2mqy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_3rsnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_rgnqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_pm8qd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_gtwfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_uep7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_lfndo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_5vnj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_ylcqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_7nqw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_a18p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_3jl1y")
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jkqd"]
 radius = 17.5411
-height = 110.219
+height = 65.271
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rw34q"]
 radius = 122.037
@@ -186,16 +228,15 @@ radius = 122.037
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vra8h"]
 light_mode = 1
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_l636s"]
 font = ExtResource("37_rrsvo")
 font_size = 32
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement", "player_sound")]
-
 script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
 player_movement = NodePath("PlayerMovement")
+player_sound = NodePath("PlayerMovement/PlayerSound")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("1_5hib8")
@@ -220,9 +261,9 @@ acceleration = 30
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
 scale = Vector2(2.60542, 2.60542)
 sprite_frames = SubResource("SpriteFrames_h17ug")
-animation = &"walk_right"
+animation = &"walk_up"
 autoplay = "idle_down"
-frame_progress = 0.326471
+frame_progress = 0.481506
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CapsuleShape2D_2jkqd")
@@ -237,8 +278,14 @@ debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
 [node name="PlayerCamera" type="Camera2D" parent="PlayerMovement"]
 rotation = -0.00393331
 zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 100
+limit_right = 1350
+limit_bottom = 970
 limit_smoothed = true
+position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+editor_draw_limits = true
 
 [node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
 position = Vector2(-1.90735e-06, 0)
@@ -251,25 +298,6 @@ shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
 texture_scale = 4.0
-
-[node name="PlayerUI" type="Control" parent="PlayerMovement" node_paths=PackedStringArray("task_text_label")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("14_3anlh")
-task_text_label = NodePath("TasksLabel")
-tasks_file = "res://storage/tasks/test_tasks.json"
-
-[node name="TasksLabel" type="Label" parent="PlayerMovement/PlayerUI"]
-material = SubResource("CanvasItemMaterial_vra8h")
-layout_mode = 0
-offset_left = -609.0
-offset_top = -460.0
-offset_right = -43.0
-offset_bottom = -217.0
-text = "TEST"
-label_settings = SubResource("LabelSettings_l636s")
 
 [node name="SpidersSpawner" parent="PlayerMovement" node_paths=PackedStringArray("spawning_points") instance=ExtResource("37_o81mw")]
 enemy = ExtResource("38_04e5i")
@@ -288,19 +316,54 @@ position = Vector2(882.058, -5.97534)
 [node name="SpawningPoint4" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
 position = Vector2(2.68095, 681.598)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="PlayerSound" type="Node" parent="." node_paths=PackedStringArray("steps_player")]
+[node name="PlayerSound" type="Node" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
 script = ExtResource("39_bfjfa")
 steps_player = NodePath("StepsPlayer")
+attack_player = NodePath("AttackPlayer")
 
-[node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerSound"]
+[node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
 stream = ExtResource("40_76cvl")
 
-[node name="RainPlayer" type="AudioStreamPlayer2D" parent="PlayerSound"]
+[node name="AttackPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
+stream = ExtResource("42_t6f25")
+volume_db = -11.484
+
+[node name="RainPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
 stream = ExtResource("41_t86nb")
 volume_db = 10.847
 autoplay = true
+parameters/looping = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="PlayerMovement/PlayerSound"]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("task_text_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_3anlh")
+task_text_label = NodePath("MarginContainer/VBoxContainer/TasksLabel")
+tasks_file = "res://storage/tasks/test_tasks.json"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 684.0
+offset_bottom = 516.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/MarginContainer"]
+layout_mode = 2
+
+[node name="TasksLabel" type="Label" parent="CanvasLayer/PlayerUI/MarginContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_vra8h")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_l636s")
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
