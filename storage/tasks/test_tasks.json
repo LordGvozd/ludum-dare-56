@@ -1,5 +1,10 @@
 {
-	"start": "Докажите возможности, покажите умения",
-	"1": "Деградируйте до 2",
-	"2": "ГИГА МАЧАЧА"
+	"start": "Talk to elder man",
+	"talk_to_elder_man": "Talk to librarian",
+	"talk_to_librarian": "Find necronomicon in library",
+	"necronomicon_collected": "Talk to fisherman",
+	"talk_to_fisherman": "Find the fish near the fisherman's house",
+	"fish_collected": "Good work! Here is your ritual candles",
+	"ritual_candles_collected": "Talk to healer",
+	"talk_to_healer": "Return to elder man, to start the ritual"
 }

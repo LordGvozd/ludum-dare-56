@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=49 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_animation.gd" id="4_kcfpf"]
 [ext_resource type="Texture2D" uid="uid://dvq31c0412vvm" path="res://sprites/player/idle/down/player_idle_down1.png" id="5_av6ti"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
-[ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://player_lamp_light.png" id="6_4hfuy"]
+[ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://sprites/player_lamp_light.png" id="6_4hfuy"]
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/player/idle/down/player_idle_down3.png" id="7_g6ybp"]
 [ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/player/idle/down/player_idle_down4.png" id="8_gbfhm"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
 [ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="37_o81mw"]
+[ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="37_rrsvo"]
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="38_04e5i"]
 [ext_resource type="Script" path="res://scripts/player/player_sound.gd" id="39_bfjfa"]
 [ext_resource type="AudioStream" uid="uid://c6hnhn15dsl4b" path="res://audio/sounds/steps_outside.wav" id="40_76cvl"]
@@ -181,6 +182,10 @@ radius = 122.037
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vra8h"]
 light_mode = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_l636s"]
+font = ExtResource("37_rrsvo")
+font_size = 32
+
 [node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement", "player_sound")]
 script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
@@ -255,14 +260,16 @@ tasks_file = "res://storage/tasks/test_tasks.json"
 material = SubResource("CanvasItemMaterial_vra8h")
 layout_mode = 0
 offset_left = -609.0
-offset_top = -454.0
-offset_right = -42.0
+offset_top = -460.0
+offset_right = -43.0
 offset_bottom = -217.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_l636s")
 
 [node name="SpidersSpawner" parent="PlayerMovement" node_paths=PackedStringArray("spawning_points") instance=ExtResource("37_o81mw")]
 enemy = ExtResource("38_04e5i")
 spawning_points = [NodePath("SpawningPoint1"), NodePath("SpawningPoint2"), NodePath("SpawningPoint3"), NodePath("SpawningPoint4")]
-spawning_time = 60
+spawning_time = 80
 
 [node name="SpawningPoint1" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
 position = Vector2(-922.162, 3.62717)
