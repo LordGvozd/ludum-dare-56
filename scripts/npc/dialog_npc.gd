@@ -27,7 +27,13 @@ func _load_dialog() -> void:
 	
 	for event in dialog_events:
 		if event in events:
-			current_phrase = dialog_json[event]
+			var pharse = dialog_json[event]
+			
+			if pharse is String:
+				current_phrase = pharse
+			elif pharse is Array:
+				current_phrase = pharse[randi() % pharse.size()]
+			
 			break
 			
 
