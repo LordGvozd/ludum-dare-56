@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://enxedkrpkosl"]
+[gd_scene load_steps=19 format=3 uid="uid://enxedkrpkosl"]
 
 [ext_resource type="Script" path="res://scripts/spider/spider.gd" id="1_l25br"]
 [ext_resource type="Script" path="res://scripts/spider/spider_movement.gd" id="1_pa2w3"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bfgy1vocm5sxv" path="res://sprites/spider/died/spider_died4.png" id="7_xugut"]
 [ext_resource type="Texture2D" uid="uid://eaa8n4pxhp5l" path="res://sprites/spider/spider_run5.png" id="8_71ggc"]
 [ext_resource type="Texture2D" uid="uid://dnfvr2r5o6e4g" path="res://sprites/spider/spider_run6.png" id="9_p488y"]
+[ext_resource type="AudioStream" uid="uid://dvewyty3ro2pj" path="res://audio/sounds/spider_walking.mp3" id="14_j63lq"]
+[ext_resource type="AudioStream" uid="uid://bujt5lqys6ak5" path="res://audio/sounds/kill_hit.mp3" id="15_x4453"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bo4io"]
 animations = [{
@@ -92,5 +94,14 @@ shape = SubResource("CircleShape2D_my36a")
 [node name="SpiderAttackAreaCollisionShape" type="CollisionShape2D" parent="SpiderMovement/SpiderAttackArea"]
 shape = SubResource("CircleShape2D_c088s")
 debug_color = Color(0.984314, 0, 0.176471, 0.419608)
+
+[node name="walking" type="AudioStreamPlayer2D" parent="SpiderMovement"]
+scale = Vector2(1, 1)
+stream = ExtResource("14_j63lq")
+autoplay = true
+
+[node name="died" type="AudioStreamPlayer2D" parent="SpiderMovement"]
+scale = Vector2(1, 1)
+stream = ExtResource("15_x4453")
 
 [connection signal="body_entered" from="SpiderMovement/SpiderAttackArea" to="SpiderAttack" method="_on_spider_attack_area_body_entered"]

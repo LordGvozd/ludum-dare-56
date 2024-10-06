@@ -10,6 +10,7 @@ extends Node2D
 
 func _process(_delta) -> void:
 	if player_input.is_attack_button_pressed():
+		player_sound.play_attack()
 		player_attack_area.disabled = false
 		
 
