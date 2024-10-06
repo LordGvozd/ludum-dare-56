@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=49 format=3 uid="uid://dr5g1ggev5v5o"]
-
+[gd_scene load_steps=51 format=3 uid="uid://ddk14gsew7gh4"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -38,12 +36,11 @@
 [ext_resource type="Texture2D" uid="uid://bnfns4vvucmyg" path="res://sprites/player/walk/down/player_walk_down10.png" id="31_1yfdj"]
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
-
-[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="37_o81mw"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="37_o81mw"]
 [ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="37_rrsvo"]
-
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="38_04e5i"]
 [ext_resource type="Script" path="res://scripts/player/player_sound.gd" id="39_bfjfa"]
+[ext_resource type="Script" path="res://scripts/player/note_display.gd" id="40_7gcfj"]
 [ext_resource type="AudioStream" uid="uid://c6hnhn15dsl4b" path="res://audio/sounds/steps_outside.wav" id="40_76cvl"]
 [ext_resource type="AudioStream" uid="uid://cthhjihcgtnax" path="res://audio/sounds/ambients/rain.mp3" id="41_t86nb"]
 
@@ -186,13 +183,14 @@ radius = 122.037
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vra8h"]
 light_mode = 1
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_l636s"]
 font = ExtResource("37_rrsvo")
 font_size = 32
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement", "player_sound")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr2kw"]
+size = Vector2(172.265, 163.562)
 
+[node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement")]
 script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
 player_movement = NodePath("PlayerMovement")
@@ -271,6 +269,11 @@ offset_bottom = -217.0
 text = "TEST"
 label_settings = SubResource("LabelSettings_l636s")
 
+[node name="BoxContainer" type="BoxContainer" parent="PlayerMovement/PlayerUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="SpidersSpawner" parent="PlayerMovement" node_paths=PackedStringArray("spawning_points") instance=ExtResource("37_o81mw")]
 enemy = ExtResource("38_04e5i")
 spawning_points = [NodePath("SpawningPoint1"), NodePath("SpawningPoint2"), NodePath("SpawningPoint3"), NodePath("SpawningPoint4")]
@@ -288,11 +291,17 @@ position = Vector2(882.058, -5.97534)
 [node name="SpawningPoint4" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
 position = Vector2(2.68095, 681.598)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container")]
+script = ExtResource("40_7gcfj")
+note_ui_container = NodePath("../PlayerUI/BoxContainer")
 
-[node name="PlayerSound" type="Node" parent="." node_paths=PackedStringArray("steps_player")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
+shape = SubResource("RectangleShape2D_pr2kw")
+
+[node name="PlayerSound" type="Node" parent="." node_paths=PackedStringArray("steps_player", "attack_player")]
 script = ExtResource("39_bfjfa")
 steps_player = NodePath("StepsPlayer")
+attack_player = NodePath("AudioStreamPlayer2D")
 
 [node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerSound"]
 stream = ExtResource("40_76cvl")
@@ -302,5 +311,9 @@ stream = ExtResource("41_t86nb")
 volume_db = 10.847
 autoplay = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayerSound"]
+
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
+[connection signal="body_entered" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_exited"]
