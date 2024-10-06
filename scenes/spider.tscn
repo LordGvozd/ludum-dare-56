@@ -1,17 +1,71 @@
-[gd_scene load_steps=7 format=3 uid="uid://enxedkrpkosl"]
+[gd_scene load_steps=17 format=3 uid="uid://enxedkrpkosl"]
 
 [ext_resource type="Script" path="res://scripts/spider/spider.gd" id="1_l25br"]
 [ext_resource type="Script" path="res://scripts/spider/spider_movement.gd" id="1_pa2w3"]
-[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="2_xir6b"]
 [ext_resource type="Script" path="res://scripts/spider/spider_attack.gd" id="4_3jeog"]
+[ext_resource type="Texture2D" uid="uid://d4m233orgout6" path="res://sprites/spider/died/spider_died1.png" id="4_7o6ya"]
+[ext_resource type="Texture2D" uid="uid://b28jbgs4n01k1" path="res://sprites/spider/spider_run1.png" id="4_sd1b7"]
+[ext_resource type="Texture2D" uid="uid://rxx77so0oao3" path="res://sprites/spider/died/spider_died2.png" id="5_s3q7g"]
+[ext_resource type="Texture2D" uid="uid://5mih0n4nltm1" path="res://sprites/spider/spider_run2.png" id="5_t7wij"]
+[ext_resource type="Texture2D" uid="uid://cfsly7xilevxs" path="res://sprites/spider/spider_run3.png" id="6_dmdos"]
+[ext_resource type="Texture2D" uid="uid://cq0okamrwo0e1" path="res://sprites/spider/died/spider_died3.png" id="6_ot64n"]
+[ext_resource type="Texture2D" uid="uid://20gcfkcc1n0d" path="res://sprites/spider/spider_run4.png" id="7_7jb76"]
+[ext_resource type="Texture2D" uid="uid://bfgy1vocm5sxv" path="res://sprites/spider/died/spider_died4.png" id="7_xugut"]
+[ext_resource type="Texture2D" uid="uid://eaa8n4pxhp5l" path="res://sprites/spider/spider_run5.png" id="8_71ggc"]
+[ext_resource type="Texture2D" uid="uid://dnfvr2r5o6e4g" path="res://sprites/spider/spider_run6.png" id="9_p488y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo4io"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7o6ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s3q7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ot64n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xugut")
+}],
+"loop": false,
+"name": &"died",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sd1b7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t7wij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dmdos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7jb76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_71ggc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p488y")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_my36a"]
-radius = 47.0106
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c088s"]
-radius = 97.0052
+radius = 33.3333
 
 [node name="Spider" type="Node2D" node_paths=PackedStringArray("spider_movement")]
+y_sort_enabled = true
+scale = Vector2(0.24, 0.245)
 script = ExtResource("1_l25br")
 spider_movement = NodePath("SpiderMovement")
 
@@ -20,11 +74,15 @@ script = ExtResource("4_3jeog")
 
 [node name="SpiderMovement" type="CharacterBody2D" parent="."]
 script = ExtResource("1_pa2w3")
-speed = 50
 
-[node name="SpiderSprite" type="Sprite2D" parent="SpiderMovement"]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("2_xir6b")
+[node name="SpiderSprite" type="AnimatedSprite2D" parent="SpiderMovement"]
+position = Vector2(0, -8.18192)
+scale = Vector2(5.33333, 5.33333)
+sprite_frames = SubResource("SpriteFrames_bo4io")
+animation = &"died"
+autoplay = "run"
+frame = 3
+frame_progress = 1.0
 
 [node name="SpiderCollisionShape" type="CollisionShape2D" parent="SpiderMovement"]
 shape = SubResource("CircleShape2D_my36a")

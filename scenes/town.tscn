@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=8 format=4 uid="uid://bqrmosuypv7lj"]
 
-[ext_resource type="PackedScene" uid="uid://6wm5prnpnwpg" path="res://player.tscn" id="1_cxiqd"]
-[ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="2_48x2l"]
+[ext_resource type="PackedScene" uid="uid://c3dsvmthiirog" path="res://player.tscn" id="1_cxiqd"]
 [ext_resource type="PackedScene" uid="uid://vcyfov2y7acj" path="res://scenes/buildings/building.tscn" id="3_vuaki"]
 [ext_resource type="Texture2D" uid="uid://bvvbieuq4kh3l" path="res://tilemap.png" id="4_hjqor"]
 
@@ -100,13 +99,6 @@ tile_set = SubResource("TileSet_c0gv7")
 tile_map_data = PackedByteArray("AAASABEAAAAGAAAAAAAFAA0AAAAGAAAAAAALABQAAAAGAAAAAAAKABMAAAAGAAEAAAAPAA4AAAAGAAIAAAAUAAoAAAAGAAIAAAADAAoAAAAGAAAAAAADAAsAAAAGAAEAAAA=")
 tile_set = SubResource("TileSet_qm0je")
 
-[node name="Player" parent="." instance=ExtResource("1_cxiqd")]
-position = Vector2(651, 480)
-
-[node name="Spider" parent="." instance=ExtResource("2_48x2l")]
-position = Vector2(996, 554)
-scale = Vector2(0.239998, 0.239998)
-
 [node name="LibrariansHouse" parent="." instance=ExtResource("3_vuaki")]
 modulate = Color(0.537969, 0.247094, 0.219894, 1)
 position = Vector2(170, 168)
@@ -118,6 +110,9 @@ modulate = Color(0.840225, 0.483195, 0.443488, 1)
 position = Vector2(626, 168)
 scale = Vector2(0.719995, 0.999996)
 load_scene_file_path = "res://scenes/buildings/library.tscn"
+
+[node name="Player" parent="." instance=ExtResource("1_cxiqd")]
+position = Vector2(651, 480)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)

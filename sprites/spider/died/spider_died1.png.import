@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4e2g6rld1t4k"
-path="res://.godot/imported/player_idle_down8.png-1d53b2a6952911e4f54ef3cd90f11c7c.ctex"
+uid="uid://d4m233orgout6"
+path="res://.godot/imported/spider_died1.png-30dc60f5cbdd0e63e9c272322ff72076.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/idle/player_idle_down8.png"
-dest_files=["res://.godot/imported/player_idle_down8.png-1d53b2a6952911e4f54ef3cd90f11c7c.ctex"]
+source_file="res://sprites/spider/died/spider_died1.png"
+dest_files=["res://.godot/imported/spider_died1.png-30dc60f5cbdd0e63e9c272322ff72076.ctex"]
 
 [params]
 
