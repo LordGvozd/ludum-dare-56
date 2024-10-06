@@ -9,7 +9,7 @@ var walking: bool = false
 func play_attack():
 	attack_player.play()
 
-func _process(delta):
+func _process(_delta):
 	if steps_player.playing:
 		if not walking:
 			steps_player.stop()

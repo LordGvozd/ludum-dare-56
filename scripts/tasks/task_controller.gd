@@ -4,6 +4,8 @@ extends Control
 @export_file(".json") var  tasks_file: String
 
 func _ready() -> void:
+	task_text_label.text = "Current Task:\n"
+	
 	#EventsStorage.clear_events()
 	EventsStorage.register_event_change_callback(Callable(self, "on_event_changed"))
 	
@@ -18,7 +20,7 @@ func _set_task():
 	
 	for event in tasks_events:
 		if event in events:
-			task_text_label.text = tasks[event] 
+			task_text_label.text += "\n" + tasks[event] 
 			break
 	
 

@@ -1,11 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvnm146dd7qa2"]
+[gd_scene load_steps=14 format=3 uid="uid://bvnm146dd7qa2"]
 
 [ext_resource type="FontFile" uid="uid://cv18ebcbhaqa3" path="res://fonts/Bitmgothic.ttf" id="1_b0jh4"]
+[ext_resource type="Script" path="res://scripts/menu/death_screen.gd" id="1_c5jv8"]
 [ext_resource type="Texture2D" uid="uid://m1b8cq3cekx1" path="res://sprites/skull.png" id="2_x5ajq"]
+[ext_resource type="Texture2D" uid="uid://buf0ccvrexbq2" path="res://sprites/you_died_screen.png" id="3_3r1nf"]
+[ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="3_ifn0d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_efg8e"]
 font = ExtResource("1_b0jh4")
 font_size = 100
+
+[sub_resource type="Animation" id="Animation_idxms"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -92), Vector2(0, -63), Vector2(0, -92)]
+}
+
+[sub_resource type="Animation" id="Animation_mce51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -92)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ungxn"]
+_data = {
+"RESET": SubResource("Animation_mce51"),
+"idle": SubResource("Animation_idxms")
+}
+
+[sub_resource type="Animation" id="Animation_872ie"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressSpace:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.27451), Color(1, 1, 1, 1), Color(1, 1, 1, 0.27451)]
+}
+
+[sub_resource type="Animation" id="Animation_qir4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressSpace:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.470588)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq78u"]
+_data = {
+"RESET": SubResource("Animation_qir4w"),
+"idle": SubResource("Animation_872ie")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_gduwk"]
+font = ExtResource("3_ifn0d")
+font_size = 50
+font_color = Color(1, 1, 1, 0.470588)
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
@@ -14,6 +98,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c5jv8")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(642, 483)
+scale = Vector2(1, 1)
+texture = ExtResource("3_3r1nf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -26,14 +116,34 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="YouAreDead" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "YOU ARE DEAD"
 label_settings = SubResource("LabelSettings_efg8e")
 
-[node name="SkullSprite" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
-position = Vector2(378, 228)
-scale = Vector2(6.76986, 6.76986)
-texture = ExtResource("2_x5ajq")
+[node name="YouAreDeadAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ungxn")
+}
+autoplay = "idle"
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="PressSpaceAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eq78u")
+}
+autoplay = "idle"
+
+[node name="PressSpace" type="Label" parent="."]
+layout_mode = 2
+offset_left = 238.0
+offset_top = 816.0
+offset_right = 1044.0
+offset_bottom = 862.0
+text = "PRESS SPACE"
+label_settings = SubResource("LabelSettings_gduwk")
+horizontal_alignment = 1
+
+[node name="SkullSprite" type="Sprite2D" parent="."]
+position = Vector2(631, 559)
+scale = Vector2(8.68986, 8.68986)
+texture = ExtResource("2_x5ajq")
