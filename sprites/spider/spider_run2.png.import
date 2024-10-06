@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbjrfl4648ne6"
-path="res://.godot/imported/player_idle_down7.png-e4f21235a5f6d1d94c010c2704a35793.ctex"
+uid="uid://5mih0n4nltm1"
+path="res://.godot/imported/spider_run2.png-c66234812e16d979581c6014c9ac6e6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/idle/player_idle_down7.png"
-dest_files=["res://.godot/imported/player_idle_down7.png-e4f21235a5f6d1d94c010c2704a35793.ctex"]
+source_file="res://sprites/spider/spider_run2.png"
+dest_files=["res://.godot/imported/spider_run2.png-c66234812e16d979581c6014c9ac6e6d.ctex"]
 
 [params]
 
