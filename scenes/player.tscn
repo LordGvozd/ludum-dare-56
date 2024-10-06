@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=47 format=3 uid="uid://ddk14gsew7gh4"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bnfns4vvucmyg" path="res://sprites/player/walk/down/player_walk_down10.png" id="31_1yfdj"]
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
-[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="37_o81mw"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="37_o81mw"]
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="38_04e5i"]
 [ext_resource type="Script" path="res://scripts/player/player_sound.gd" id="39_bfjfa"]
 [ext_resource type="AudioStream" uid="uid://c6hnhn15dsl4b" path="res://audio/sounds/steps_outside.wav" id="40_76cvl"]
@@ -181,11 +181,10 @@ radius = 122.037
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vra8h"]
 light_mode = 1
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement", "player_sound")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement")]
 script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
 player_movement = NodePath("PlayerMovement")
-player_sound = NodePath("PlayerSound")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("1_5hib8")
