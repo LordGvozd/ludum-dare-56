@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4xv31iqikonu"
-path="res://.godot/imported/player_lamp_light.png-463ac5b3ba709ee8dc638c16fcfefbf8.ctex"
+uid="uid://etrfucvx4lnm"
+path="res://.godot/imported/you_died_screen.png-7d239f4ae90a7323e0c116728b78e9e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player_lamp_light.png"
-dest_files=["res://.godot/imported/player_lamp_light.png-463ac5b3ba709ee8dc638c16fcfefbf8.ctex"]
+source_file="res://audio/sounds/ambients/you_died_screen.png"
+dest_files=["res://.godot/imported/you_died_screen.png-7d239f4ae90a7323e0c116728b78e9e2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdxwh76lsicy5"
-path="res://.godot/imported/texture_light.png-67debab53cffcbb38bcf106eb66314de.ctex"
+uid="uid://buf0ccvrexbq2"
+path="res://.godot/imported/you_died_screen.png-cbc4abc3318555dc3d1119dba786b218.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture_light.png"
-dest_files=["res://.godot/imported/texture_light.png-67debab53cffcbb38bcf106eb66314de.ctex"]
+source_file="res://sprites/you_died_screen.png"
+dest_files=["res://.godot/imported/you_died_screen.png-cbc4abc3318555dc3d1119dba786b218.ctex"]
 
 [params]
 
