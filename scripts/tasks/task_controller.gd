@@ -20,6 +20,7 @@ func _set_task():
 	
 	for event in tasks_events:
 		if event in events:
+			task_text_label.text = "Current Task:\n"
 			task_text_label.text += "\n" + tasks[event] 
 			break
 	

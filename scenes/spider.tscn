@@ -76,6 +76,7 @@ script = ExtResource("4_3jeog")
 
 [node name="SpiderMovement" type="CharacterBody2D" parent="."]
 script = ExtResource("1_pa2w3")
+speed = 150
 
 [node name="SpiderSprite" type="AnimatedSprite2D" parent="SpiderMovement"]
 position = Vector2(0, -8.18192)
@@ -96,12 +97,10 @@ shape = SubResource("CircleShape2D_c088s")
 debug_color = Color(0.984314, 0, 0.176471, 0.419608)
 
 [node name="walking" type="AudioStreamPlayer2D" parent="SpiderMovement"]
-scale = Vector2(1, 1)
 stream = ExtResource("14_j63lq")
 autoplay = true
 
 [node name="died" type="AudioStreamPlayer2D" parent="SpiderMovement"]
-scale = Vector2(1, 1)
 stream = ExtResource("15_x4453")
 
 [connection signal="body_entered" from="SpiderMovement/SpiderAttackArea" to="SpiderAttack" method="_on_spider_attack_area_body_entered"]

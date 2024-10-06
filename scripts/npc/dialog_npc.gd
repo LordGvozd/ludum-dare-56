@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _load_dialog() -> void:
 	if not FileAccess.file_exists(dialog_path):
+		printerr("File '" + dialog_path + "' not exist!")
 		current_phrase = ""
 		return
 		
@@ -20,6 +21,7 @@ func _load_dialog() -> void:
 	
 	var dialog_events = dialog_json.keys()
 	dialog_events.reverse()
+	
 	
 	var events = EventsStorage.load_events()
 	
@@ -37,9 +39,11 @@ func _load_dialog() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	_load_dialog()
-	_dialog_label.text = current_phrase
+	if _body is PlayerMovement:
+		_load_dialog()
+		_dialog_label.text = current_phrase
 	
 
 func _on_body_exited(_body: Node2D) -> void:
-	_dialog_label.text = ""
+	if _body is PlayerMovement:
+		_dialog_label.text = ""
