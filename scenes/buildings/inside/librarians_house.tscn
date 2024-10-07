@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_ki2sx"]
 [ext_resource type="Texture2D" uid="uid://dp0wd54m48h5d" path="res://sprites/house_tilemap.png" id="3_mogij"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="4_7ryr1"]
-[ext_resource type="PackedScene" uid="uid://coqaowa6sx4kh" path="res://scenes/buildings/building_exit.tscn" id="5_uiuyn"]
+[ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="5_uiuyn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kc7mi"]
 texture = ExtResource("3_mogij")

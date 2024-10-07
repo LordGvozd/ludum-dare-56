@@ -35,4 +35,5 @@ func _physics_process(_delta) -> void:
 	else:
 		player_sound.walking = false
 	
-	player_movement.move(movement_direction)
+	if not player_input.is_attacking:
+		player_movement.move(movement_direction)

@@ -96,7 +96,6 @@ texture = ExtResource("4_t8etc")
 position = Vector2(578, 848)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
 
 [node name="Player" parent="." instance=ExtResource("7_fehx0")]

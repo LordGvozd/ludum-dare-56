@@ -14,32 +14,32 @@ var last_direction: Vector2
 func _process(_delta) -> void:
 	var direction: Vector2 = player_input.get_movement_direction()
 		
-	# todo refactor
-	if direction.x == 1:
-		last_direction = direction
+	if player_input.is_attacking == false:
+		if direction.x == 1:
+			last_direction = direction
+			
+			player_animated_sprite.flip_h = false
+			player_animated_sprite.play("walk_right")
 		
-		player_animated_sprite.flip_h = false
-		player_animated_sprite.play("walk_right")
-	
-	if direction.x == -1:
-		last_direction = direction
-		
-		player_animated_sprite.flip_h = true
-		player_animated_sprite.play("walk_right")
-		
-	if direction.y == 1:
-		last_direction = direction
-		
-		player_animated_sprite.flip_h = false
-		player_animated_sprite.play("walk_down")
-		
-	if direction.y == -1:
-		last_direction = direction
-		
-		player_animated_sprite.flip_h = false
-		player_animated_sprite.play("walk_up")
+		if direction.x == -1:
+			last_direction = direction
+			
+			player_animated_sprite.flip_h = true
+			player_animated_sprite.play("walk_right")
+			
+		if direction.y == 1:
+			last_direction = direction
+			
+			player_animated_sprite.flip_h = false
+			player_animated_sprite.play("walk_down")
+			
+		if direction.y == -1:
+			last_direction = direction
+			
+			player_animated_sprite.flip_h = false
+			player_animated_sprite.play("walk_up")
 
-	if direction == Vector2.ZERO:
+	if direction == Vector2.ZERO and player_input.is_attacking == false:
 		player_animated_sprite.flip_h = false
 		
 		if last_direction.x == 1:
