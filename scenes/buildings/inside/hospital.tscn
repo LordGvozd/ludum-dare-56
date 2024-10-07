@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c8jw2y1ecudwe"]
+[gd_scene load_steps=20 format=4 uid="uid://c8jw2y1ecudwe"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_7gpe0"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_t6fn8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/note_2.png" id="5_h15db"]
 [ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="6_apaui"]
 [ext_resource type="Texture2D" uid="uid://datx1nnhw5uh5" path="res://sprites/note.png" id="6_j4bxg"]
+[ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/bed.png" id="8_pu2qg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxmf3"]
 texture = ExtResource("1_7gpe0")
@@ -46,7 +47,11 @@ radius = 13.1529
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8lma"]
 radius = 14.0357
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vpr8"]
+size = Vector2(37, 32)
+
 [node name="Hospital" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAJAA8AAgAAAAAAAAAJABAAAgAAAAAAAAAJABEAAgAAAAAAAAAJABIAAgAAAAAAAAAJABMAAgAAAAAAAAAJABQAAgAAAAAAAAAJABUAAgAAAAAAAAAJABYAAgAAAAAAAAAJABcAAgAAAAAAAAAJABgAAgAAAAAAAAAJABkAAgAAAAAAAAAKAA8AAgAAAAAAAAAKABAAAgAAAAAAAAAKABEAAgAAAAAAAAAKABIAAgAAAAAAAAAKABMAAgAAAAAAAAAKABQAAgAAAAAAAAAKABUAAgAAAAAAAAAKABYAAgAAAAAAAAAKABcAAgAAAAAAAAAKABgAAgAAAAAAAAAKABkAAgAAAAAAAAALAA8AAgAAAAAAAAALABAAAgAAAAAAAAALABEAAgAAAAAAAAALABIAAgAAAAAAAAALABMAAgAAAAAAAAALABQAAgAAAAAAAAALABUAAgAAAAAAAAALABYAAgAAAAAAAAALABcAAgAAAAAAAAALABgAAgAAAAAAAAALABkAAgAAAAAAAAAMAA8AAgAAAAAAAAAMABAAAgAAAAAAAAAMABEAAgAAAAAAAAAMABIAAgAAAAAAAAAMABMAAgAAAAAAAAAMABQAAgAAAAAAAAAMABUAAgAAAAAAAAAMABYAAgAAAAAAAAAMABcAAgAAAAAAAAAMABgAAgAAAAAAAAAMABkAAgAAAAAAAAANAA8AAgAAAAAAAAANABAAAgAAAAAAAAANABEAAgAAAAAAAAANABIAAgAAAAAAAAANABMAAgAAAAAAAAANABQAAgAAAAAAAAANABUAAgAAAAAAAAANABYAAgAAAAAAAAANABcAAgAAAAAAAAANABgAAgAAAAAAAAANABkAAgAAAAAAAAAOAA8AAgAAAAAAAAAOABAAAgAAAAAAAAAOABEAAgAAAAAAAAAOABIAAgAAAAAAAAAOABMAAgAAAAAAAAAOABQAAgAAAAAAAAAOABUAAgAAAAAAAAAOABYAAgAAAAAAAAAOABcAAgAAAAAAAAAOABgAAgAAAAAAAAAOABkAAgAAAAAAAAAPAA8AAgAAAAAAAAAPABAAAgAAAAAAAAAPABEAAgAAAAAAAAAPABIAAgAAAAAAAAAPABMAAgAAAAAAAAAPABQAAgAAAAAAAAAPABUAAgAAAAAAAAAPABYAAgAAAAAAAAAPABcAAgAAAAAAAAAPABgAAgAAAAAAAAAPABkAAgAAAAAAAAAQAA8AAgAAAAAAAAAQABAAAgAAAAAAAAAQABEAAgAAAAAAAAAQABIAAgAAAAAAAAAQABMAAgAAAAAAAAAQABQAAgAAAAAAAAAQABUAAgAAAAAAAAAQABYAAgAAAAAAAAAQABcAAgAAAAAAAAAQABgAAgAAAAAAAAAQABkAAgAAAAAAAAARAA8AAgAAAAAAAAARABAAAgAAAAAAAAARABEAAgAAAAAAAAARABIAAgAAAAAAAAARABMAAgAAAAAAAAARABQAAgAAAAAAAAARABUAAgAAAAAAAAARABYAAgAAAAAAAAARABcAAgAAAAAAAAARABgAAgAAAAAAAAARABkAAgAAAAAAAAASAA8AAgAAAAAAAAASABAAAgAAAAAAAAASABEAAgAAAAAAAAASABIAAgAAAAAAAAASABMAAgAAAAAAAAASABQAAgAAAAAAAAASABUAAgAAAAAAAAASABYAAgAAAAAAAAASABcAAgAAAAAAAAASABgAAgAAAAAAAAASABkAAgAAAAAAAAATAA8AAgAAAAAAAAATABAAAgAAAAAAAAATABEAAgAAAAAAAAATABIAAgAAAAAAAAATABMAAgAAAAAAAAATABQAAgAAAAAAAAATABUAAgAAAAAAAAATABYAAgAAAAAAAAATABcAAgAAAAAAAAATABgAAgAAAAAAAAATABkAAgAAAAAAAAAUAA8AAgAAAAAAAAAUABAAAgAAAAAAAAAUABEAAgAAAAAAAAAUABIAAgAAAAAAAAAUABMAAgAAAAAAAAAUABQAAgAAAAAAAAAUABUAAgAAAAAAAAAUABYAAgAAAAAAAAAUABcAAgAAAAAAAAAUABgAAgAAAAAAAAAUABkAAgAAAAAAAAAVAA8AAgAAAAAAAAAVABAAAgAAAAAAAAAVABEAAgAAAAAAAAAVABIAAgAAAAAAAAAVABMAAgAAAAAAAAAVABQAAgAAAAAAAAAVABUAAgAAAAAAAAAVABYAAgAAAAAAAAAVABcAAgAAAAAAAAAVABgAAgAAAAAAAAAVABkAAgAAAAAAAAAWAA8AAgAAAAAAAAAWABAAAgAAAAAAAAAWABEAAgAAAAAAAAAWABIAAgAAAAAAAAAWABMAAgAAAAAAAAAWABQAAgAAAAAAAAAWABUAAgAAAAAAAAAWABYAAgAAAAAAAAAWABcAAgAAAAAAAAAWABgAAgAAAAAAAAAWABkAAgAAAAAAAAAXAA8AAgAAAAAAAAAXABAAAgAAAAAAAAAXABEAAgAAAAAAAAAXABIAAgAAAAAAAAAXABMAAgAAAAAAAAAXABQAAgAAAAAAAAAXABUAAgAAAAAAAAAXABYAAgAAAAAAAAAXABcAAgAAAAAAAAAXABgAAgAAAAAAAAAXABkAAgAAAAAAAAAYAA8AAgAAAAAAAAAYABAAAgAAAAAAAAAYABEAAgAAAAAAAAAYABIAAgAAAAAAAAAYABMAAgAAAAAAAAAYABQAAgAAAAAAAAAYABUAAgAAAAAAAAAYABYAAgAAAAAAAAAYABcAAgAAAAAAAAAYABgAAgAAAAAAAAAYABkAAgAAAAAAAAAZAA8AAgAAAAAAAAAZABAAAgAAAAAAAAAZABEAAgAAAAAAAAAZABIAAgAAAAAAAAAZABMAAgAAAAAAAAAZABQAAgAAAAAAAAAZABUAAgAAAAAAAAAZABYAAgAAAAAAAAAZABcAAgAAAAAAAAAZABgAAgAAAAAAAAAZABkAAgAAAAAAAAAaAA8AAgAAAAAAAAAaABAAAgAAAAAAAAAaABEAAgAAAAAAAAAaABIAAgAAAAAAAAAaABMAAgAAAAAAAAAaABQAAgAAAAAAAAAaABUAAgAAAAAAAAAaABYAAgAAAAAAAAAaABcAAgAAAAAAAAAaABgAAgAAAAAAAAAaABkAAgAAAAAAAAAJABoAAgAAAAAAAAAKABoAAgAAAAAAAAALABoAAgAAAAAAAAAMABoAAgAAAAAAAAANABoAAgAAAAAAAAAOABoAAgAAAAAAAAAPABoAAgAAAAAAAAAQABoAAgAAAAAAAAARABoAAgAAAAAAAAASABoAAgAAAAAAAAATABoAAgAAAAAAAAAUABoAAgAAAAAAAAAVABoAAgAAAAAAAAAWABoAAgAAAAAAAAAXABoAAgAAAAAAAAAYABoAAgAAAAAAAAAZABoAAgAAAAAAAAAaABoAAgAAAAAAAAAJAA4AAgAAAAAAAAAKAA4AAgAAAAAAAAALAA4AAgAAAAAAAAAMAA4AAgAAAAAAAAANAA4AAgAAAAAAAAAOAA4AAgAAAAAAAAAPAA4AAgAAAAAAAAAQAA4AAgAAAAAAAAARAA4AAgAAAAAAAAASAA4AAgAAAAAAAAATAA4AAgAAAAAAAAAUAA4AAgAAAAAAAAAVAA4AAgAAAAAAAAAWAA4AAgAAAAAAAAAXAA4AAgAAAAAAAAAYAA4AAgAAAAAAAAAZAA4AAgAAAAAAAAAaAA4AAgAAAAAAAAA=")
@@ -138,3 +143,156 @@ texture = ExtResource("5_h15db")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FourthNote"]
 shape = SubResource("CircleShape2D_v8lma")
+
+[node name="Beds" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bed" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(46, -128)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed2" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-50, -128)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed2"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed2"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed3" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-154, -128)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed3"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed3"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed4" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-258, -128)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed4"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed4"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed5" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-378, -128)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed5"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed5"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed6" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(46, -40)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed6"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed6"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed7" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-50, -40)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed7"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed7"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed8" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-154, -40)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed8"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed8"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed9" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-258, -40)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed9"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed9"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
+
+[node name="Bed10" type="StaticBody2D" parent="Beds"]
+y_sort_enabled = true
+position = Vector2(-378, -40)
+
+[node name="BedSprite" type="Sprite2D" parent="Beds/Bed10"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("8_pu2qg")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beds/Bed10"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_0vpr8")
