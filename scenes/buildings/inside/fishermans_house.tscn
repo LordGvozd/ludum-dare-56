@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b4u160kmowlsl"]
+[gd_scene load_steps=19 format=4 uid="uid://dxdajq3g77p6b"]
 
 [ext_resource type="Texture2D" uid="uid://dp0wd54m48h5d" path="res://sprites/house_tilemap.png" id="1_73d6k"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_g5nbq"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfri4xmp5mll7" path="res://sprites/candles.png" id="4_t8etc"]
 [ext_resource type="Texture2D" uid="uid://bqt7hpyy4j6ui" path="res://sprites/fisherman/fisherman_idle2.png" id="4_ujfsh"]
 [ext_resource type="Texture2D" uid="uid://chalxlh8d361l" path="res://sprites/fisherman/fisherman_idle3.png" id="5_8e5c0"]
-[ext_resource type="PackedScene" uid="uid://coqaowa6sx4kh" path="res://scenes/buildings/building_exit.tscn" id="6_5trrp"]
+[ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="6_5trrp"]
 [ext_resource type="Texture2D" uid="uid://dbwn8q5fsyh7r" path="res://sprites/fisherman/fisherman_idle4.png" id="6_e8aq2"]
 [ext_resource type="Texture2D" uid="uid://csbnyktlbyntf" path="res://sprites/fisherman/fisherman_idle5.png" id="7_46cb6"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="7_fehx0"]

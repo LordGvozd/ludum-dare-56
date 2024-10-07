@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://34ch7usjfh5s"]
+[gd_scene load_steps=8 format=3 uid="uid://ba1naek16e08g"]
 
-[ext_resource type="Script" path="res://scripts/building/building_exit.gd" id="1_3vr3q"]
-[ext_resource type="AudioStream" uid="uid://lkjcrpdcb6qu" path="res://audio/sounds/door.mp3" id="2_4oqy3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n43q"]
-size = Vector2(86, 31)
+[ext_resource type="Script" path="res://scripts/building/town_enter.gd" id="1_1an6n"]
+[ext_resource type="AudioStream" uid="uid://lkjcrpdcb6qu" path="res://audio/sounds/door.mp3" id="1_dibpl"]
 
 [sub_resource type="Animation" id="Animation_6swem"]
 length = 0.001
@@ -46,7 +43,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("2_4oqy3")
+"stream": ExtResource("1_dibpl")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -92,7 +89,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 2.072,
-"stream": ExtResource("2_4oqy3")
+"stream": ExtResource("1_dibpl")
 }],
 "times": PackedFloat32Array(0.00549839)
 }
@@ -106,11 +103,8 @@ _data = {
 "idle": SubResource("Animation_gslmg")
 }
 
-[node name="BuildingExit" type="Area2D"]
-script = ExtResource("1_3vr3q")
-
-[node name="ExitCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2n43q")
+[node name="TownEnter" type="Node2D"]
+script = ExtResource("1_1an6n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -134,9 +128,6 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_mnbww")
 }
-autoplay = "fade_out"
+autoplay = "idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

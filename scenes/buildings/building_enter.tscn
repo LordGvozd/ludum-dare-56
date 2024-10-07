@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv72uf5hw7fg6"]
+[gd_scene load_steps=8 format=3 uid="uid://e7jqgv4dbl0w"]
 
 [ext_resource type="Script" path="res://scripts/building/building_enter.gd" id="1_cu84n"]
 [ext_resource type="AudioStream" uid="uid://lkjcrpdcb6qu" path="res://audio/sounds/door.mp3" id="2_5jv1j"]
@@ -64,10 +64,42 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4tn45"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(2.37841, 2.37841),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 2.072,
+"stream": ExtResource("2_5jv1j")
+}],
+"times": PackedFloat32Array(0.00549839)
+}
+tracks/1/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnbww"]
 _data = {
 "RESET": SubResource("Animation_6swem"),
 "fade_in": SubResource("Animation_5t7ft"),
+"fade_out": SubResource("Animation_4tn45"),
 "idle": SubResource("Animation_gslmg")
 }
 
@@ -81,6 +113,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -88,10 +121,10 @@ offset_left = -117.0
 offset_top = -96.0
 offset_right = 1415.0
 offset_bottom = 1068.0
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_mnbww")
 }

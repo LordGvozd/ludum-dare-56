@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Player
 
 @export var player_input: PlayerInput
 @export var player_movement: PlayerMovement
