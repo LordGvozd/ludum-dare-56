@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bl1ulg1o5kklr"]
+[gd_scene load_steps=34 format=4 uid="uid://bl1ulg1o5kklr"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_us6m4"]
 [ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/black.png" id="2_0d2jk"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://cevmw5cgjyxtw" path="res://sprites/healer/doctor_idle7.png" id="9_ftoyv"]
 [ext_resource type="Texture2D" uid="uid://cl7invdhceu8e" path="res://sprites/healer/doctor_idle8.png" id="10_buu17"]
 [ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/bed.png" id="16_lf3n4"]
+[ext_resource type="Texture2D" uid="uid://ddwau6y45f4o3" path="res://sprites/mauxa.png" id="18_p7qn3"]
+[ext_resource type="Texture2D" uid="uid://m16mguq6krvl" path="res://sprites/med table.png" id="19_fsxy7"]
+[ext_resource type="Texture2D" uid="uid://dirj3leak3bm5" path="res://sprites/chair.png" id="20_ljvbp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3a32"]
 texture = ExtResource("1_us6m4")
@@ -92,6 +95,12 @@ size = Vector2(234, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cik73"]
 size = Vector2(37, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqim6"]
+size = Vector2(53, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krdg7"]
+size = Vector2(20, 3)
 
 [node name="HealersHouse" type="Node2D"]
 y_sort_enabled = true
@@ -196,3 +205,38 @@ offset = Vector2(0, 4.47)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
 position = Vector2(742.5, 660)
 shape = SubResource("RectangleShape2D_cik73")
+
+[node name="MuxaNPC" parent="." instance=ExtResource("2_80tax")]
+position = Vector2(498, 732)
+scale = Vector2(0.304, 0.304)
+dialog_path = "res://storage/dialogs/muxa_dialog.json"
+
+[node name="MuxaSprite" type="Sprite2D" parent="MuxaNPC"]
+position = Vector2(-6.58215, 0)
+rotation = 3.14159
+scale = Vector2(3.62825, 3.62825)
+texture = ExtResource("18_p7qn3")
+flip_h = true
+flip_v = true
+
+[node name="Table" type="StaticBody2D" parent="."]
+position = Vector2(502, 638)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table"]
+texture = ExtResource("19_fsxy7")
+offset = Vector2(0, 12.46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_hqim6")
+
+[node name="Chair" type="StaticBody2D" parent="."]
+position = Vector2(523, 611)
+scale = Vector2(1.28, 1.28)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chair"]
+texture = ExtResource("20_ljvbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_krdg7")
