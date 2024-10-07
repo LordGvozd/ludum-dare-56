@@ -58,7 +58,7 @@ func _run_callbacks():
 		
 	
 func clear_events() -> void:
-	print("Clear")
 	var events_file = FileAccess.open(file_name, FileAccess.WRITE)
+	_events = default_events
 	
 	events_file.store_string(JSON.stringify(default_events))
