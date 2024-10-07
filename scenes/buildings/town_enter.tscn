@@ -98,7 +98,6 @@ tracks/2/path = NodePath("CanvasLayer/Control/ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 1,
