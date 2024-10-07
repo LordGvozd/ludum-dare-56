@@ -49,7 +49,7 @@ scale = Vector2(0.56154, 0.631731)
 event = "talk_to_librarian"
 
 [node name="Player" parent="." instance=ExtResource("2_ki2sx")]
-position = Vector2(562, 763)
+position = Vector2(565, 766)
 camera_limit_left = 305
 camera_limit_top = 480
 camera_limit_right = 831
