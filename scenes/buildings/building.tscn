@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://vcyfov2y7acj"]
+[gd_scene load_steps=4 format=3 uid="uid://vcyfov2y7acj"]
 
 [ext_resource type="Script" path="res://scripts/building/building.gd" id="1_8vu43"]
-[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="1_8xynl"]
 [ext_resource type="PackedScene" uid="uid://bv72uf5hw7fg6" path="res://scenes/buildings/building_enter.tscn" id="2_lyt5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83otd"]
@@ -10,12 +9,9 @@ size = Vector2(71, 28)
 [node name="Building" type="Node2D"]
 script = ExtResource("1_8vu43")
 
-[node name="BuildingEnter2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("2_lyt5g")]
+[node name="BuildingEnter" parent="." node_paths=PackedStringArray("building") instance=ExtResource("2_lyt5g")]
+visible = false
 building = NodePath("..")
-
-[node name="BuildingSprite" type="Sprite2D" parent="."]
-scale = Vector2(2.36, 2.36)
-texture = ExtResource("1_8xynl")
 
 [node name="BuildingEnterArea" type="Area2D" parent="."]
 
