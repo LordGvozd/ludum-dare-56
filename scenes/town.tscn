@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=73 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/note_2.png" id="35_6ai1h"]
 [ext_resource type="Texture2D" uid="uid://dawaunkgym2pm" path="res://sprites/objects.png" id="37_nyms6"]
 [ext_resource type="Texture2D" uid="uid://c4x73cj1oihee" path="res://sprites/512x512 textures (82).png" id="38_wi6ey"]
+[ext_resource type="Texture2D" uid="uid://difyfxv50r16m" path="res://sprites/objects2.png" id="39_vrde0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1eybe"]
 texture = ExtResource("4_hjqor")
@@ -294,6 +295,44 @@ size = Vector2(13, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84nc4"]
 size = Vector2(71, 5)
 
+[sub_resource type="Animation" id="Animation_oiba0"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-66, 715), Vector2(-66, 720.4), Vector2(-66, 715)]
+}
+
+[sub_resource type="Animation" id="Animation_1viuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-66, 715)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_47qpm"]
+_data = {
+"RESET": SubResource("Animation_1viuy"),
+"idle": SubResource("Animation_oiba0")
+}
+
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
 
@@ -314,7 +353,7 @@ tile_set = SubResource("TileSet_t8vgo")
 
 [node name="Player" parent="." instance=ExtResource("1_cxiqd")]
 y_sort_enabled = true
-position = Vector2(814, 720)
+position = Vector2(6, 739)
 camera_limit_left = -200
 camera_limit_top = 100
 camera_limit_right = 1350
@@ -1694,5 +1733,20 @@ region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/Fence4"]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_84nc4")
+
+[node name="Boat" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-66, 715)
+rotation = 6.28319
+texture = ExtResource("39_vrde0")
+offset = Vector2(0, 10.715)
+region_enabled = true
+region_rect = Rect2(4.7505, 4.56108, 122.449, 50.033)
+
+[node name="BoatAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_47qpm")
+}
+autoplay = "idle"
 
 [connection signal="body_entered" from="EndingTriggerDepends/EndingArea" to="EndingTriggerDepends/EndingArea" method="_on_body_entered"]
