@@ -28,6 +28,21 @@ font_color = Color(0.69, 0, 0, 1)
 font = ExtResource("3_xg2al")
 font_size = 64
 
+[sub_resource type="Animation" id="Animation_cku33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.69, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2elhj"]
 resource_name = "title"
 length = 2.0
@@ -43,21 +58,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.69, 0, 0, 1), Color(0.99984, 0.287567, 0.225477, 1), Color(0.69, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cku33"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:label_settings:font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.69, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qw5w8"]
@@ -167,6 +167,7 @@ horizontal_alignment = 1
 [node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+max_value = 50.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_q70vq")

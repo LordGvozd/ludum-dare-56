@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bl1ulg1o5kklr"]
+[gd_scene load_steps=26 format=4 uid="uid://bl1ulg1o5kklr"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_us6m4"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_80tax"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://qbmm43fn2btt" path="res://sprites/healer/doctor_idle6.png" id="8_emsdx"]
 [ext_resource type="Texture2D" uid="uid://cevmw5cgjyxtw" path="res://sprites/healer/doctor_idle7.png" id="9_ftoyv"]
 [ext_resource type="Texture2D" uid="uid://cl7invdhceu8e" path="res://sprites/healer/doctor_idle8.png" id="10_buu17"]
+[ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/bed.png" id="16_lf3n4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3a32"]
 texture = ExtResource("1_us6m4")
@@ -78,6 +79,9 @@ size = Vector2(529, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04vkw"]
 size = Vector2(234, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cik73"]
+size = Vector2(37, 32)
 
 [node name="HealersHouse" type="Node2D"]
 y_sort_enabled = true
@@ -163,3 +167,18 @@ shape = SubResource("RectangleShape2D_04vkw")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
 position = Vector2(414, 847.5)
 shape = SubResource("RectangleShape2D_04vkw")
+
+[node name="Bed" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-58, -27)
+
+[node name="BedSprite" type="Sprite2D" parent="Bed"]
+y_sort_enabled = true
+position = Vector2(742.25, 657)
+scale = Vector2(1.2931, 1)
+texture = ExtResource("16_lf3n4")
+offset = Vector2(0, 4.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
+position = Vector2(742.5, 660)
+shape = SubResource("RectangleShape2D_cik73")
