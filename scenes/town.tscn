@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=33 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
 [ext_resource type="PackedScene" uid="uid://vcyfov2y7acj" path="res://scenes/buildings/building.tscn" id="3_vuaki"]
@@ -6,8 +6,16 @@
 [ext_resource type="Script" path="res://scripts/notes/note.gd" id="4_tb0f1"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="5_g7p4s"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="6_odmwe"]
+[ext_resource type="Texture2D" uid="uid://baljdsd3rp07f" path="res://sprites/priest/priest_idle1.png" id="6_rxfyj"]
 [ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="7_k7k2j"]
+[ext_resource type="Texture2D" uid="uid://bcm874jev1ja" path="res://sprites/priest/priest_idle2.png" id="7_njqfv"]
 [ext_resource type="Texture2D" uid="uid://djx7bhiq762db" path="res://sprites/fish.png" id="8_l8q2i"]
+[ext_resource type="Texture2D" uid="uid://desflpiex8mph" path="res://sprites/priest/priest_idle3.png" id="8_v8hh4"]
+[ext_resource type="Texture2D" uid="uid://dm4sbpm2ye2w6" path="res://sprites/priest/priest_idle4.png" id="9_vuyu6"]
+[ext_resource type="Texture2D" uid="uid://880njk4diqxk" path="res://sprites/priest/priest_idle5.png" id="10_1c1dv"]
+[ext_resource type="Texture2D" uid="uid://bu51gkd1ji8ci" path="res://sprites/priest/priest_idle6.png" id="11_rxdit"]
+[ext_resource type="Texture2D" uid="uid://bsvhxp0o3bb4p" path="res://sprites/priest/priest_idle7.png" id="12_036o8"]
+[ext_resource type="Texture2D" uid="uid://c4f7udwk1gkhd" path="res://sprites/priest/priest_idle8.png" id="13_3lj0m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1eybe"]
 texture = ExtResource("4_hjqor")
@@ -139,6 +147,38 @@ size = Vector2(1367, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5hyy"]
 radius = 12.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg6rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rxfyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_njqfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v8hh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vuyu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1c1dv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rxdit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_036o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3lj0m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ra1rp"]
 radius = 15.0
 
@@ -154,7 +194,7 @@ tile_map_data = PackedByteArray("AAASABEAAAAGAAAAAAAFAA0AAAAGAAAAAAALABQAAAAGAAA
 tile_set = SubResource("TileSet_qm0je")
 
 [node name="Player" parent="." instance=ExtResource("1_cxiqd")]
-position = Vector2(816, 735)
+position = Vector2(743, 614)
 camera_limit_top = 100
 camera_limit_right = 1350
 camera_limit_bottom = 970
@@ -191,6 +231,7 @@ scale = Vector2(0.346824, 0.288647)
 load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
 
 [node name="Library" parent="." instance=ExtResource("3_vuaki")]
+visible = false
 position = Vector2(471, 222)
 scale = Vector2(0.666823, 0.328646)
 load_scene_file_path = "res://scenes/buildings/inside/library.tscn"
@@ -242,9 +283,16 @@ note_text = " Hello, kakashka. Hahahaha"
 shape = SubResource("CircleShape2D_m5hyy")
 
 [node name="ElderManNPC" parent="." instance=ExtResource("5_g7p4s")]
-position = Vector2(955, 714)
-scale = Vector2(0.525268, 0.525268)
+position = Vector2(822, 614)
+scale = Vector2(0.365278, 0.365278)
 dialog_path = "res://storage/dialogs/elder_man_dialog.json"
+
+[node name="ElderManNPCAnimatedSprite" type="AnimatedSprite2D" parent="ElderManNPC"]
+scale = Vector2(2.21839, 2.21839)
+sprite_frames = SubResource("SpriteFrames_lg6rm")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.915653
 
 [node name="EventTrigger" parent="." instance=ExtResource("6_odmwe")]
 position = Vector2(954, 713)

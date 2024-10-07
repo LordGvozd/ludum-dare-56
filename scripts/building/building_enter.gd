@@ -15,4 +15,4 @@ func _on_building_enter_area_body_entered(body):
 
 func _on_animation_player_animation_finished(anim_name):
 	get_tree().change_scene_to_file.bind(building.load_scene_file_path)\
-	.call_deferred()
+		.call_deferred()

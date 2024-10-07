@@ -1,12 +1,20 @@
-[gd_scene load_steps=10 format=4 uid="uid://b4u160kmowlsl"]
+[gd_scene load_steps=19 format=4 uid="uid://b4u160kmowlsl"]
 
 [ext_resource type="Texture2D" uid="uid://dp0wd54m48h5d" path="res://sprites/house_tilemap.png" id="1_73d6k"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_g5nbq"]
+[ext_resource type="Texture2D" uid="uid://bjudw05inql75" path="res://sprites/fisherman/fisherman_idle1.png" id="3_6wtdy"]
 [ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="3_bkaf5"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="3_y6qix"]
 [ext_resource type="Texture2D" uid="uid://dfri4xmp5mll7" path="res://sprites/candles.png" id="4_t8etc"]
+[ext_resource type="Texture2D" uid="uid://bqt7hpyy4j6ui" path="res://sprites/fisherman/fisherman_idle2.png" id="4_ujfsh"]
+[ext_resource type="Texture2D" uid="uid://chalxlh8d361l" path="res://sprites/fisherman/fisherman_idle3.png" id="5_8e5c0"]
 [ext_resource type="PackedScene" uid="uid://coqaowa6sx4kh" path="res://scenes/buildings/building_exit.tscn" id="6_5trrp"]
+[ext_resource type="Texture2D" uid="uid://dbwn8q5fsyh7r" path="res://sprites/fisherman/fisherman_idle4.png" id="6_e8aq2"]
+[ext_resource type="Texture2D" uid="uid://csbnyktlbyntf" path="res://sprites/fisherman/fisherman_idle5.png" id="7_46cb6"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="7_fehx0"]
+[ext_resource type="Texture2D" uid="uid://cmxyaabbpgh7f" path="res://sprites/fisherman/fisherman_idle6.png" id="8_64rgf"]
+[ext_resource type="Texture2D" uid="uid://bx03lxs8ibdr3" path="res://sprites/fisherman/fisherman_idle7.png" id="9_yms0u"]
+[ext_resource type="Texture2D" uid="uid://bdt5nqnkrea2j" path="res://sprites/fisherman/fisherman_idle8.png" id="10_fmw7l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_etls4"]
 texture = ExtResource("1_73d6k")
@@ -22,6 +30,38 @@ texture = ExtResource("1_73d6k")
 [sub_resource type="TileSet" id="TileSet_3ysoa"]
 sources/0 = SubResource("TileSetAtlasSource_etls4")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nww42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6wtdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ujfsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8e5c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e8aq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_46cb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_64rgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yms0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fmw7l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
 [node name="FishermansHouse" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -32,6 +72,13 @@ tile_set = SubResource("TileSet_3ysoa")
 position = Vector2(577, 608)
 scale = Vector2(0.32, 0.32)
 dialog_path = "res://storage/dialogs/fisherman_dialog.json"
+
+[node name="FishermanNPCAnimatedSprite" type="AnimatedSprite2D" parent="FishermanNPC"]
+scale = Vector2(2.52146, 2.52146)
+sprite_frames = SubResource("SpriteFrames_nww42")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.297391
 
 [node name="TriggerDepends" parent="." instance=ExtResource("3_bkaf5")]
 depends_on_event = "fish_collected"
@@ -49,6 +96,7 @@ texture = ExtResource("4_t8etc")
 position = Vector2(578, 848)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
 
 [node name="Player" parent="." instance=ExtResource("7_fehx0")]
