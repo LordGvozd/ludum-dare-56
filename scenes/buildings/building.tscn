@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vcyfov2y7acj"]
 
 [ext_resource type="Script" path="res://scripts/building/building.gd" id="1_8vu43"]
-[ext_resource type="PackedScene" uid="uid://bv72uf5hw7fg6" path="res://scenes/buildings/building_enter.tscn" id="2_lyt5g"]
+[ext_resource type="PackedScene" uid="uid://e7jqgv4dbl0w" path="res://scenes/buildings/building_enter.tscn" id="2_lyt5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83otd"]
 size = Vector2(71, 28)
@@ -9,12 +9,17 @@ size = Vector2(71, 28)
 [node name="Building" type="Node2D"]
 script = ExtResource("1_8vu43")
 
-[node name="BuildingEnter" parent="." node_paths=PackedStringArray("building") instance=ExtResource("2_lyt5g")]
-visible = false
+[node name="BuildingEnter" parent="." node_paths=PackedStringArray("building", "player_spawn") instance=ExtResource("2_lyt5g")]
 building = NodePath("..")
+player_spawn = NodePath("../Node2D")
 
 [node name="BuildingEnterArea" type="Area2D" parent="."]
 
 [node name="BuildingEnterAreaCollisionShape" type="CollisionShape2D" parent="BuildingEnterArea"]
 position = Vector2(-0.5, 136)
 shape = SubResource("RectangleShape2D_83otd")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 223)
+
+[connection signal="body_entered" from="BuildingEnterArea" to="BuildingEnter" method="_on_building_enter_area_body_entered"]
