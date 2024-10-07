@@ -339,7 +339,6 @@ script = ExtResource("1_5hib8")
 script = ExtResource("5_kjhrr")
 
 [node name="PlayerAttackTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="PlayerAnimation" type="Node" parent="." node_paths=PackedStringArray("player_input")]
 script = ExtResource("4_kcfpf")
@@ -367,8 +366,6 @@ scale = Vector2(2.60542, 2.60542)
 sprite_frames = SubResource("SpriteFrames_h17ug")
 animation = &"attack"
 autoplay = "idle_down"
-frame = 8
-frame_progress = 1.0
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CapsuleShape2D_2jkqd")
@@ -510,4 +507,5 @@ horizontal_alignment = 1
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_exited"]
+[connection signal="animation_finished" from="PlayerMovement/PlayerSprite" to="." method="_on_player_sprite_animation_finished"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
