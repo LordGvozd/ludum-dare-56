@@ -1,3 +1,140 @@
-[gd_scene format=3 uid="uid://c8jw2y1ecudwe"]
+[gd_scene load_steps=18 format=4 uid="uid://c8jw2y1ecudwe"]
+
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_7gpe0"]
+[ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_t6fn8"]
+[ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="3_8b2ff"]
+[ext_resource type="Script" path="res://scripts/notes/note.gd" id="4_dkto0"]
+[ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/note_2.png" id="5_h15db"]
+[ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="6_apaui"]
+[ext_resource type="Texture2D" uid="uid://datx1nnhw5uh5" path="res://sprites/note.png" id="6_j4bxg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxmf3"]
+texture = ExtResource("1_7gpe0")
+texture_region_size = Vector2i(31, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pfkle"]
+tile_size = Vector2i(31, 32)
+sources/2 = SubResource("TileSetAtlasSource_gxmf3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afvby"]
+size = Vector2(80, 527)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6om4s"]
+size = Vector2(75, 516)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljbsu"]
+size = Vector2(529, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og2a4"]
+size = Vector2(234, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1td0n"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dok73"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m1b5"]
+radius = 13.1529
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8lma"]
+radius = 14.0357
 
 [node name="Hospital" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAJAA8AAgAAAAAAAAAJABAAAgAAAAAAAAAJABEAAgAAAAAAAAAJABIAAgAAAAAAAAAJABMAAgAAAAAAAAAJABQAAgAAAAAAAAAJABUAAgAAAAAAAAAJABYAAgAAAAAAAAAJABcAAgAAAAAAAAAJABgAAgAAAAAAAAAJABkAAgAAAAAAAAAKAA8AAgAAAAAAAAAKABAAAgAAAAAAAAAKABEAAgAAAAAAAAAKABIAAgAAAAAAAAAKABMAAgAAAAAAAAAKABQAAgAAAAAAAAAKABUAAgAAAAAAAAAKABYAAgAAAAAAAAAKABcAAgAAAAAAAAAKABgAAgAAAAAAAAAKABkAAgAAAAAAAAALAA8AAgAAAAAAAAALABAAAgAAAAAAAAALABEAAgAAAAAAAAALABIAAgAAAAAAAAALABMAAgAAAAAAAAALABQAAgAAAAAAAAALABUAAgAAAAAAAAALABYAAgAAAAAAAAALABcAAgAAAAAAAAALABgAAgAAAAAAAAALABkAAgAAAAAAAAAMAA8AAgAAAAAAAAAMABAAAgAAAAAAAAAMABEAAgAAAAAAAAAMABIAAgAAAAAAAAAMABMAAgAAAAAAAAAMABQAAgAAAAAAAAAMABUAAgAAAAAAAAAMABYAAgAAAAAAAAAMABcAAgAAAAAAAAAMABgAAgAAAAAAAAAMABkAAgAAAAAAAAANAA8AAgAAAAAAAAANABAAAgAAAAAAAAANABEAAgAAAAAAAAANABIAAgAAAAAAAAANABMAAgAAAAAAAAANABQAAgAAAAAAAAANABUAAgAAAAAAAAANABYAAgAAAAAAAAANABcAAgAAAAAAAAANABgAAgAAAAAAAAANABkAAgAAAAAAAAAOAA8AAgAAAAAAAAAOABAAAgAAAAAAAAAOABEAAgAAAAAAAAAOABIAAgAAAAAAAAAOABMAAgAAAAAAAAAOABQAAgAAAAAAAAAOABUAAgAAAAAAAAAOABYAAgAAAAAAAAAOABcAAgAAAAAAAAAOABgAAgAAAAAAAAAOABkAAgAAAAAAAAAPAA8AAgAAAAAAAAAPABAAAgAAAAAAAAAPABEAAgAAAAAAAAAPABIAAgAAAAAAAAAPABMAAgAAAAAAAAAPABQAAgAAAAAAAAAPABUAAgAAAAAAAAAPABYAAgAAAAAAAAAPABcAAgAAAAAAAAAPABgAAgAAAAAAAAAPABkAAgAAAAAAAAAQAA8AAgAAAAAAAAAQABAAAgAAAAAAAAAQABEAAgAAAAAAAAAQABIAAgAAAAAAAAAQABMAAgAAAAAAAAAQABQAAgAAAAAAAAAQABUAAgAAAAAAAAAQABYAAgAAAAAAAAAQABcAAgAAAAAAAAAQABgAAgAAAAAAAAAQABkAAgAAAAAAAAARAA8AAgAAAAAAAAARABAAAgAAAAAAAAARABEAAgAAAAAAAAARABIAAgAAAAAAAAARABMAAgAAAAAAAAARABQAAgAAAAAAAAARABUAAgAAAAAAAAARABYAAgAAAAAAAAARABcAAgAAAAAAAAARABgAAgAAAAAAAAARABkAAgAAAAAAAAASAA8AAgAAAAAAAAASABAAAgAAAAAAAAASABEAAgAAAAAAAAASABIAAgAAAAAAAAASABMAAgAAAAAAAAASABQAAgAAAAAAAAASABUAAgAAAAAAAAASABYAAgAAAAAAAAASABcAAgAAAAAAAAASABgAAgAAAAAAAAASABkAAgAAAAAAAAATAA8AAgAAAAAAAAATABAAAgAAAAAAAAATABEAAgAAAAAAAAATABIAAgAAAAAAAAATABMAAgAAAAAAAAATABQAAgAAAAAAAAATABUAAgAAAAAAAAATABYAAgAAAAAAAAATABcAAgAAAAAAAAATABgAAgAAAAAAAAATABkAAgAAAAAAAAAUAA8AAgAAAAAAAAAUABAAAgAAAAAAAAAUABEAAgAAAAAAAAAUABIAAgAAAAAAAAAUABMAAgAAAAAAAAAUABQAAgAAAAAAAAAUABUAAgAAAAAAAAAUABYAAgAAAAAAAAAUABcAAgAAAAAAAAAUABgAAgAAAAAAAAAUABkAAgAAAAAAAAAVAA8AAgAAAAAAAAAVABAAAgAAAAAAAAAVABEAAgAAAAAAAAAVABIAAgAAAAAAAAAVABMAAgAAAAAAAAAVABQAAgAAAAAAAAAVABUAAgAAAAAAAAAVABYAAgAAAAAAAAAVABcAAgAAAAAAAAAVABgAAgAAAAAAAAAVABkAAgAAAAAAAAAWAA8AAgAAAAAAAAAWABAAAgAAAAAAAAAWABEAAgAAAAAAAAAWABIAAgAAAAAAAAAWABMAAgAAAAAAAAAWABQAAgAAAAAAAAAWABUAAgAAAAAAAAAWABYAAgAAAAAAAAAWABcAAgAAAAAAAAAWABgAAgAAAAAAAAAWABkAAgAAAAAAAAAXAA8AAgAAAAAAAAAXABAAAgAAAAAAAAAXABEAAgAAAAAAAAAXABIAAgAAAAAAAAAXABMAAgAAAAAAAAAXABQAAgAAAAAAAAAXABUAAgAAAAAAAAAXABYAAgAAAAAAAAAXABcAAgAAAAAAAAAXABgAAgAAAAAAAAAXABkAAgAAAAAAAAAYAA8AAgAAAAAAAAAYABAAAgAAAAAAAAAYABEAAgAAAAAAAAAYABIAAgAAAAAAAAAYABMAAgAAAAAAAAAYABQAAgAAAAAAAAAYABUAAgAAAAAAAAAYABYAAgAAAAAAAAAYABcAAgAAAAAAAAAYABgAAgAAAAAAAAAYABkAAgAAAAAAAAAZAA8AAgAAAAAAAAAZABAAAgAAAAAAAAAZABEAAgAAAAAAAAAZABIAAgAAAAAAAAAZABMAAgAAAAAAAAAZABQAAgAAAAAAAAAZABUAAgAAAAAAAAAZABYAAgAAAAAAAAAZABcAAgAAAAAAAAAZABgAAgAAAAAAAAAZABkAAgAAAAAAAAAaAA8AAgAAAAAAAAAaABAAAgAAAAAAAAAaABEAAgAAAAAAAAAaABIAAgAAAAAAAAAaABMAAgAAAAAAAAAaABQAAgAAAAAAAAAaABUAAgAAAAAAAAAaABYAAgAAAAAAAAAaABcAAgAAAAAAAAAaABgAAgAAAAAAAAAaABkAAgAAAAAAAAAJABoAAgAAAAAAAAAKABoAAgAAAAAAAAALABoAAgAAAAAAAAAMABoAAgAAAAAAAAANABoAAgAAAAAAAAAOABoAAgAAAAAAAAAPABoAAgAAAAAAAAAQABoAAgAAAAAAAAARABoAAgAAAAAAAAASABoAAgAAAAAAAAATABoAAgAAAAAAAAAUABoAAgAAAAAAAAAVABoAAgAAAAAAAAAWABoAAgAAAAAAAAAXABoAAgAAAAAAAAAYABoAAgAAAAAAAAAZABoAAgAAAAAAAAAaABoAAgAAAAAAAAAJAA4AAgAAAAAAAAAKAA4AAgAAAAAAAAALAA4AAgAAAAAAAAAMAA4AAgAAAAAAAAANAA4AAgAAAAAAAAAOAA4AAgAAAAAAAAAPAA4AAgAAAAAAAAAQAA4AAgAAAAAAAAARAA4AAgAAAAAAAAASAA4AAgAAAAAAAAATAA4AAgAAAAAAAAAUAA4AAgAAAAAAAAAVAA4AAgAAAAAAAAAWAA4AAgAAAAAAAAAXAA4AAgAAAAAAAAAYAA4AAgAAAAAAAAAZAA4AAgAAAAAAAAAaAA4AAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_pfkle")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.039432, 6.70221e-06, 0.221013, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_t6fn8")]
+y_sort_enabled = true
+position = Vector2(574, 766)
+camera_limit_left = 305
+camera_limit_top = 480
+camera_limit_right = 831
+camera_limit_bottom = 800
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(266, 664)
+shape = SubResource("RectangleShape2D_afvby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(867.5, 652)
+shape = SubResource("RectangleShape2D_6om4s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(567.5, 456.5)
+shape = SubResource("RectangleShape2D_ljbsu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(742, 847.5)
+shape = SubResource("RectangleShape2D_og2a4")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
+position = Vector2(414, 847.5)
+shape = SubResource("RectangleShape2D_og2a4")
+
+[node name="BuildingExit" parent="Walls" instance=ExtResource("3_8b2ff")]
+position = Vector2(578, 848)
+
+[node name="FirstNote" type="StaticBody2D" parent="."]
+position = Vector2(460, 690)
+script = ExtResource("4_dkto0")
+note_text = "A man has arrived in a city he has often dreamed of"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstNote"]
+shape = SubResource("CircleShape2D_1td0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="FirstNote"]
+texture = ExtResource("5_h15db")
+
+[node name="SecondNote" type="StaticBody2D" parent="."]
+position = Vector2(516, 708)
+script = ExtResource("4_dkto0")
+note_text = "He arrived at a time when an ancient festival is being held"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondNote"]
+shape = SubResource("CircleShape2D_dok73")
+
+[node name="Sprite2D" type="Sprite2D" parent="SecondNote"]
+texture = ExtResource("5_h15db")
+flip_h = true
+
+[node name="TriggerDepends" parent="." instance=ExtResource("6_apaui")]
+position = Vector2(516, 708)
+depends_on_event = "talk_to_healer"
+
+[node name="ThirdNote" type="StaticBody2D" parent="TriggerDepends"]
+position = Vector2(155, 46)
+script = ExtResource("4_dkto0")
+run_event = "recipe_collected"
+note_text = "An ancient blood recipe
+"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDepends/ThirdNote"]
+shape = SubResource("CircleShape2D_4m1b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="TriggerDepends/ThirdNote"]
+texture = ExtResource("6_j4bxg")
+
+[node name="FourthNote" type="StaticBody2D" parent="."]
+position = Vector2(610, 662)
+script = ExtResource("4_dkto0")
+note_text = "Horror plunged a man after taking part in the celebration of an ancient festival"
+
+[node name="Sprite2D" type="Sprite2D" parent="FourthNote"]
+texture = ExtResource("5_h15db")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthNote"]
+shape = SubResource("CircleShape2D_v8lma")

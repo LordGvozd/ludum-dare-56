@@ -60,6 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -72,6 +73,7 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+
 
 [sub_resource type="Animation" id="Animation_4tn45"]
 resource_name = "fade_out"

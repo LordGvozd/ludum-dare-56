@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=91 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -34,13 +34,21 @@
 [ext_resource type="Texture2D" uid="uid://k7845aledgcj" path="res://sprites/player/idle/up/player_idle_top8.png" id="20_3tjtc"]
 [ext_resource type="Texture2D" uid="uid://bmasv06q4b457" path="res://sprites/player/walk/down/player_walk_down1.png" id="22_n1m4i"]
 [ext_resource type="Texture2D" uid="uid://c5sm6ubjkhkmy" path="res://sprites/player/walk/down/player_walk_down2.png" id="23_o75gm"]
+[ext_resource type="Texture2D" uid="uid://25joe6tejpw4" path="res://sprites/player/idle/right/player_idle_bok1.png" id="23_uq5nc"]
+[ext_resource type="Texture2D" uid="uid://flsoc8t72ixt" path="res://sprites/player/idle/right/player_idle_bok2.png" id="24_38x32"]
 [ext_resource type="Texture2D" uid="uid://dymq7igbk41au" path="res://sprites/player/walk/down/player_walk_down3.png" id="24_aartg"]
+[ext_resource type="Texture2D" uid="uid://d0s1y0ix1i8yj" path="res://sprites/player/idle/right/player_idle_bok3.png" id="25_at6nm"]
 [ext_resource type="Texture2D" uid="uid://bgsv3otxso0pa" path="res://sprites/player/walk/down/player_walk_down4.png" id="25_djf75"]
 [ext_resource type="Texture2D" uid="uid://b0twafv2v8a4r" path="res://sprites/player/walk/down/player_walk_down5.png" id="26_k7she"]
+[ext_resource type="Texture2D" uid="uid://dny5b5hi6cj5k" path="res://sprites/player/idle/right/player_idle_bok4.png" id="26_tffps"]
+[ext_resource type="Texture2D" uid="uid://7p8pjkhv7e85" path="res://sprites/player/idle/right/player_idle_bok5.png" id="27_inr1s"]
 [ext_resource type="Texture2D" uid="uid://c8ncwrkojli37" path="res://sprites/player/walk/down/player_walk_down6.png" id="27_meao0"]
 [ext_resource type="Texture2D" uid="uid://c7ua3dl0c8kfk" path="res://sprites/player/walk/down/player_walk_down7.png" id="28_dbspt"]
+[ext_resource type="Texture2D" uid="uid://b1jcaxw7vwidi" path="res://sprites/player/idle/right/player_idle_bok6.png" id="28_ll0hi"]
 [ext_resource type="Texture2D" uid="uid://cpkm8jhuws7pl" path="res://sprites/player/walk/down/player_walk_down8.png" id="29_akqf6"]
+[ext_resource type="Texture2D" uid="uid://b71qdquics4p" path="res://sprites/player/idle/right/player_idle_bok7.png" id="29_cw1qh"]
 [ext_resource type="Texture2D" uid="uid://dewj0my3xf603" path="res://sprites/player/walk/down/player_walk_down9.png" id="30_8cog6"]
+[ext_resource type="Texture2D" uid="uid://cta47xr7d7ckv" path="res://sprites/player/idle/right/player_idle_bok8.png" id="30_y4fs4"]
 [ext_resource type="Texture2D" uid="uid://bnfns4vvucmyg" path="res://sprites/player/walk/down/player_walk_down10.png" id="31_1yfdj"]
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
@@ -73,12 +81,10 @@
 [ext_resource type="Texture2D" uid="uid://djh6vix5es7wt" path="res://sprites/player/walk/right/player_walk_bok11.png" id="45_e1dbs"]
 [ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
+[ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/note_list.png" id="74_7ftfu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn5pc"]
-size = Vector2(239.657, 231.487)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2pcap"]
-load_path = "res://.godot/imported/player_bok.png-56c2b26f55a79a79ac51cd8e24856467.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jp02"]
+radius = 77.8443
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h17ug"]
 animations = [{
@@ -145,11 +151,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_2pcap")
+"texture": ExtResource("23_uq5nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_38x32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_at6nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_tffps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_inr1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ll0hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cw1qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_y4fs4")
 }],
 "loop": true,
 "name": &"idle_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -320,7 +347,8 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_j4b14"]
 font = ExtResource("37_rrsvo")
-font_size = 48
+font_size = 64
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jr46q"]
 font = ExtResource("37_rrsvo")
@@ -359,13 +387,16 @@ promt_label = NodePath("../../CanvasLayer/PlayerUI/Promt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)
-shape = SubResource("RectangleShape2D_tn5pc")
+shape = SubResource("CircleShape2D_3jp02")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
 scale = Vector2(2.60542, 2.60542)
 sprite_frames = SubResource("SpriteFrames_h17ug")
-animation = &"attack"
+animation = &"idle_right"
 autoplay = "idle_down"
+
+frame_progress = 0.720048
+
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CapsuleShape2D_2jkqd")
@@ -459,24 +490,23 @@ offset_bottom = 121.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayerUI/Container"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-offset_right = 601.0
-offset_bottom = 617.0
+[node name="NoteBackground" type="Sprite2D" parent="CanvasLayer/PlayerUI/Container"]
+position = Vector2(317, 288)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("74_7ftfu")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/Container"]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 21.0
-offset_right = 830.0
-offset_bottom = 672.0
-scale = Vector2(0.683289, 0.88317)
+offset_left = 106.0
+offset_top = 68.0
+offset_right = 904.0
+offset_bottom = 719.0
+scale = Vector2(0.523289, 0.676366)
 
 [node name="Label" type="Label" parent="CanvasLayer/PlayerUI/Container/MarginContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_j4b14")
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/Container"]
 layout_mode = 2

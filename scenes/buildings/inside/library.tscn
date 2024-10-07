@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvu37d0ivuje6"]
+[gd_scene load_steps=13 format=4 uid="uid://cvu37d0ivuje6"]
 
 [ext_resource type="Texture2D" uid="uid://dp0wd54m48h5d" path="res://sprites/house_tilemap.png" id="1_lu5fk"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_nreka"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="2_2s78j"]
 [ext_resource type="Texture2D" uid="uid://d3ihqy2cl80pj" path="res://sprites/necro_book.png" id="3_3x8ay"]
 [ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="4_goyul"]
-[ext_resource type="PackedScene" uid="uid://coqaowa6sx4kh" path="res://scenes/buildings/building_exit.tscn" id="5_q1k73"]
+[ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="5_q1k73"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpn0v"]
 texture = ExtResource("1_lu5fk")
@@ -21,6 +21,18 @@ texture = ExtResource("1_lu5fk")
 [sub_resource type="TileSet" id="TileSet_sthoo"]
 sources/0 = SubResource("TileSetAtlasSource_dpn0v")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0imlt"]
+size = Vector2(80, 527)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwxbv"]
+size = Vector2(75, 516)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a2wf"]
+size = Vector2(529, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtoh1"]
+size = Vector2(234, 27)
+
 [node name="Library" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -28,7 +40,7 @@ tile_map_data = PackedByteArray("AAAUADUAAAAAAAAAAAAVADUAAAAAAAAAAAAVADQAAAAAAAA
 tile_set = SubResource("TileSet_sthoo")
 
 [node name="Player" parent="." instance=ExtResource("1_nreka")]
-position = Vector2(568, 669)
+position = Vector2(571, 790)
 camera_limit_left = 305
 camera_limit_top = 480
 camera_limit_right = 831
@@ -41,6 +53,7 @@ color = Color(0.259294, 0.259294, 0.259294, 1)
 position = Vector2(568, 853)
 
 [node name="TriggerDepends" parent="." instance=ExtResource("4_goyul")]
+position = Vector2(150, 35)
 depends_on_event = "talk_to_librarian"
 
 [node name="EventTrigger" parent="TriggerDepends" instance=ExtResource("2_2s78j")]
@@ -52,3 +65,25 @@ event = "necronomicon_collected"
 position = Vector2(0.45459, 0.90918)
 scale = Vector2(2.04549, 2.04549)
 texture = ExtResource("3_3x8ay")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(266, 664)
+shape = SubResource("RectangleShape2D_0imlt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(867.5, 652)
+shape = SubResource("RectangleShape2D_mwxbv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(567.5, 456.5)
+shape = SubResource("RectangleShape2D_3a2wf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(732, 851.5)
+shape = SubResource("RectangleShape2D_gtoh1")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
+position = Vector2(403, 850.5)
+shape = SubResource("RectangleShape2D_gtoh1")
