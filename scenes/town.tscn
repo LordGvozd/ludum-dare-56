@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=77 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
@@ -28,10 +28,11 @@
 [ext_resource type="Script" path="res://scripts/ending_area.gd" id="12_87kfs"]
 [ext_resource type="Texture2D" uid="uid://c4f7udwk1gkhd" path="res://sprites/priest/priest_idle8.png" id="13_3lj0m"]
 [ext_resource type="Texture2D" uid="uid://cun1hapgx4ucb" path="res://sprites/librarian/librarian_idle5.png" id="13_a8bsq"]
+[ext_resource type="AudioStream" uid="uid://dx5ft576cpdwt" path="res://audio/sounds/end_of_earth.wav" id="13_vbr1y"]
 [ext_resource type="Texture2D" uid="uid://0hsn6wrau6qx" path="res://sprites/librarian/librarian_idle6.png" id="14_pjyug"]
 [ext_resource type="Texture2D" uid="uid://d1ffns8pxjkyc" path="res://sprites/librarian/librarian_idle7.png" id="15_bckkp"]
 [ext_resource type="Texture2D" uid="uid://c08jc4154blj6" path="res://sprites/librarian/librarian_idle8.png" id="16_pifcn"]
-[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="20_5q4k6"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="20_5q4k6"]
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="21_8gxys"]
 [ext_resource type="Texture2D" uid="uid://dcapfldk1un0v" path="res://sprites/churcaaaaaaa.png" id="32_34ttt"]
 [ext_resource type="Script" path="res://scripts/notes/note.gd" id="34_2uf6k"]
@@ -203,6 +204,58 @@ size = Vector2(1509, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1v24i"]
 radius = 33.541
 
+[sub_resource type="Animation" id="Animation_5yxkt"]
+resource_name = "end"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 2.83333),
+"transitions": PackedFloat32Array(1, 3.24901),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_vbr1y")
+}],
+"times": PackedFloat32Array(0.0666667)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_8g083"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hx883"]
+_data = {
+"RESET": SubResource("Animation_8g083"),
+"end": SubResource("Animation_5yxkt")
+}
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg6rm"]
 animations = [{
 "frames": [{
@@ -295,6 +348,21 @@ size = Vector2(13, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84nc4"]
 size = Vector2(71, 5)
 
+[sub_resource type="Animation" id="Animation_1viuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-66, 715)]
+}
+
 [sub_resource type="Animation" id="Animation_oiba0"]
 resource_name = "idle"
 length = 3.0
@@ -310,21 +378,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-66, 715), Vector2(-66, 720.4), Vector2(-66, 715)]
-}
-
-[sub_resource type="Animation" id="Animation_1viuy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Boat:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-66, 715)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47qpm"]
@@ -954,6 +1007,30 @@ script = ExtResource("12_87kfs")
 
 [node name="EndingAreaCollisionShape" type="CollisionShape2D" parent="EndingTriggerDepends/EndingArea"]
 shape = SubResource("CircleShape2D_1v24i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EndingTriggerDepends/EndingArea"]
+
+[node name="Control" type="Control" parent="EndingTriggerDepends/EndingArea/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="EndingTriggerDepends/EndingArea/CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -150.0
+offset_top = -74.0
+offset_right = 1507.0
+offset_bottom = 1092.0
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndingTriggerDepends/EndingArea"]
+libraries = {
+"": SubResource("AnimationLibrary_hx883")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="EndingTriggerDepends/EndingArea"]
+volume_db = 4.052
 
 [node name="ElderManNPC" parent="." instance=ExtResource("5_g7p4s")]
 position = Vector2(925, 698)
@@ -1750,3 +1827,4 @@ libraries = {
 autoplay = "idle"
 
 [connection signal="body_entered" from="EndingTriggerDepends/EndingArea" to="EndingTriggerDepends/EndingArea" method="_on_body_entered"]
+[connection signal="animation_finished" from="EndingTriggerDepends/EndingArea/AnimationPlayer" to="EndingTriggerDepends/EndingArea" method="_on_animation_player_animation_finished"]
