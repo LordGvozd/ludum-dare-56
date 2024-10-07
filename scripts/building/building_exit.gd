@@ -1,5 +1,7 @@
 extends Area2D
 
+func _ready() -> void:
+	$CanvasLayer/Control/ColorRect.visible = true
 
 func _on_body_entered(body):
 	if body is PlayerMovement:
