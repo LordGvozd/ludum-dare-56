@@ -76,7 +76,7 @@ script = ExtResource("4_3jeog")
 
 [node name="SpiderMovement" type="CharacterBody2D" parent="."]
 script = ExtResource("1_pa2w3")
-speed = 150
+speed = 50
 
 [node name="SpiderSprite" type="AnimatedSprite2D" parent="SpiderMovement"]
 y_sort_enabled = true

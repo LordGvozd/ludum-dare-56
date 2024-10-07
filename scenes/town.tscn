@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://0hsn6wrau6qx" path="res://sprites/librarian/librarian_idle6.png" id="14_pjyug"]
 [ext_resource type="Texture2D" uid="uid://d1ffns8pxjkyc" path="res://sprites/librarian/librarian_idle7.png" id="15_bckkp"]
 [ext_resource type="Texture2D" uid="uid://c08jc4154blj6" path="res://sprites/librarian/librarian_idle8.png" id="16_pifcn"]
-[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="20_5q4k6"]
+[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="20_5q4k6"]
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="21_8gxys"]
 [ext_resource type="Texture2D" uid="uid://dcapfldk1un0v" path="res://sprites/churcaaaaaaa.png" id="32_34ttt"]
 [ext_resource type="Script" path="res://scripts/notes/note.gd" id="34_2uf6k"]
@@ -1017,7 +1017,9 @@ scale = Vector2(1.8, 1.8)
 event = "talk_to_librarian"
 
 [node name="Church" type="Sprite2D" parent="."]
+
 position = Vector2(823, 629)
+
 texture = ExtResource("32_34ttt")
 offset = Vector2(0, -138.55)
 region_enabled = true
