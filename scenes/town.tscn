@@ -1,15 +1,14 @@
-<<<<<<< HEAD
-[gd_scene load_steps=32 format=4 uid="uid://bqrmosuypv7lj"]
-=======
-[gd_scene load_steps=35 format=4 uid="uid://bqrmosuypv7lj"]
-
->>>>>>> fde2bfdd7c0c19c55c1a5074f73fa429b8e36537
+[gd_scene load_steps=56 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
+[ext_resource type="Texture2D" uid="uid://orvs072gsj6i" path="res://sprites/water.png" id="3_c3vvr"]
 [ext_resource type="PackedScene" uid="uid://vcyfov2y7acj" path="res://scenes/buildings/building.tscn" id="3_vuaki"]
+[ext_resource type="Texture2D" uid="uid://c8ex4af6ylap0" path="res://sprites/house of ribak.png" id="4_fbcao"]
 [ext_resource type="Texture2D" uid="uid://bvvbieuq4kh3l" path="res://sprites/tilemap.png" id="4_hjqor"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="5_g7p4s"]
+[ext_resource type="Texture2D" uid="uid://d02im7sfnmkbp" path="res://sprites/gospital.png" id="5_ovsj6"]
+[ext_resource type="Texture2D" uid="uid://bf81ofn4vdk25" path="res://sprites/drugstore.png" id="5_q2kvk"]
 [ext_resource type="Texture2D" uid="uid://cw0vmtdc4ncq3" path="res://sprites/house library.png" id="5_qkuxp"]
 [ext_resource type="Texture2D" uid="uid://de08m2uyamot8" path="res://sprites/tree.png" id="5_xfkit"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="6_odmwe"]
@@ -18,11 +17,22 @@
 [ext_resource type="Texture2D" uid="uid://bcm874jev1ja" path="res://sprites/priest/priest_idle2.png" id="7_njqfv"]
 [ext_resource type="Texture2D" uid="uid://djx7bhiq762db" path="res://sprites/fish.png" id="8_l8q2i"]
 [ext_resource type="Texture2D" uid="uid://desflpiex8mph" path="res://sprites/priest/priest_idle3.png" id="8_v8hh4"]
+[ext_resource type="Texture2D" uid="uid://bm3snijv0ex1s" path="res://sprites/librarian/librarian_idle1.png" id="9_pcnj8"]
 [ext_resource type="Texture2D" uid="uid://dm4sbpm2ye2w6" path="res://sprites/priest/priest_idle4.png" id="9_vuyu6"]
 [ext_resource type="Texture2D" uid="uid://880njk4diqxk" path="res://sprites/priest/priest_idle5.png" id="10_1c1dv"]
+[ext_resource type="Texture2D" uid="uid://cuqup2joyuvss" path="res://sprites/librarian/librarian_idle2.png" id="10_nuyxx"]
+[ext_resource type="Texture2D" uid="uid://l3unt73pykfn" path="res://sprites/librarian/librarian_idle3.png" id="11_gc5g7"]
 [ext_resource type="Texture2D" uid="uid://bu51gkd1ji8ci" path="res://sprites/priest/priest_idle6.png" id="11_rxdit"]
+[ext_resource type="Texture2D" uid="uid://bia3gosqsdp6o" path="res://sprites/librarian/librarian_idle4.png" id="12_4ue06"]
 [ext_resource type="Texture2D" uid="uid://bsvhxp0o3bb4p" path="res://sprites/priest/priest_idle7.png" id="12_036o8"]
 [ext_resource type="Texture2D" uid="uid://c4f7udwk1gkhd" path="res://sprites/priest/priest_idle8.png" id="13_3lj0m"]
+[ext_resource type="Texture2D" uid="uid://cun1hapgx4ucb" path="res://sprites/librarian/librarian_idle5.png" id="13_a8bsq"]
+[ext_resource type="Texture2D" uid="uid://0hsn6wrau6qx" path="res://sprites/librarian/librarian_idle6.png" id="14_pjyug"]
+[ext_resource type="Texture2D" uid="uid://d1ffns8pxjkyc" path="res://sprites/librarian/librarian_idle7.png" id="15_bckkp"]
+[ext_resource type="Texture2D" uid="uid://c08jc4154blj6" path="res://sprites/librarian/librarian_idle8.png" id="16_pifcn"]
+[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="20_5q4k6"]
+[ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="21_8gxys"]
+[ext_resource type="Texture2D" uid="uid://dcapfldk1un0v" path="res://sprites/churcaaaaaaa.png" id="32_34ttt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1eybe"]
 texture = ExtResource("4_hjqor")
@@ -109,6 +119,30 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_fqw13")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ee8gp"]
+texture = ExtResource("3_c3vvr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t8vgo"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ee8gp")
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mvcmt"]
 blend_mode = 1
 
@@ -148,14 +182,17 @@ scale_min = 0.3
 scale_curve = SubResource("CurveXYZTexture_mait2")
 color_initial_ramp = SubResource("GradientTexture1D_6obm7")
 
-<<<<<<< HEAD
-=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evpij"]
+size = Vector2(198.265, 56.728)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke6q1"]
+size = Vector2(598.063, 48.9073)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_063ly"]
 size = Vector2(357.738, 327.217)
 
->>>>>>> fde2bfdd7c0c19c55c1a5074f73fa429b8e36537
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmehj"]
-size = Vector2(1367, 20)
+size = Vector2(1509, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg6rm"]
 animations = [{
@@ -193,6 +230,41 @@ animations = [{
 radius = 21.9011
 height = 65.7034
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_qaixa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pcnj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nuyxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gc5g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4ue06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a8bsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pjyug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bckkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pifcn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t45us"]
+size = Vector2(378.911, 153.873)
+
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
 
@@ -207,9 +279,14 @@ tile_set = SubResource("TileSet_c0gv7")
 tile_map_data = PackedByteArray("AAASABEAAAAGAAAAAAAFAA0AAAAGAAAAAAALABQAAAAGAAAAAAAKABMAAAAGAAEAAAAPAA4AAAAGAAIAAAAUAAoAAAAGAAIAAAADAAoAAAAGAAAAAAADAAsAAAAGAAEAAAAMAAoAAAAGAAAAAAAFABgAAAAGAAAAAAAKABkAAAAGAAAAAAAbABsAAAAGAAAAAAAfABUAAAAGAAAAAAAlABkAAAAGAAAAAAAmABkAAAAGAAAAAAApABIAAAAGAAAAAAAmABEAAAAGAAAAAAAkABYAAAAGAAEAAAAoABgAAAAGAAEAAAAhABkAAAAGAAEAAAARABIAAAAGAAEAAAAKABwAAAAGAAEAAAAFABoAAAAGAAEAAAAJABEAAAAGAAEAAAANAA4AAAAGAAEAAAASAAkAAAAGAAEAAAAfAA4AAAAGAAEAAAABABUAAAAGAAIAAAAHABUAAAAGAAIAAAARAAoAAAAGAAIAAAASAA0AAAAGAAIAAAAVABIAAAAGAAIAAAAVABQAAAAGAAIAAAATABQAAAAGAAIAAAAjABYAAAAGAAIAAAAjABMAAAAGAAIAAAAfABMAAAAGAAIAAAAYABkAAAAGAAIAAAAWABYAAAAGAAIAAAAUABgAAAAGAAIAAAAOABYAAAAGAAIAAAAIABAAAAAGAAIAAAA=")
 tile_set = SubResource("TileSet_qm0je")
 
+[node name="WaterTileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD5//3/AAAAAAAAAAD5//7/AAAAAAAAAAD5////AAAAAAAAAAD5/wAAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAAAAAD5/wUAAAAAAAAAAAD5/wYAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wgAAAAAAAAAAAD5/wkAAAAAAAAAAAD5/woAAAAAAAAAAAD5/wsAAAAAAAAAAAD5/wwAAAAAAAAAAAD5/w0AAAAAAAAAAAD5/w4AAAAAAAAAAAD5/w8AAAAAAAAAAAD5/xAAAAAAAAAAAAD5/xEAAAAAAAAAAAD5/xIAAAAAAAAAAAD5/xMAAAAAAAAAAAD5/xQAAAAAAAAAAAD5/xUAAAAAAAAAAAD5/xYAAAAAAAAAAAD5/xcAAAAAAAAAAAD5/xgAAAAAAAAAAAD5/xkAAAAAAAAAAAD5/xoAAAAAAAAAAAD5/xsAAAAAAAAAAAD5/xwAAAAAAAAAAAD5/x0AAAAAAAAAAAD5/x4AAAAAAAAAAAD5/x8AAAAAAAAAAAD5/yAAAAAAAAAAAAD5/yEAAAAAAAAAAAD5/yIAAAAAAAAAAAD5/yMAAAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAAAAAD6/wUAAAAAAAAAAAD6/wYAAAAAAAAAAAD6/wcAAAAAAAAAAAD6/wgAAAAAAAAAAAD6/wkAAAAAAAAAAAD6/woAAAAAAAAAAAD6/wsAAAAAAAAAAAD6/wwAAAAAAAAAAAD6/w0AAAAAAAAAAAD6/w4AAAAAAAAAAAD6/w8AAAAAAAAAAAD6/xAAAAAAAAAAAAD6/xEAAAAAAAAAAAD6/xIAAAAAAAAAAAD6/xMAAAAAAAAAAAD6/xQAAAAAAAAAAAD6/xUAAAAAAAAAAAD6/xYAAAAAAAAAAAD6/xcAAAAAAAAAAAD6/xgAAAAAAAAAAAD6/xkAAAAAAAAAAAD6/xoAAAAAAAAAAAD6/xsAAAAAAAAAAAD6/xwAAAAAAAAAAAD6/x0AAAAAAAAAAAD6/x4AAAAAAAAAAAD6/x8AAAAAAAAAAAD6/yAAAAAAAAAAAAD6/yEAAAAAAAAAAAD6/yIAAAAAAAAAAAD6/yMAAAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD7/wQAAAAAAAAAAAD7/wUAAAAAAAAAAAD7/wYAAAAAAAAAAAD7/wcAAAAAAAAAAAD7/wgAAAAAAAAAAAD7/wkAAAAAAAAAAAD7/woAAAAAAAAAAAD7/wsAAAAAAAAAAAD7/wwAAAAAAAAAAAD7/w0AAAAAAAAAAAD7/w4AAAAAAAAAAAD7/w8AAAAAAAAAAAD7/xAAAAAAAAAAAAD7/xEAAAAAAAAAAAD7/xIAAAAAAAAAAAD7/xMAAAAAAAAAAAD7/xQAAAAAAAAAAAD7/xUAAAAAAAAAAAD7/xYAAAAAAAAAAAD7/xcAAAAAAAAAAAD7/xgAAAAAAAAAAAD7/xkAAAAAAAAAAAD7/xoAAAAAAAAAAAD7/xsAAAAAAAAAAAD7/xwAAAAAAAAAAAD7/x0AAAAAAAAAAAD7/x4AAAAAAAAAAAD7/x8AAAAAAAAAAAD7/yAAAAAAAAAAAAD7/yEAAAAAAAAAAAD7/yIAAAAAAAAAAAD7/yMAAAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAAAAAAAAAD8/wYAAAAAAAAAAAD8/wcAAAAAAAAAAAD8/wgAAAAAAAAAAAD8/wkAAAAAAAAAAAD8/woAAAAAAAAAAAD8/wsAAAAAAAAAAAD8/wwAAAAAAAAAAAD8/w0AAAAAAAAAAAD8/w4AAAAAAAAAAAD8/w8AAAAAAAAAAAD8/xAAAAAAAAAAAAD8/xEAAAAAAAAAAAD8/xIAAAAAAAAAAAD8/xMAAAAAAAAAAAD8/xQAAAAAAAAAAAD8/xUAAAAAAAAAAAD8/xYAAAAAAAAAAAD8/xcAAAAAAAAAAAD8/xgAAAAAAAAAAAD8/xkAAAAAAAAAAAD8/xoAAAAAAAAAAAD8/xsAAAAAAAAAAAD8/xwAAAAAAAAAAAD8/x0AAAAAAAAAAAD8/x4AAAAAAAAAAAD8/x8AAAAAAAAAAAD8/yAAAAAAAAAAAAD8/yEAAAAAAAAAAAD8/yIAAAAAAAAAAAD8/yMAAAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD9/wcAAAAAAAAAAAD9/wgAAAAAAAAAAAD9/wkAAAAAAAAAAAD9/woAAAAAAAAAAAD9/wsAAAAAAAAAAAD9/wwAAAAAAAAAAAD9/w0AAAAAAAAAAAD9/w4AAAAAAAAAAAD9/w8AAAAAAAAAAAD9/xAAAAAAAAAAAAD9/xEAAAAAAAAAAAD9/xIAAAAAAAAAAAD9/xMAAAAAAAAAAAD9/xQAAAAAAAAAAAD9/xUAAAAAAAAAAAD9/xYAAAAAAAAAAAD9/xcAAAAAAAAAAAD9/xgAAAAAAAAAAAD9/xkAAAAAAAAAAAD9/xoAAAAAAAAAAAD9/xsAAAAAAAAAAAD9/xwAAAAAAAAAAAD9/x0AAAAAAAAAAAD9/x4AAAAAAAAAAAD9/x8AAAAAAAAAAAD9/yAAAAAAAAAAAAD9/yEAAAAAAAAAAAD9/yIAAAAAAAAAAAD9/yMAAAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAAAAAD+/wwAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w8AAAAAAAAAAAD+/xAAAAAAAAAAAAD+/xEAAAAAAAAAAAD+/xIAAAAAAAAAAAD+/xMAAAAAAAAAAAD+/xQAAAAAAAAAAAD+/xUAAAAAAAAAAAD+/xYAAAAAAAAAAAD+/xcAAAAAAAAAAAD+/xgAAAAAAAAAAAD+/xkAAAAAAAAAAAD+/xoAAAAAAAAAAAD+/xsAAAAAAAAAAAD+/xwAAAAAAAAAAAD+/x0AAAAAAAAAAAD+/x4AAAAAAAAAAAD+/x8AAAAAAAAAAAD+/yAAAAAAAAAAAAD+/yEAAAAAAAAAAAD+/yIAAAAAAAAAAAD+/yMAAAAAAAAAAAD///3/AAAAAAIAAGD///7/AAAAAAIAAGD/////AAAAAAIAAGD//wAAAAAAAAIAAGD//wEAAAAAAAIAAGD//wIAAAAAAAIAAGD//wMAAAAAAAIAAGD//wQAAAAAAAIAAGD//wUAAAAAAAIAAGD//wYAAAAAAAIAAGD//wcAAAAAAAIAAGD//wgAAAAAAAIAAGD//wkAAAAAAAIAAGD//woAAAAAAAIAAGD//wsAAAAAAAIAAGD//wwAAAAAAAIAAGD//w0AAAAAAAIAAGD//w4AAAAAAAIAAGD//w8AAAAAAAIAAGD//xAAAAAAAAIAAGD//xEAAAAAAAIAAGD//xIAAAAAAAIAAGD//xMAAAAAAAIAAGD//xQAAAAAAAIAAGD//xUAAAAAAAIAAGD//xYAAAAAAAIAAGD//xcAAAAAAAIAAGD//xgAAAAAAAIAAGD//xkAAAAAAAIAAGD//xoAAAAAAAIAAGD//xsAAAAAAAIAAGD//xwAAAAAAAIAAGD//x0AAAAAAAIAAGD//x4AAAAAAAIAAGD//x8AAAAAAAIAAGD//yAAAAAAAAIAAGD//yEAAAAAAAIAAGD//yIAAAAAAAIAAGD//yMAAAAAAAIAAGA=")
+tile_set = SubResource("TileSet_t8vgo")
+
 [node name="Player" parent="." instance=ExtResource("1_cxiqd")]
 y_sort_enabled = true
-position = Vector2(828, 730)
+position = Vector2(653, 740)
+camera_limit_left = -200
 camera_limit_top = 100
 camera_limit_right = 1350
 camera_limit_bottom = 970
@@ -227,17 +304,45 @@ preprocess = 0.5
 visible = false
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
 
-<<<<<<< HEAD
-[node name="Church" parent="." instance=ExtResource("3_vuaki")]
-=======
 [node name="HealersHouse" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(1108, 525)
+y_sort_enabled = true
+position = Vector2(1153, 635)
 scale = Vector2(0.786824, 0.564094)
 load_scene_file_path = "res://scenes/buildings/inside/healers_house.tscn"
 
+[node name="Sprite2D" type="Sprite2D" parent="HealersHouse"]
+y_sort_enabled = true
+position = Vector2(-1.27093, 124.093)
+scale = Vector2(1, 1.28364)
+texture = ExtResource("5_q2kvk")
+offset = Vector2(0, -70)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HealersHouse"]
+position = Vector2(0, 17.7274)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealersHouse/StaticBody2D"]
+position = Vector2(-2.54175, 93.9561)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_evpij")
+
 [node name="Hospital" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(1231, 310)
-scale = Vector2(0.653625, 0.4686)
+y_sort_enabled = true
+position = Vector2(1067, 299)
+scale = Vector2(0.553453, 0.797426)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hospital"]
+y_sort_enabled = true
+position = Vector2(-7.42432, 123.269)
+scale = Vector2(2.00972, 1)
+texture = ExtResource("5_ovsj6")
+offset = Vector2(0, -90)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hospital"]
+position = Vector2(0, 90.2905)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hospital/StaticBody2D"]
+position = Vector2(-6.32397, 0.627014)
+shape = SubResource("RectangleShape2D_ke6q1")
 
 [node name="FishermansHouse" parent="." instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
@@ -260,11 +365,10 @@ position = Vector2(-97.4677, -1.28674)
 shape = SubResource("RectangleShape2D_063ly")
 
 [node name="Library" parent="." instance=ExtResource("3_vuaki")]
->>>>>>> fde2bfdd7c0c19c55c1a5074f73fa429b8e36537
 y_sort_enabled = true
-position = Vector2(465, 160)
+position = Vector2(459, 147)
 scale = Vector2(0.48, 0.72)
-load_scene_file_path = "res://scenes/buildings/inside/librarians_house.tscn"
+load_scene_file_path = "res://scenes/buildings/inside/library.tscn"
 
 [node name="LibrarySprite" type="Sprite2D" parent="Library"]
 position = Vector2(-100, 73)
@@ -287,7 +391,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="WallCollisionShape" type="CollisionShape2D" parent="Walls/Wall"]
-position = Vector2(673.5, 112)
+position = Vector2(636.5, 112)
 shape = SubResource("RectangleShape2D_dmehj")
 
 [node name="Tree" type="Sprite2D" parent="Walls/Wall"]
@@ -455,7 +559,7 @@ y_sort_enabled = true
 position = Vector2(0, 783)
 
 [node name="WallCollisionShape" type="CollisionShape2D" parent="Walls/Wall2"]
-position = Vector2(673.5, 150)
+position = Vector2(639.5, 150)
 shape = SubResource("RectangleShape2D_dmehj")
 
 [node name="Tree" type="Sprite2D" parent="Walls/Wall2"]
@@ -664,7 +768,7 @@ rotation = 1.5708
 scale = Vector2(0.84, 1)
 
 [node name="WallCollisionShape" type="CollisionShape2D" parent="Walls/Wall3"]
-position = Vector2(673.5, 106)
+position = Vector2(673.5, 130)
 shape = SubResource("RectangleShape2D_dmehj")
 
 [node name="Wall4" type="StaticBody2D" parent="Walls"]
@@ -783,7 +887,7 @@ scale = Vector2(2.21839, 2.21839)
 sprite_frames = SubResource("SpriteFrames_lg6rm")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.915653
+frame_progress = 0.492627
 
 [node name="EventTrigger" parent="ElderManNPC" instance=ExtResource("6_odmwe")]
 position = Vector2(-2.73755, 2.7373)
@@ -793,29 +897,6 @@ event = "talk_to_elder_man"
 [node name="StaticBody2D" type="StaticBody2D" parent="ElderManNPC"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElderManNPC/StaticBody2D"]
-position = Vector2(0, 38.327)
-shape = SubResource("CapsuleShape2D_r64ks")
-
-[node name="LibrarianNPC" parent="." instance=ExtResource("5_g7p4s")]
-position = Vector2(391, 328)
-scale = Vector2(0.365278, 0.365278)
-dialog_path = "res://storage/dialogs/librarian_dialog.json"
-
-[node name="LibrarianNPCAnimatedSprite" type="AnimatedSprite2D" parent="LibrarianNPC"]
-scale = Vector2(2.21839, 2.21839)
-sprite_frames = SubResource("SpriteFrames_lg6rm")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.915653
-
-[node name="EventTrigger" parent="LibrarianNPC" instance=ExtResource("6_odmwe")]
-position = Vector2(-2.73755, 2.7373)
-scale = Vector2(1.86162, 1.86162)
-event = "talk_to_librarian"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="LibrarianNPC"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LibrarianNPC/StaticBody2D"]
 position = Vector2(0, 38.327)
 shape = SubResource("CapsuleShape2D_r64ks")
 
@@ -836,11 +917,6 @@ rotation = -3.14159
 scale = Vector2(2.49058, 2.48424)
 texture = ExtResource("8_l8q2i")
 
-<<<<<<< HEAD
-[node name="Building" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(631, 693)
-load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
-=======
 [node name="Tree17" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(334, 490)
@@ -882,4 +958,58 @@ y_sort_enabled = true
 position = Vector2(143, 803)
 texture = ExtResource("5_xfkit")
 offset = Vector2(0, -29.13)
->>>>>>> fde2bfdd7c0c19c55c1a5074f73fa429b8e36537
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("spawning_points") instance=ExtResource("20_5q4k6")]
+position = Vector2(934, 231)
+enemy = ExtResource("21_8gxys")
+spawning_points = [NodePath("SpawningPoint"), NodePath("SpawningPoint2"), NodePath("SpawningPoint3")]
+spawning_time = 30
+
+[node name="SpawningPoint" type="Node2D" parent="Spawner"]
+position = Vector2(83, 28)
+
+[node name="SpawningPoint2" type="Node2D" parent="Spawner"]
+position = Vector2(-794, -63)
+
+[node name="SpawningPoint3" type="Node2D" parent="Spawner"]
+position = Vector2(-597, 651)
+
+[node name="LibrarianNPC" parent="." instance=ExtResource("5_g7p4s")]
+y_sort_enabled = true
+position = Vector2(372, 315)
+scale = Vector2(0.4, 0.4)
+dialog_path = "res://storage/dialogs/librarian_dialog.json"
+
+[node name="LibrarianAnimatedSprite" type="AnimatedSprite2D" parent="LibrarianNPC"]
+y_sort_enabled = true
+scale = Vector2(2.1, 2.1)
+sprite_frames = SubResource("SpriteFrames_qaixa")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LibrarianNPC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LibrarianNPC/StaticBody2D"]
+position = Vector2(0, 38.327)
+shape = SubResource("CapsuleShape2D_r64ks")
+
+[node name="EventTrigger" parent="LibrarianNPC" instance=ExtResource("6_odmwe")]
+scale = Vector2(1.8, 1.8)
+event = "talk_to_librarian"
+
+[node name="Church" type="Sprite2D" parent="."]
+position = Vector2(781, 634)
+scale = Vector2(1, 1)
+texture = ExtResource("32_34ttt")
+offset = Vector2(0, -138.55)
+region_enabled = true
+region_rect = Rect2(12.7271, 0, 232.273, 371.273)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Church"]
+position = Vector2(-7, -9.99994)
+scale = Vector2(0.51991, 0.51991)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Church/StaticBody2D"]
+position = Vector2(0.961426, -38.4683)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_t45us")

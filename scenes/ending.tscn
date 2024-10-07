@@ -1,0 +1,176 @@
+[gd_scene load_steps=26 format=3 uid="uid://dso788x3qc5dh"]
+
+[ext_resource type="Texture2D" uid="uid://digjpa4cjmv3d" path="res://sprites/earth/earth1.png" id="1_rvaf0"]
+[ext_resource type="Texture2D" uid="uid://6axxrpyguw6h" path="res://sprites/earth/earth2.png" id="2_eqy8n"]
+[ext_resource type="Texture2D" uid="uid://btvatyg0wuing" path="res://sprites/earth/earth3.png" id="3_tmux5"]
+[ext_resource type="Texture2D" uid="uid://c8i7wq8x22676" path="res://sprites/earth/earth4.png" id="4_17r1u"]
+[ext_resource type="Texture2D" uid="uid://07xreqldg5s7" path="res://sprites/earth/earth5.png" id="5_1x5ib"]
+[ext_resource type="Texture2D" uid="uid://b3u5th3quvt07" path="res://sprites/earth/earth6.png" id="6_xjy2h"]
+[ext_resource type="Texture2D" uid="uid://b8chx188cpqcy" path="res://sprites/earth/earth7.png" id="7_r1yvc"]
+[ext_resource type="Texture2D" uid="uid://dinkw1lt8wyjp" path="res://sprites/earth/earth8.png" id="8_ms8wb"]
+[ext_resource type="Texture2D" uid="uid://dc6l64nsf77l6" path="res://sprites/earth/earth9.png" id="9_5740k"]
+[ext_resource type="Texture2D" uid="uid://cv0fw2k7ie18v" path="res://sprites/earth/earth10.png" id="10_ojmfi"]
+[ext_resource type="Texture2D" uid="uid://baedt5yfg08ex" path="res://sprites/earth/earth11.png" id="11_ugn48"]
+[ext_resource type="Texture2D" uid="uid://bxj1petmheaev" path="res://sprites/earth/earth12.png" id="12_s2pjv"]
+[ext_resource type="Texture2D" uid="uid://d13mgu4y8pqwh" path="res://sprites/earth/earth13.png" id="13_hwjxh"]
+[ext_resource type="Texture2D" uid="uid://c8pj7gjk32llc" path="res://sprites/earth/earth14.png" id="14_ioqaf"]
+[ext_resource type="Texture2D" uid="uid://b6r5ugv13y642" path="res://sprites/earth/earth15.png" id="15_p1ngl"]
+[ext_resource type="Texture2D" uid="uid://hl46qbarch4e" path="res://sprites/earth/earth16.png" id="16_n5l22"]
+[ext_resource type="Texture2D" uid="uid://7xmv55ri53qy" path="res://sprites/earth/earth17.png" id="17_4kef7"]
+[ext_resource type="Texture2D" uid="uid://b3kwcsq3q1ml6" path="res://sprites/earth/earth18.png" id="18_3gech"]
+[ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="19_63n4q"]
+[ext_resource type="Script" path="res://scripts/ending_label.gd" id="19_x28t7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvkr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rvaf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_rvaf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_rvaf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eqy8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tmux5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_17r1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1x5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xjy2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r1yvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ms8wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5740k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ojmfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ugn48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s2pjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hwjxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ioqaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_p1ngl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_n5l22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4kef7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3gech")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gtbgf"]
+font = ExtResource("19_63n4q")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_htk5x"]
+resource_name = "ending_label"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.56667, 12.9333, 14.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0gv45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ie18"]
+_data = {
+"RESET": SubResource("Animation_0gv45"),
+"ending_label": SubResource("Animation_htk5x")
+}
+
+[node name="Ending" type="Node2D"]
+
+[node name="Earth" type="AnimatedSprite2D" parent="."]
+position = Vector2(634, 481)
+scale = Vector2(1.04, 1.04)
+sprite_frames = SubResource("SpriteFrames_hvkr4")
+animation = &"idle"
+autoplay = "idle"
+frame = 19
+frame_progress = 1.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_x28t7")
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 111.0
+offset_top = 285.0
+offset_right = 1124.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The most merciful thing in the world, I think, is the inability of the human mind to correlate all its contents. We live on a placid island of ignorance in the midst of black seas of infinity, and it was not meant that we should voyage far."
+label_settings = SubResource("LabelSettings_gtbgf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ie18")
+}
+
+[connection signal="animation_finished" from="Earth" to="Control" method="_on_earth_animation_finished"]

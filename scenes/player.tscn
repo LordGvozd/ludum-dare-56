@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=83 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -9,15 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://sprites/player_lamp_light.png" id="6_4hfuy"]
 [ext_resource type="Script" path="res://scripts/player/note_display.gd" id="6_cwfsu"]
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
+[ext_resource type="Texture2D" uid="uid://xtkdwh7ucdlo" path="res://sprites/player/attack/player_tap_down1.png" id="7_dumy8"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/player/idle/down/player_idle_down3.png" id="7_g6ybp"]
+[ext_resource type="Texture2D" uid="uid://bgpncrqwjepoo" path="res://sprites/player/attack/player_tap_down2.png" id="8_1g4vx"]
 [ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/player/idle/down/player_idle_down4.png" id="8_gbfhm"]
+[ext_resource type="Texture2D" uid="uid://d1w332uoar30g" path="res://sprites/player/attack/player_tap_down3.png" id="9_3n1aj"]
 [ext_resource type="Texture2D" uid="uid://b22db26amtqs6" path="res://sprites/player/idle/down/player_idle_down5.png" id="9_55kpg"]
+[ext_resource type="Texture2D" uid="uid://bb2tlodkqrvbt" path="res://sprites/player/attack/player_tap_down4.png" id="10_dmvwy"]
 [ext_resource type="Texture2D" uid="uid://kt56n6siyu2b" path="res://sprites/player/idle/down/player_idle_down6.png" id="10_it553"]
 [ext_resource type="Texture2D" uid="uid://cbjrfl4648ne6" path="res://sprites/player/idle/down/player_idle_down7.png" id="11_63vg4"]
+[ext_resource type="Texture2D" uid="uid://bsxjh44y8cw3j" path="res://sprites/player/attack/player_tap_down5.png" id="11_ayglm"]
 [ext_resource type="Texture2D" uid="uid://d4e2g6rld1t4k" path="res://sprites/player/idle/down/player_idle_down8.png" id="12_11wi2"]
+[ext_resource type="Texture2D" uid="uid://i7qy4urlvp63" path="res://sprites/player/attack/player_tap_down6.png" id="12_avh8i"]
+[ext_resource type="Texture2D" uid="uid://dhplo7hiyskur" path="res://sprites/player/attack/player_tap_down7.png" id="13_7y1lk"]
 [ext_resource type="Texture2D" uid="uid://ch7dqolt3c4vm" path="res://sprites/player/idle/up/player_idle_top1.png" id="13_atnw8"]
 [ext_resource type="Script" path="res://scripts/tasks/task_controller.gd" id="14_3anlh"]
 [ext_resource type="Texture2D" uid="uid://b7b8eguexfih7" path="res://sprites/player/idle/up/player_idle_top2.png" id="14_52aqj"]
+[ext_resource type="Texture2D" uid="uid://c65w2citeemos" path="res://sprites/player/attack/player_tap_down8.png" id="14_lkt5p"]
 [ext_resource type="Texture2D" uid="uid://drou8cjyee5fw" path="res://sprites/player/idle/up/player_idle_top3.png" id="15_771vn"]
 [ext_resource type="Texture2D" uid="uid://dfqgjmd8rphqq" path="res://sprites/player/idle/up/player_idle_top4.png" id="16_mv2kb"]
 [ext_resource type="Texture2D" uid="uid://difsnakfhuoxu" path="res://sprites/player/idle/up/player_idle_top5.png" id="17_fqkwo"]
@@ -74,6 +82,38 @@ load_path = "res://.godot/imported/player_bok.png-56c2b26f55a79a79ac51cd8e248564
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h17ug"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dumy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1g4vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3n1aj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dmvwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ayglm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_avh8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7y1lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lkt5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_av6ti")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_av6ti")
@@ -325,9 +365,10 @@ shape = SubResource("RectangleShape2D_tn5pc")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
 scale = Vector2(2.60542, 2.60542)
 sprite_frames = SubResource("SpriteFrames_h17ug")
-animation = &"walk_right"
+animation = &"attack"
 autoplay = "idle_down"
-frame_progress = 0.932359
+frame = 8
+frame_progress = 1.0
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CapsuleShape2D_2jkqd")
