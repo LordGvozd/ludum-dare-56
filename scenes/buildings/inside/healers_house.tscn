@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bl1ulg1o5kklr"]
+[gd_scene load_steps=24 format=4 uid="uid://bl1ulg1o5kklr"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_us6m4"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_80tax"]
@@ -63,6 +63,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_niysq"]
+radius = 21.9011
+height = 65.7034
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sr0t1"]
 size = Vector2(80, 527)
 
@@ -94,6 +98,13 @@ scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_4tn7a")
 autoplay = "default"
 frame_progress = 0.482808
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HealerNPC"]
+position = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealerNPC/StaticBody2D"]
+position = Vector2(0, 38.327)
+shape = SubResource("CapsuleShape2D_niysq")
 
 [node name="BuildingExit" parent="." instance=ExtResource("3_ois8c")]
 position = Vector2(578, 848)

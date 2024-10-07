@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf8p7euecjnml"]
+[gd_scene load_steps=14 format=3 uid="uid://cf8p7euecjnml"]
 
 [ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_y06qh"]
 [ext_resource type="FontFile" uid="uid://cv18ebcbhaqa3" path="res://fonts/Bitmgothic.ttf" id="2_58acr"]
@@ -12,6 +12,9 @@ default_font_size = 84
 [sub_resource type="Theme" id="Theme_m15n4"]
 default_font = ExtResource("2_58acr")
 
+[sub_resource type="Theme" id="Theme_3w2hp"]
+default_font = ExtResource("2_58acr")
+
 [sub_resource type="LabelSettings" id="LabelSettings_vy7bb"]
 font = ExtResource("3_xg2al")
 font_size = 32
@@ -20,6 +23,48 @@ font_size = 32
 font = ExtResource("2_58acr")
 font_size = 128
 font_color = Color(0.69, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2hyy"]
+font = ExtResource("3_xg2al")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_2elhj"]
+resource_name = "title"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.69, 0, 0, 1), Color(0.99984, 0.287567, 0.225477, 1), Color(0.69, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cku33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.69, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qw5w8"]
+_data = {
+"RESET": SubResource("Animation_cku33"),
+"title": SubResource("Animation_2elhj")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -84,6 +129,13 @@ theme = SubResource("Theme_m15n4")
 text = "Settings"
 flat = true
 
+[node name="Help" type="Button" parent="ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_3w2hp")
+text = "Help
+"
+flat = true
+
 [node name="Exit" type="Button" parent="ButtonsContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_m15n4")
@@ -129,8 +181,31 @@ offset_bottom = 251.0
 text = "The Ritual"
 label_settings = SubResource("LabelSettings_ylhj7")
 
+[node name="HelpLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = 367.0
+offset_right = 1084.0
+offset_bottom = 817.0
+text = "Movement: WASD
+Attack: SPACE
+
+Aware of spiders
+Your attack have delay
+Your progress persists"
+label_settings = SubResource("LabelSettings_a2hyy")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qw5w8")
+}
+autoplay = "title"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonsContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

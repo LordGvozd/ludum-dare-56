@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	if player_input.is_attack_button_pressed():
 		
-		$"PlayerMovement/PlayerSprite".play("attack")
+		$"PlayerMovement/PlayerSprite".play("attack_down")
 		
 
 func _physics_process(_delta) -> void:
@@ -40,6 +40,6 @@ func _physics_process(_delta) -> void:
 
 
 func _on_player_sprite_animation_finished() -> void:
-	if $"PlayerMovement/PlayerSprite".animation == "attack":
+	if $"PlayerMovement/PlayerSprite".animation == "attack_down":
 		player_attack_area.disabled = false
 		player_sound.play_attack()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dxdajq3g77p6b"]
+[gd_scene load_steps=24 format=4 uid="uid://dxdajq3g77p6b"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_tr6ml"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_g5nbq"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bx03lxs8ibdr3" path="res://sprites/fisherman/fisherman_idle7.png" id="9_yms0u"]
 [ext_resource type="Texture2D" uid="uid://bdt5nqnkrea2j" path="res://sprites/fisherman/fisherman_idle8.png" id="10_fmw7l"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c74t"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0pir"]
 texture = ExtResource("1_tr6ml")
 margins = Vector2i(1, 0)
 texture_region_size = Vector2i(31, 32)
@@ -29,7 +29,7 @@ texture_region_size = Vector2i(31, 32)
 
 [sub_resource type="TileSet" id="TileSet_3ysoa"]
 tile_size = Vector2i(31, 32)
-sources/2 = SubResource("TileSetAtlasSource_6c74t")
+sources/2 = SubResource("TileSetAtlasSource_b0pir")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nww42"]
 animations = [{
@@ -63,6 +63,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0csvd"]
+radius = 21.9011
+height = 65.7034
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnplj"]
 size = Vector2(80, 527)
 
@@ -95,6 +99,12 @@ sprite_frames = SubResource("SpriteFrames_nww42")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.297391
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FishermanNPC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishermanNPC/StaticBody2D"]
+position = Vector2(0, 38.327)
+shape = SubResource("CapsuleShape2D_0csvd")
 
 [node name="TriggerDepends" parent="." instance=ExtResource("3_bkaf5")]
 depends_on_event = "fish_collected"
