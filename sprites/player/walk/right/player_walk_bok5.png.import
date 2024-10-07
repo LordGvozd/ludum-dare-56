@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfxxxtcjskxo2"
-path="res://.godot/imported/house_tilemap.png-6756b44477674c38962ca98af4420191.ctex"
+uid="uid://058s58420wyy"
+path="res://.godot/imported/player_walk_bok5.png-fc99ccaa79951dc7b46aeff5c71c1400.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/sounds/house_tilemap.png"
-dest_files=["res://.godot/imported/house_tilemap.png-6756b44477674c38962ca98af4420191.ctex"]
+source_file="res://sprites/player/walk/right/player_walk_bok5.png"
+dest_files=["res://.godot/imported/player_walk_bok5.png-fc99ccaa79951dc7b46aeff5c71c1400.ctex"]
 
 [params]
 

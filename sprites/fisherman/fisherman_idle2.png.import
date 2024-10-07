@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etrfucvx4lnm"
-path="res://.godot/imported/you_died_screen.png-7d239f4ae90a7323e0c116728b78e9e2.ctex"
+uid="uid://bqt7hpyy4j6ui"
+path="res://.godot/imported/fisherman_idle2.png-cb3aece05b36955b32ce2cb08993868c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/sounds/ambients/you_died_screen.png"
-dest_files=["res://.godot/imported/you_died_screen.png-7d239f4ae90a7323e0c116728b78e9e2.ctex"]
+source_file="res://sprites/fisherman/fisherman_idle2.png"
+dest_files=["res://.godot/imported/fisherman_idle2.png-cb3aece05b36955b32ce2cb08993868c.ctex"]
 
 [params]
 

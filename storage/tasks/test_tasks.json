@@ -4,7 +4,9 @@
 	"talk_to_librarian": "Find necronomicon in library",
 	"necronomicon_collected": "Talk to fisherman",
 	"talk_to_fisherman": "Find the fish near the fisherman's house",
-	"fish_collected": "Good work! Here is your ritual candles",
-	"ritual_candles_collected": "Talk to healer",
-	"talk_to_healer": "Return to elder man, to start the ritual"
+	"fish_collected": "Take candles from fisherman",
+	"candles_collected": "Talk to healer",
+	"talk_to_healer": "Find recipe in hospital",
+	"recipe_collected": "Take bootle of blood from healer",
+	"bottle_of_blood_collected": "Return to elder man, to start the ritual"
 }

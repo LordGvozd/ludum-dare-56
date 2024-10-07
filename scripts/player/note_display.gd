@@ -1,7 +1,7 @@
 extends Area2D
 class_name NoteDisplay
 
-@export var note_ui_container: Container
+@export var note_ui_container: Control
 @export var note_text: Label
 @export var promt_label: Label
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 	else:
 		printerr("Not all export vars set!")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and _is_in_note:
 		_open()
 		

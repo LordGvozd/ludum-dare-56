@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/events/event_trigger.gd" id="1_fxukt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfucp"]
-size = Vector2(53, 47)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmdv2"]
+radius = 53.782
 
 [node name="EventTrigger" type="Area2D"]
 script = ExtResource("1_fxukt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_sfucp")
+shape = SubResource("CircleShape2D_vmdv2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
