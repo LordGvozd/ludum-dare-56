@@ -1,9 +1,8 @@
-[gd_scene load_steps=34 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=32 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
 [ext_resource type="PackedScene" uid="uid://vcyfov2y7acj" path="res://scenes/buildings/building.tscn" id="3_vuaki"]
-[ext_resource type="Texture2D" uid="uid://c8ex4af6ylap0" path="res://sprites/house of ribak.png" id="4_fbcao"]
 [ext_resource type="Texture2D" uid="uid://bvvbieuq4kh3l" path="res://sprites/tilemap.png" id="4_hjqor"]
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="5_g7p4s"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="6_odmwe"]
@@ -142,9 +141,6 @@ scale_min = 0.3
 scale_curve = SubResource("CurveXYZTexture_mait2")
 color_initial_ramp = SubResource("GradientTexture1D_6obm7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_063ly"]
-size = Vector2(357.738, 151.86)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmehj"]
 size = Vector2(1367, 20)
 
@@ -217,43 +213,6 @@ preprocess = 0.5
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
-
-[node name="LibrariansHouse" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(279, 234)
-scale = Vector2(0.346824, 0.248647)
-load_scene_file_path = "res://scenes/buildings/inside/librarians_house.tscn"
-
-[node name="HealersHouse" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(1262, 630)
-scale = Vector2(0.346824, 0.248647)
-load_scene_file_path = "res://scenes/buildings/inside/healers_house.tscn"
-
-[node name="Hospital" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(1098, 531)
-scale = Vector2(0.653625, 0.4686)
-
-[node name="FishermansHouse" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(142, 578)
-scale = Vector2(0.466822, 0.388516)
-load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
-
-[node name="FishermansHouseSprite" type="Sprite2D" parent="FishermansHouse"]
-position = Vector2(-106.682, 23.176)
-scale = Vector2(2.81429, 2.81429)
-texture = ExtResource("4_fbcao")
-offset = Vector2(0, -44.635)
-
-[node name="StaticBody" type="StaticBody2D" parent="FishermansHouse"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishermansHouse/StaticBody"]
-position = Vector2(-97.4677, -1.28674)
-shape = SubResource("RectangleShape2D_063ly")
-
-[node name="Library" parent="." instance=ExtResource("3_vuaki")]
-position = Vector2(471, 222)
-scale = Vector2(0.666823, 0.328646)
-load_scene_file_path = "res://scenes/buildings/inside/library.tscn"
 
 [node name="Church" parent="." instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
@@ -332,3 +291,7 @@ position = Vector2(-0.324158, 0.341064)
 rotation = -3.14159
 scale = Vector2(2.49058, 2.48424)
 texture = ExtResource("8_l8q2i")
+
+[node name="Building" parent="." instance=ExtResource("3_vuaki")]
+position = Vector2(631, 693)
+load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
