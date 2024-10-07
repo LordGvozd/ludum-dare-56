@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=75 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvq31c0412vvm" path="res://sprites/player/idle/down/player_idle_down1.png" id="5_av6ti"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
 [ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://sprites/player_lamp_light.png" id="6_4hfuy"]
+[ext_resource type="Script" path="res://scripts/player/note_display.gd" id="6_cwfsu"]
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/player/idle/down/player_idle_down3.png" id="7_g6ybp"]
 [ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/player/idle/down/player_idle_down4.png" id="8_gbfhm"]
@@ -23,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://dac6s1attx0eb" path="res://sprites/player/idle/up/player_idle_top6.png" id="18_geh6c"]
 [ext_resource type="Texture2D" uid="uid://cx7nultnkgwfw" path="res://sprites/player/idle/up/player_idle_top7.png" id="19_i28d5"]
 [ext_resource type="Texture2D" uid="uid://k7845aledgcj" path="res://sprites/player/idle/up/player_idle_top8.png" id="20_3tjtc"]
-[ext_resource type="Texture2D" uid="uid://dteyocd60m1sv" path="res://sprites/player/walk/player_bok.png" id="21_5iqfe"]
 [ext_resource type="Texture2D" uid="uid://bmasv06q4b457" path="res://sprites/player/walk/down/player_walk_down1.png" id="22_n1m4i"]
 [ext_resource type="Texture2D" uid="uid://c5sm6ubjkhkmy" path="res://sprites/player/walk/down/player_walk_down2.png" id="23_o75gm"]
 [ext_resource type="Texture2D" uid="uid://dymq7igbk41au" path="res://sprites/player/walk/down/player_walk_down3.png" id="24_aartg"]
@@ -37,24 +37,37 @@
 [ext_resource type="Texture2D" uid="uid://go5nonby1bh8" path="res://sprites/player/walk/down/player_walk_down11.png" id="32_wjc5v"]
 [ext_resource type="Texture2D" uid="uid://di0upvaxeuabx" path="res://sprites/player/walk/down/player_walk_down12.png" id="33_a2vqm"]
 [ext_resource type="Texture2D" uid="uid://cbxufn6gxvroe" path="res://sprites/player/walk/up/player_walk_top1.png" id="35_2mqy8"]
+[ext_resource type="Texture2D" uid="uid://cf1b8s8vvs6lm" path="res://sprites/player/walk/right/player_walk_bok1.png" id="35_pyhv3"]
 [ext_resource type="Texture2D" uid="uid://cmd0m2ndjwqp0" path="res://sprites/player/walk/up/player_walk_top2.png" id="36_3rsnw"]
-[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="37_o81mw"]
+[ext_resource type="Texture2D" uid="uid://c5j4vhj8cohx7" path="res://sprites/player/walk/right/player_walk_bok2.png" id="36_s4hii"]
+[ext_resource type="Texture2D" uid="uid://dcuf7484smmce" path="res://sprites/player/walk/right/player_walk_bok3.png" id="37_7o3fs"]
 [ext_resource type="Texture2D" uid="uid://cjqk45o0waa6t" path="res://sprites/player/walk/up/player_walk_top3.png" id="37_rgnqy"]
 [ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="37_rrsvo"]
-[ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="38_04e5i"]
+[ext_resource type="Texture2D" uid="uid://cyh6v8sk4lp0e" path="res://sprites/player/walk/right/player_walk_bok4.png" id="38_eyljv"]
 [ext_resource type="Texture2D" uid="uid://bp7h4b5ackqon" path="res://sprites/player/walk/up/player_walk_top4.png" id="38_pm8qd"]
 [ext_resource type="Script" path="res://scripts/player/player_sound.gd" id="39_bfjfa"]
+[ext_resource type="Texture2D" uid="uid://058s58420wyy" path="res://sprites/player/walk/right/player_walk_bok5.png" id="39_eqwtw"]
 [ext_resource type="Texture2D" uid="uid://k5hgnn0a1mvi" path="res://sprites/player/walk/up/player_walk_top5.png" id="39_gtwfe"]
 [ext_resource type="AudioStream" uid="uid://c6hnhn15dsl4b" path="res://audio/sounds/steps_outside.wav" id="40_76cvl"]
 [ext_resource type="Texture2D" uid="uid://cw8sv57kd2pce" path="res://sprites/player/walk/up/player_walk_top6.png" id="40_uep7m"]
+[ext_resource type="Texture2D" uid="uid://cl510fk2wdqon" path="res://sprites/player/walk/right/player_walk_bok6.png" id="40_x7aqk"]
+[ext_resource type="Texture2D" uid="uid://cvoyyadq3wttp" path="res://sprites/player/walk/right/player_walk_bok7.png" id="41_bywqt"]
 [ext_resource type="Texture2D" uid="uid://cvitl1qap0ukt" path="res://sprites/player/walk/up/player_walk_top7.png" id="41_lfndo"]
 [ext_resource type="AudioStream" uid="uid://cthhjihcgtnax" path="res://audio/sounds/ambients/rain.mp3" id="41_t86nb"]
 [ext_resource type="Texture2D" uid="uid://j4h2g0xm2e5l" path="res://sprites/player/walk/up/player_walk_top8.png" id="42_5vnj3"]
+[ext_resource type="Texture2D" uid="uid://dn2ci7h87kr51" path="res://sprites/player/walk/right/player_walk_bok8.png" id="42_7fwoe"]
 [ext_resource type="AudioStream" uid="uid://clwasg834ig16" path="res://audio/sounds/hit.mp3" id="42_t6f25"]
+[ext_resource type="Texture2D" uid="uid://dkxcskrkjx1xd" path="res://sprites/player/walk/right/player_walk_bok9.png" id="43_rujnt"]
 [ext_resource type="Texture2D" uid="uid://bmdlkkxyh5dok" path="res://sprites/player/walk/up/player_walk_top9.png" id="43_ylcqj"]
 [ext_resource type="Texture2D" uid="uid://cuq41qv6i5edw" path="res://sprites/player/walk/up/player_walk_top10.png" id="44_7nqw7"]
+[ext_resource type="Texture2D" uid="uid://b3vri631n1o6k" path="res://sprites/player/walk/right/player_walk_bok10.png" id="44_qwvqi"]
 [ext_resource type="Texture2D" uid="uid://b0jtnwy5yi308" path="res://sprites/player/walk/up/player_walk_top11.png" id="45_a18p7"]
+[ext_resource type="Texture2D" uid="uid://djh6vix5es7wt" path="res://sprites/player/walk/right/player_walk_bok11.png" id="45_e1dbs"]
+[ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn5pc"]
+size = Vector2(239.657, 231.487)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2pcap"]
 load_path = "res://.godot/imported/player_bok.png-56c2b26f55a79a79ac51cd8e24856467.ctex"
@@ -170,11 +183,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_5iqfe")
+"texture": ExtResource("35_pyhv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_s4hii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_7o3fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_eyljv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_eqwtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_x7aqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_bywqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_7fwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_rujnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_qwvqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_e1dbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_2kwwy")
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -232,6 +278,14 @@ light_mode = 1
 font = ExtResource("37_rrsvo")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_j4b14"]
+font = ExtResource("37_rrsvo")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_jr46q"]
+font = ExtResource("37_rrsvo")
+font_size = 32
+
 [node name="Player" type="Node2D" node_paths=PackedStringArray("player_input", "player_movement", "player_sound")]
 script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
@@ -258,12 +312,22 @@ script = ExtResource("3_kqi1q")
 speed = 100
 acceleration = 30
 
+[node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label")]
+script = ExtResource("6_cwfsu")
+note_ui_container = NodePath("../../CanvasLayer/PlayerUI/Container")
+note_text = NodePath("../../CanvasLayer/PlayerUI/Container/MarginContainer/Label")
+promt_label = NodePath("../../CanvasLayer/PlayerUI/Promt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
+position = Vector2(1.87997e-08, 4.77958e-06)
+shape = SubResource("RectangleShape2D_tn5pc")
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerMovement"]
 scale = Vector2(2.60542, 2.60542)
 sprite_frames = SubResource("SpriteFrames_h17ug")
-animation = &"walk_up"
+animation = &"walk_right"
 autoplay = "idle_down"
-frame_progress = 0.481506
+frame_progress = 0.932359
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerMovement"]
 shape = SubResource("CapsuleShape2D_2jkqd")
@@ -278,12 +342,7 @@ debug_color = Color(0.106125, 0.647982, 3.85046e-07, 0.42)
 [node name="PlayerCamera" type="Camera2D" parent="PlayerMovement"]
 rotation = -0.00393331
 zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 100
-limit_right = 1350
-limit_bottom = 970
 limit_smoothed = true
-position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 editor_draw_limits = true
 
@@ -298,23 +357,6 @@ shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
 texture_scale = 4.0
-
-[node name="SpidersSpawner" parent="PlayerMovement" node_paths=PackedStringArray("spawning_points") instance=ExtResource("37_o81mw")]
-enemy = ExtResource("38_04e5i")
-spawning_points = [NodePath("SpawningPoint1"), NodePath("SpawningPoint2"), NodePath("SpawningPoint3"), NodePath("SpawningPoint4")]
-spawning_time = 80
-
-[node name="SpawningPoint1" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
-position = Vector2(-922.162, 3.62717)
-
-[node name="SpawningPoint2" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
-position = Vector2(-2.6021, -661.551)
-
-[node name="SpawningPoint3" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
-position = Vector2(882.058, -5.97534)
-
-[node name="SpawningPoint4" type="Node2D" parent="PlayerMovement/SpidersSpawner"]
-position = Vector2(2.68095, 681.598)
 
 [node name="PlayerSound" type="Node" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
 script = ExtResource("39_bfjfa")
@@ -365,5 +407,66 @@ material = SubResource("CanvasItemMaterial_vra8h")
 layout_mode = 2
 label_settings = SubResource("LabelSettings_l636s")
 
+[node name="Container" type="Control" parent="CanvasLayer/PlayerUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 287.0
+offset_top = 121.0
+offset_right = 287.0
+offset_bottom = 121.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayerUI/Container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_right = 601.0
+offset_bottom = 617.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/Container"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 21.0
+offset_right = 830.0
+offset_bottom = 672.0
+scale = Vector2(0.683289, 0.88317)
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerUI/Container/MarginContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_j4b14")
+autowrap_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/Container"]
+layout_mode = 2
+offset_right = 601.0
+offset_bottom = 617.0
+
+[node name="BoxContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/Container"]
+layout_mode = 2
+offset_right = 601.0
+offset_bottom = 617.0
+
+[node name="Promt" type="Label" parent="CanvasLayer/PlayerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 368.0
+offset_top = 895.5
+offset_right = 841.0
+offset_bottom = 925.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_jr46q")
+horizontal_alignment = 1
+
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
+[connection signal="body_entered" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_exited"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]

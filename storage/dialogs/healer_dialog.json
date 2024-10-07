@@ -1,0 +1,8 @@
+{
+	"start": "Oh, hello. Please talk to priest first.",
+	"talk_to_elder_man": "Are you already talked to librarian?",
+	"talk_to_librarian": "Hmmm... I think you should talk to fisherman in his house",
+	"necronomicon_collected": "Is this librarian's book?",
+	"candles_collected": "I can give you a bottle of blood if you find recipe in hospital.",
+	"recipe_collected": "Be carefull, this blood belongs to Old Gods."
+}

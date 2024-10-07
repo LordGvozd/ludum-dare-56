@@ -5,7 +5,20 @@ extends Node2D
 @export var player_movement: PlayerMovement
 @export var player_sound: PlayerSound
 
+@export var camera_limit_left: int
+@export var camera_limit_top: int
+@export var camera_limit_right: int
+@export var camera_limit_bottom: int
+
 @onready var player_attack_area: CollisionShape2D = $PlayerMovement/PlayerAttackArea/PlayerAttackAreaCollisionShape
+@onready var player_camera: Camera2D = $PlayerMovement/PlayerCamera
+
+
+func _ready() -> void:
+	player_camera.limit_left = camera_limit_left
+	player_camera.limit_top = camera_limit_top
+	player_camera.limit_right = camera_limit_right
+	player_camera.limit_bottom = camera_limit_bottom
 
 
 func _process(_delta) -> void:

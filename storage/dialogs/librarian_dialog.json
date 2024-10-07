@@ -1,5 +1,6 @@
 {
-	"start": "You can find the necronomicon in neighboring building",
-	"talk_to_librarian": "Necronomicon must be in library",
-	"necronomicon_collected": "Be carefull with this foliant"
+	"start": "I haven't seen you before.",
+	"talk_to_elder_man": "Necronomicon must be in library",
+	"necronomicon_collected": "Be carefull with this foliant",
+	"bottle_of_blood_collected": "The ritual must be performed"
 }
