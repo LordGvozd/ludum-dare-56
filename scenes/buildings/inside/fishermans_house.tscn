@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dxdajq3g77p6b"]
+[gd_scene load_steps=33 format=4 uid="uid://dxdajq3g77p6b"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_tr6ml"]
 [ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/black.png" id="2_47vxv"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bx03lxs8ibdr3" path="res://sprites/fisherman/fisherman_idle7.png" id="9_yms0u"]
 [ext_resource type="Texture2D" uid="uid://bdt5nqnkrea2j" path="res://sprites/fisherman/fisherman_idle8.png" id="10_fmw7l"]
 [ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/bed.png" id="16_ekw8i"]
+[ext_resource type="Texture2D" uid="uid://ueul4otiw5o3" path="res://sprites/stol.png" id="18_6kbiw"]
+[ext_resource type="Texture2D" uid="uid://dirj3leak3bm5" path="res://sprites/chair.png" id="19_6wak2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0pir"]
 texture = ExtResource("1_tr6ml")
@@ -92,6 +94,12 @@ size = Vector2(234, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypj8t"]
 size = Vector2(37, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epmrq"]
+size = Vector2(53, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb0po"]
+size = Vector2(20, 3)
 
 [node name="FishermansHouse" type="Node2D"]
 y_sort_enabled = true
@@ -194,3 +202,25 @@ offset = Vector2(0, 4.47)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
 position = Vector2(742.5, 660)
 shape = SubResource("RectangleShape2D_ypj8t")
+
+[node name="Table" type="StaticBody2D" parent="."]
+position = Vector2(507, 673)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table"]
+texture = ExtResource("18_6kbiw")
+offset = Vector2(0, 12.46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_epmrq")
+
+[node name="Chair" type="StaticBody2D" parent="."]
+position = Vector2(499, 622)
+scale = Vector2(1.28, 1.28)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chair"]
+texture = ExtResource("19_6wak2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wb0po")
