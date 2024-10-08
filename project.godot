@@ -13,7 +13,7 @@ config_version=5
 config/name="ludum-dare-56"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://sprites/ritual_icon.png"
 
 [autoload]
 
