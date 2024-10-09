@@ -6,8 +6,13 @@ var player_in_area: bool = false
 
 
 func _process(_delta):
-	if get_node("../Player/PlayerInput").is_interact_button_pressed() and player_in_area:
+	if get_node("../../Player/PlayerInput").is_interact_button_pressed() and player_in_area:
 		is_active = !is_active
+	
+	if is_active:
+		modulate = Color("green")
+	else:
+		modulate = Color("red")
 
 
 func _on_leaver_area_body_entered(body):
