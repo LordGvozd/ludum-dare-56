@@ -401,6 +401,10 @@ script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
 player_movement = NodePath("PlayerMovement")
 player_sound = NodePath("PlayerMovement/PlayerSound")
+camera_limit_left = -200
+camera_limit_top = 100
+camera_limit_right = 1350
+camera_limit_bottom = 970
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("1_5hib8")
@@ -425,7 +429,7 @@ acceleration = 30
 script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/Container")
 note_text = NodePath("../../CanvasLayer/PlayerUI/Container/MarginContainer/Label")
-promt_label = NodePath("../../CanvasLayer/PlayerUI/Promt")
+promt_label = NodePath("../../CanvasLayer/PlayerUI/Prompt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)
@@ -492,7 +496,6 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("task_text_label")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -558,16 +561,17 @@ layout_mode = 2
 offset_right = 601.0
 offset_bottom = 617.0
 
-[node name="Promt" type="Label" parent="CanvasLayer/PlayerUI"]
+[node name="Prompt" type="Label" parent="CanvasLayer/PlayerUI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 368.0
+offset_left = 376.0
 offset_top = 895.5
-offset_right = 841.0
+offset_right = 849.0
 offset_bottom = 925.5
 grow_horizontal = 2
 grow_vertical = 2

@@ -32,6 +32,13 @@ func is_attack_button_pressed() -> bool:
 		return false   
 
 
+func is_interact_button_pressed() -> bool:
+	if Input.is_action_just_pressed("interact"):
+		return true
+	else:
+		return false
+
+
 func _on_player_attack_timer_timeout():
 	can_attack = true
 	is_attacking = false

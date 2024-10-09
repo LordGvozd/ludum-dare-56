@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bu51gkd1ji8ci" path="res://sprites/priest/priest_idle6.png" id="11_rxdit"]
 [ext_resource type="Texture2D" uid="uid://bia3gosqsdp6o" path="res://sprites/librarian/librarian_idle4.png" id="12_4ue06"]
 [ext_resource type="Texture2D" uid="uid://bsvhxp0o3bb4p" path="res://sprites/priest/priest_idle7.png" id="12_036o8"]
-[ext_resource type="Script" path="res://scripts/ending_area.gd" id="12_87kfs"]
+[ext_resource type="Script" path="res://scripts/ending/ending_area.gd" id="12_87kfs"]
 [ext_resource type="Texture2D" uid="uid://c4f7udwk1gkhd" path="res://sprites/priest/priest_idle8.png" id="13_3lj0m"]
 [ext_resource type="Texture2D" uid="uid://cun1hapgx4ucb" path="res://sprites/librarian/librarian_idle5.png" id="13_a8bsq"]
 [ext_resource type="AudioStream" uid="uid://dx5ft576cpdwt" path="res://audio/sounds/end_of_earth.wav" id="13_vbr1y"]
@@ -411,10 +411,6 @@ tile_set = SubResource("TileSet_t8vgo")
 [node name="Player" parent="." instance=ExtResource("1_cxiqd")]
 y_sort_enabled = true
 position = Vector2(6, 739)
-camera_limit_left = -200
-camera_limit_top = 100
-camera_limit_right = 1350
-camera_limit_bottom = 970
 
 [node name="RainParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_mvcmt")
@@ -1019,6 +1015,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="EndingTriggerDepends/EndingArea/CanvasLayer/Control"]
 layout_mode = 0
@@ -1027,6 +1024,7 @@ offset_top = -74.0
 offset_right = 1507.0
 offset_bottom = 1092.0
 color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EndingTriggerDepends/EndingArea"]
 libraries = {

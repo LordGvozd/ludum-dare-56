@@ -5,10 +5,10 @@ class_name Player
 @export var player_movement: PlayerMovement
 @export var player_sound: PlayerSound
 
-@export var camera_limit_left: int
-@export var camera_limit_top: int
-@export var camera_limit_right: int
-@export var camera_limit_bottom: int
+@export var camera_limit_left: int = 1000
+@export var camera_limit_top: int = 1000
+@export var camera_limit_right: int = 1000
+@export var camera_limit_bottom: int = 1000
 
 @onready var player_attack_area: CollisionShape2D = $PlayerMovement/PlayerAttackArea/PlayerAttackAreaCollisionShape
 @onready var player_camera: Camera2D = $PlayerMovement/PlayerCamera

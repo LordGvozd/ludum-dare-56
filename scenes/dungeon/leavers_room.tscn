@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4bdyrmgmx22d"]
+
+[ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_pikie"]
+[ext_resource type="PackedScene" uid="uid://kmcypsggay3h" path="res://scenes/leavers/leaver.tscn" id="2_mbude"]
+[ext_resource type="PackedScene" uid="uid://cddilrvtkrjkt" path="res://scenes/leavers/leavers_container.tscn" id="3_7bbb8"]
+
+[node name="LeaversRoom" type="Node2D"]
+
+[node name="Leaver1" parent="." instance=ExtResource("2_mbude")]
+position = Vector2(98, 129)
+scale = Vector2(0.32, 0.32)
+
+[node name="Leaver2" parent="." instance=ExtResource("2_mbude")]
+position = Vector2(178, 129)
+scale = Vector2(0.32, 0.32)
+
+[node name="Leaver3" parent="." instance=ExtResource("2_mbude")]
+position = Vector2(258, 129)
+scale = Vector2(0.32, 0.32)
+
+[node name="Player" parent="." instance=ExtResource("1_pikie")]
+position = Vector2(179, 218)
+
+[node name="LeaversContainer" parent="." node_paths=PackedStringArray("leavers") instance=ExtResource("3_7bbb8")]
+leavers = [NodePath("../Leaver1"), NodePath("../Leaver2"), NodePath("../Leaver3")]
+correct_combination = Array[bool]([true, false, true])
