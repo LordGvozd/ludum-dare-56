@@ -492,7 +492,6 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("task_text_label")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
