@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c4bdyrmgmx22d"]
+[gd_scene load_steps=14 format=4 uid="uid://c4bdyrmgmx22d"]
 
 [ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_8c2mp"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_pikie"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://kmcypsggay3h" path="res://scenes/leavers/leaver.tscn" id="2_mbude"]
 [ext_resource type="PackedScene" uid="uid://cddilrvtkrjkt" path="res://scenes/leavers/leavers_container.tscn" id="3_7bbb8"]
 [ext_resource type="PackedScene" uid="uid://d0ed77i1urfa3" path="res://scenes/change_scene_area.tscn" id="5_ublk4"]
+[ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="7_cqsyt"]
+[ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="8_kh3j8"]
+[ext_resource type="Texture2D" uid="uid://cl8ulfm55yfw7" path="res://sprites/skeleton.png" id="9_mf1e3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crgi8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdluf"]
 texture = ExtResource("1_8c2mp")
 margins = Vector2i(1, 0)
 texture_region_size = Vector2i(31, 32)
@@ -20,9 +23,9 @@ texture_region_size = Vector2i(31, 32)
 
 [sub_resource type="TileSet" id="TileSet_okqnf"]
 tile_size = Vector2i(31, 32)
-sources/0 = SubResource("TileSetAtlasSource_crgi8")
+sources/0 = SubResource("TileSetAtlasSource_fdluf")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1kk1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myhtu"]
 texture = ExtResource("2_67kun")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -31,9 +34,10 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_itw4i"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_g1kk1")
+sources/0 = SubResource("TileSetAtlasSource_myhtu")
 
 [node name="LeaversRoom" type="Node2D"]
+y_sort_enabled = true
 
 [node name="FloorTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAAAAAYAAAABAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAABAAAAAAAAAAoAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAABAAkAAAACAAAAAAABAAoAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAACAAcAAAACAAAAAAACAAgAAAACAAAAAAACAAkAAAACAAAAAAACAAoAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAADAAYAAAACAAAAAAADAAcAAAACAAAAAAADAAgAAAACAAAAAAADAAkAAAACAAAAAAADAAoAAAABAAAAAAAEAAAAAAABAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAAEAAMAAAACAAAAAAAEAAQAAAACAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAAAAAAEAAcAAAACAAAAAAAEAAgAAAACAAAAAAAEAAkAAAACAAAAAAAEAAoAAAABAAAAAAAFAAAAAAABAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAFAAMAAAACAAAAAAAFAAQAAAACAAAAAAAFAAUAAAACAAAAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAFAAgAAAACAAAAAAAFAAkAAAACAAAAAAAFAAoAAAACAAAAAAAGAAAAAAABAAAAAAAGAAEAAAACAAAAAAAGAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAQAAAACAAAAAAAGAAUAAAACAAAAAAAGAAYAAAACAAAAAAAGAAcAAAACAAAAAAAGAAgAAAACAAAAAAAGAAkAAAACAAAAAAAGAAoAAAACAAAAAAAHAAAAAAABAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAHAAcAAAACAAAAAAAHAAgAAAACAAAAAAAHAAkAAAACAAAAAAAHAAoAAAABAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAIAAcAAAACAAAAAAAIAAgAAAACAAAAAAAIAAkAAAACAAAAAAAIAAoAAAABAAAAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAAJAAkAAAACAAAAAAAJAAoAAAABAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAAKAAcAAAACAAAAAAAKAAgAAAACAAAAAAAKAAkAAAACAAAAAAAKAAoAAAABAAAAAAALAAAAAAABAAAAAAALAAEAAAABAAAAAAALAAIAAAABAAAAAAALAAMAAAABAAAAAAALAAQAAAABAAAAAAALAAUAAAABAAAAAAALAAYAAAABAAAAAAALAAcAAAABAAAAAAALAAgAAAABAAAAAAALAAkAAAABAAAAAAALAAoAAAABAAAAAAAGAAsAAAACAAAAAAAFAAsAAAACAAAAAAAFAAwAAAACAAAAAAAGAAwAAAACAAAAAAAFAA0AAAACAAAAAAAGAA0AAAACAAAAAAAGAA4AAAACAAAAAAAFAA4AAAACAAAAAAAKAAAAAAACAAAAAAAJAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAP//AAACAAAAAAAKAP//AAACAAAAAAALAP//AAACAAAAAAA=")
@@ -44,6 +48,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAA
 tile_set = SubResource("TileSet_itw4i")
 
 [node name="LeaversContainer" parent="." node_paths=PackedStringArray("leavers", "area_to_activate") instance=ExtResource("3_7bbb8")]
+y_sort_enabled = true
 position = Vector2(16, -154)
 leavers = [NodePath("Leaver1"), NodePath("Leaver2"), NodePath("Leaver3")]
 correct_combination = Array[bool]([true, false, true])
@@ -72,8 +77,29 @@ scale = Vector2(2.76, 1)
 scene_path = "res://scenes/town.tscn"
 
 [node name="Player" parent="." instance=ExtResource("1_pikie")]
+y_sort_enabled = true
 position = Vector2(163, 179)
 camera_limit_left = -100
 camera_limit_top = -30
 camera_limit_right = 450
 camera_limit_bottom = 400
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("spawning_points") instance=ExtResource("7_cqsyt")]
+enemy = ExtResource("8_kh3j8")
+spawning_points = [NodePath("SpawningPoint1"), NodePath("SpawningPoint2")]
+spawning_time = 5
+
+[node name="SpawningPoint1" type="Node2D" parent="Spawner"]
+position = Vector2(51, 295)
+
+[node name="SpawningPoint2" type="Node2D" parent="Spawner"]
+position = Vector2(300, 298)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.362829, 0.362829, 0.362829, 1)
+
+[node name="Skeleton" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(178, 28)
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("9_mf1e3")

@@ -24,7 +24,7 @@ func is_attack_button_pressed() -> bool:
 	if can_attack and Input.is_action_just_pressed("attack"):
 		can_attack = false
 		is_attacking = true
-		player_animated_sprite.play("attack")
+		player_animated_sprite.play("attack_down")
 		player_attack_timer.start()
 		
 		return true
