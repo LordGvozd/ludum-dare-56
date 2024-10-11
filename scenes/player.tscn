@@ -423,8 +423,8 @@ acceleration = 30
 
 [node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label")]
 script = ExtResource("6_cwfsu")
-note_ui_container = NodePath("../../CanvasLayer/PlayerUI/Container")
-note_text = NodePath("../../CanvasLayer/PlayerUI/Container/MarginContainer/Label")
+note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
+note_text = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/Label")
 promt_label = NodePath("../../CanvasLayer/PlayerUI/Promt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
@@ -515,7 +515,8 @@ material = SubResource("CanvasItemMaterial_vra8h")
 layout_mode = 2
 label_settings = SubResource("LabelSettings_l636s")
 
-[node name="Container" type="Control" parent="CanvasLayer/PlayerUI"]
+[node name="NoteContainer" type="Control" parent="CanvasLayer/PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -529,12 +530,12 @@ offset_bottom = 121.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="NoteBackground" type="Sprite2D" parent="CanvasLayer/PlayerUI/Container"]
+[node name="NoteBackground" type="Sprite2D" parent="CanvasLayer/PlayerUI/NoteContainer"]
 position = Vector2(317, 288)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("74_7ftfu")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/Container"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/NoteContainer"]
 layout_mode = 2
 offset_left = 106.0
 offset_top = 68.0
@@ -542,17 +543,17 @@ offset_right = 904.0
 offset_bottom = 719.0
 scale = Vector2(0.523289, 0.676366)
 
-[node name="Label" type="Label" parent="CanvasLayer/PlayerUI/Container/MarginContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/PlayerUI/NoteContainer/MarginContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_j4b14")
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/NoteContainer"]
 layout_mode = 2
 offset_right = 601.0
 offset_bottom = 617.0
 
-[node name="BoxContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/Container"]
+[node name="BoxContainer" type="MarginContainer" parent="CanvasLayer/PlayerUI/NoteContainer"]
 layout_mode = 2
 offset_right = 601.0
 offset_bottom = 617.0

@@ -5,20 +5,32 @@ class_name Player
 @export var player_movement: PlayerMovement
 @export var player_sound: PlayerSound
 
-@export var camera_limit_left: int
-@export var camera_limit_top: int
-@export var camera_limit_right: int
-@export var camera_limit_bottom: int
+@export var camera_limiter: CollisionShape2D
 
 @onready var player_attack_area: CollisionShape2D = $PlayerMovement/PlayerAttackArea/PlayerAttackAreaCollisionShape
 @onready var player_camera: Camera2D = $PlayerMovement/PlayerCamera
 
 
 func _ready() -> void:
-	player_camera.limit_left = camera_limit_left
-	player_camera.limit_top = camera_limit_top
-	player_camera.limit_right = camera_limit_right
-	player_camera.limit_bottom = camera_limit_bottom
+	
+	var shape_size: Vector2 = camera_limiter.shape.size * camera_limiter.global_scale
+	
+	print(shape_size)
+	
+	var left_limiter = camera_limiter.global_position.x - shape_size.x  / 2
+	var right_limiter = camera_limiter.global_position.x + shape_size.x / 2
+	var top_limiter = camera_limiter.global_position.y - shape_size.y / 2
+	var bottom_limiter = camera_limiter.global_position.y + shape_size.y / 2
+	
+	player_camera.limit_left = left_limiter
+	player_camera.limit_top = top_limiter
+	player_camera.limit_right = right_limiter
+	player_camera.limit_bottom = bottom_limiter
+	
+	print(left_limiter, " " ,
+	 	right_limiter, " ", 
+		top_limiter, " ",
+		bottom_limiter)
 
 
 func _process(_delta) -> void:
