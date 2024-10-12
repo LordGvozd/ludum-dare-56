@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=102 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -91,6 +91,10 @@
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
 [ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/note_list.png" id="74_7ftfu"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="83_eo2sa"]
+[ext_resource type="AudioStream" uid="uid://cqxn71gdsmxke" path="res://audio/sounds/grass_steps.mp3" id="87_7mfo5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fwas"]
+size = Vector2(63.9965, 47.5457)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jp02"]
 radius = 77.8443
@@ -422,6 +426,13 @@ script = ExtResource("3_kqi1q")
 speed = 100
 acceleration = 30
 
+[node name="Area2D" type="Area2D" parent="PlayerMovement"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/Area2D"]
+position = Vector2(0.13799, 35.0823)
+shape = SubResource("RectangleShape2D_4fwas")
+debug_color = Color(0.0201338, 0.494011, 0, 0.42)
+
 [node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label")]
 script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
@@ -468,10 +479,15 @@ shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
 texture_scale = 4.0
 
-[node name="PlayerSound" type="Node" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
+[node name="PlayerSound" type="Node2D" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
+position = Vector2(2.73257, 57.6253)
 script = ExtResource("39_bfjfa")
 steps_player = NodePath("StepsPlayer")
 attack_player = NodePath("AttackPlayer")
+ground_sounds = {
+"dirt": ExtResource("40_76cvl"),
+"grass": ExtResource("87_7mfo5")
+}
 
 [node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
 stream = ExtResource("40_76cvl")
@@ -577,6 +593,7 @@ label_settings = SubResource("LabelSettings_jr46q")
 horizontal_alignment = 1
 
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
+[connection signal="body_shape_entered" from="PlayerMovement/Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_entered" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_exited"]
 [connection signal="animation_finished" from="PlayerMovement/PlayerSprite" to="." method="_on_player_sprite_animation_finished"]
