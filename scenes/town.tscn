@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=83 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://c4x73cj1oihee" path="res://sprites/light/512x512 textures (82).png" id="38_wi6ey"]
 [ext_resource type="Texture2D" uid="uid://difyfxv50r16m" path="res://sprites/atlases/objects2.png" id="39_vrde0"]
 [ext_resource type="Texture2D" uid="uid://doqjrb388b6aw" path="res://sprites/environment/bochka.png" id="41_e1xyg"]
+[ext_resource type="Shader" path="res://shaders/fog.gdshader" id="43_blggp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqw13"]
 texture = ExtResource("4_hjqor")
@@ -80,54 +81,6 @@ sources/0 = SubResource("TileSetAtlasSource_ee8gp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwnlh"]
 size = Vector2(29.4918, 18.3489)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mvcmt"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_5dmm3"]
-colors = PackedColorArray(1, 1, 1, 0.0784314, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6obm7"]
-gradient = SubResource("Gradient_5dmm3")
-
-[sub_resource type="Curve" id="Curve_voivv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_c2p3i"]
-max_value = 30.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_iwfyx"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mait2"]
-curve_x = SubResource("Curve_voivv")
-curve_y = SubResource("Curve_c2p3i")
-curve_z = SubResource("Curve_iwfyx")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6tfr"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -100, 0)
-emission_shape = 3
-emission_box_extents = Vector3(100, 1, 1)
-angle_min = -1.99999
-angle_max = -1.99999
-gravity = Vector3(0, 1000, 0)
-scale_min = 0.3
-scale_curve = SubResource("CurveXYZTexture_mait2")
-color_initial_ramp = SubResource("GradientTexture1D_6obm7")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_evpij"]
-size = Vector2(198.265, 56.728)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke6q1"]
-size = Vector2(598.063, 48.9073)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_063ly"]
-size = Vector2(357.738, 327.217)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmehj"]
 size = Vector2(1509, 20)
@@ -186,6 +139,80 @@ _data = {
 "RESET": SubResource("Animation_8g083"),
 "end": SubResource("Animation_5yxkt")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ssj1w"]
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evpij"]
+size = Vector2(198.265, 56.728)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke6q1"]
+size = Vector2(598.063, 48.9073)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_063ly"]
+size = Vector2(357.738, 327.217)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t45us"]
+size = Vector2(378.911, 153.873)
+
+[sub_resource type="Animation" id="Animation_1viuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("===Environment===/Boat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-66, 715)]
+}
+
+[sub_resource type="Animation" id="Animation_oiba0"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("===Environment===/Boat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-66, 715), Vector2(-66, 720.4), Vector2(-66, 715)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_47qpm"]
+_data = {
+"RESET": SubResource("Animation_1viuy"),
+"idle": SubResource("Animation_oiba0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idktq"]
+size = Vector2(33, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqrp1"]
+size = Vector2(69, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wasa2"]
+size = Vector2(25, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6nkn"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nf2"]
+size = Vector2(20, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xswcm"]
+size = Vector2(13, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84nc4"]
+size = Vector2(71, 5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg6rm"]
 animations = [{
@@ -255,70 +282,59 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t45us"]
-size = Vector2(378.911, 153.873)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p263f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ssj1w"]
-radius = 13.0384
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ef5p8"]
+width = 840
+height = 840
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_p263f")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqrp1"]
-size = Vector2(69, 12)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8smth"]
+shader = ExtResource("43_blggp")
+shader_parameter/density = 0.14
+shader_parameter/speed = Vector2(0.005, 0.005)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ef5p8")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wasa2"]
-size = Vector2(25, 6)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mvcmt"]
+blend_mode = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6nkn"]
-size = Vector2(10, 8)
+[sub_resource type="Gradient" id="Gradient_5dmm3"]
+colors = PackedColorArray(1, 1, 1, 0.0784314, 1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nf2"]
-size = Vector2(20, 4)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6obm7"]
+gradient = SubResource("Gradient_5dmm3")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xswcm"]
-size = Vector2(13, 4)
+[sub_resource type="Curve" id="Curve_voivv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_84nc4"]
-size = Vector2(71, 5)
+[sub_resource type="Curve" id="Curve_c2p3i"]
+max_value = 30.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Animation" id="Animation_1viuy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Boat:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-66, 715)]
-}
+[sub_resource type="Curve" id="Curve_iwfyx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Animation" id="Animation_oiba0"]
-resource_name = "idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Boat:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.96667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-66, 715), Vector2(-66, 720.4), Vector2(-66, 715)]
-}
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mait2"]
+curve_x = SubResource("Curve_voivv")
+curve_y = SubResource("Curve_c2p3i")
+curve_z = SubResource("Curve_iwfyx")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_47qpm"]
-_data = {
-"RESET": SubResource("Animation_1viuy"),
-"idle": SubResource("Animation_oiba0")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_idktq"]
-size = Vector2(33, 5)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6tfr"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -100, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+angle_min = -1.99999
+angle_max = -1.99999
+gravity = Vector3(0, 1000, 0)
+scale_min = 0.3
+scale_curve = SubResource("CurveXYZTexture_mait2")
+color_initial_ramp = SubResource("GradientTexture1D_6obm7")
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -341,105 +357,12 @@ tile_set = SubResource("TileSet_t8vgo")
 [node name="Player" parent="." node_paths=PackedStringArray("camera_limiter") instance=ExtResource("1_cxiqd")]
 y_sort_enabled = true
 position = Vector2(6, 739)
-camera_limiter = NodePath("../CollisionShape2D")
+camera_limiter = NodePath("../CameraLimiterCollisionShape")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CameraLimiterCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(604.5, 521.5)
 scale = Vector2(50.6243, 45.8337)
 shape = SubResource("RectangleShape2D_nwnlh")
-
-[node name="RainParticles" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_mvcmt")
-position = Vector2(640, 472)
-scale = Vector2(7.04, 7.04)
-amount = 500
-process_material = SubResource("ParticleProcessMaterial_p6tfr")
-lifetime = 2.0
-preprocess = 0.5
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.039432, 6.70221e-06, 0.221013, 1)
-
-[node name="HealersHouse" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(1104, 500)
-scale = Vector2(0.786824, 0.564094)
-load_scene_file_path = "res://scenes/buildings/inside/healers_house.tscn"
-
-[node name="Sprite2D" type="Sprite2D" parent="HealersHouse"]
-y_sort_enabled = true
-position = Vector2(-1.27093, 124.093)
-scale = Vector2(1, 1.28364)
-texture = ExtResource("5_q2kvk")
-offset = Vector2(0, -70)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="HealersHouse"]
-position = Vector2(0, 17.7274)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealersHouse/StaticBody2D"]
-position = Vector2(-2.54175, 93.9561)
-scale = Vector2(0.999999, 1)
-shape = SubResource("RectangleShape2D_evpij")
-
-[node name="Hospital" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(1077, 201)
-scale = Vector2(0.553453, 0.797426)
-load_scene_file_path = "res://scenes/buildings/inside/hospital.tscn"
-
-[node name="Sprite2D" type="Sprite2D" parent="Hospital"]
-y_sort_enabled = true
-position = Vector2(-7.42432, 123.269)
-scale = Vector2(2.00972, 1)
-texture = ExtResource("5_ovsj6")
-offset = Vector2(0, -90)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Hospital"]
-position = Vector2(0, 90.2905)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hospital/StaticBody2D"]
-position = Vector2(-6.32397, 0.627014)
-shape = SubResource("RectangleShape2D_ke6q1")
-
-[node name="FishermansHouse" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(142, 578)
-scale = Vector2(0.466822, 0.388516)
-load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
-
-[node name="FishermansHouseSprite" type="Sprite2D" parent="FishermansHouse"]
-position = Vector2(-106.682, 23.176)
-scale = Vector2(2.81429, 2.81429)
-texture = ExtResource("4_fbcao")
-offset = Vector2(0, -44.635)
-
-[node name="StaticBody" type="StaticBody2D" parent="FishermansHouse"]
-position = Vector2(0, 5.14551)
-scale = Vector2(1, -0.338426)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishermansHouse/StaticBody"]
-position = Vector2(-97.4677, -1.28674)
-shape = SubResource("RectangleShape2D_063ly")
-
-[node name="Library" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(459, 147)
-scale = Vector2(0.48, 0.72)
-load_scene_file_path = "res://scenes/buildings/inside/library.tscn"
-
-[node name="LibrarySprite" type="Sprite2D" parent="Library"]
-position = Vector2(-100, 73)
-scale = Vector2(1.66667, 1)
-texture = ExtResource("5_qkuxp")
-offset = Vector2(0, -50)
-
-[node name="StaticBody" type="StaticBody2D" parent="Library"]
-position = Vector2(-10.4167, 76)
-scale = Vector2(0.916667, 0.199999)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Library/StaticBody"]
-position = Vector2(-97.4678, 86.392)
-shape = SubResource("RectangleShape2D_063ly")
 
 [node name="Walls" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -970,29 +893,6 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="EndingTriggerDepends/EndingArea"]
 volume_db = 4.052
 
-[node name="ElderManNPC" parent="." instance=ExtResource("5_g7p4s")]
-position = Vector2(925, 698)
-scale = Vector2(0.365278, 0.365278)
-dialog_path = "res://storage/dialogs/elder_man_dialog.json"
-
-[node name="ElderManNPCAnimatedSprite" type="AnimatedSprite2D" parent="ElderManNPC"]
-scale = Vector2(2.21839, 2.21839)
-sprite_frames = SubResource("SpriteFrames_lg6rm")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.492627
-
-[node name="EventTrigger" parent="ElderManNPC" instance=ExtResource("6_odmwe")]
-position = Vector2(-2.73755, 2.7373)
-scale = Vector2(1.86162, 1.86162)
-event = "talk_to_elder_man"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ElderManNPC"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ElderManNPC/StaticBody2D"]
-position = Vector2(0, 38.327)
-shape = SubResource("CapsuleShape2D_r64ks")
-
 [node name="TriggerDepends" parent="." instance=ExtResource("7_k7k2j")]
 position = Vector2(1.52588e-05, 0)
 scale = Vector2(0.966805, 0.964342)
@@ -1025,52 +925,6 @@ position = Vector2(-882, 647)
 [node name="SpawningPoint3" type="Node2D" parent="Spawner"]
 position = Vector2(343, 510)
 
-[node name="LibrarianNPC" parent="." instance=ExtResource("5_g7p4s")]
-y_sort_enabled = true
-position = Vector2(372, 315)
-scale = Vector2(0.4, 0.4)
-dialog_path = "res://storage/dialogs/librarian_dialog.json"
-
-[node name="LibrarianAnimatedSprite" type="AnimatedSprite2D" parent="LibrarianNPC"]
-y_sort_enabled = true
-scale = Vector2(2.1, 2.1)
-sprite_frames = SubResource("SpriteFrames_qaixa")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="LibrarianNPC"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LibrarianNPC/StaticBody2D"]
-position = Vector2(0, 38.327)
-shape = SubResource("CapsuleShape2D_r64ks")
-
-[node name="EventTrigger" parent="LibrarianNPC" instance=ExtResource("6_odmwe")]
-scale = Vector2(1.8, 1.8)
-event = "talk_to_librarian"
-
-[node name="Church" parent="." instance=ExtResource("3_vuaki")]
-y_sort_enabled = true
-position = Vector2(815, 524)
-scale = Vector2(0.56, 1)
-load_scene_file_path = "res://scenes/buildings/inside/church.tscn"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Church"]
-position = Vector2(1.78564, 95.0001)
-scale = Vector2(0.928411, 0.51991)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Church/StaticBody2D"]
-position = Vector2(0.961426, -38.4683)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_t45us")
-
-[node name="ChurchSprite" type="Sprite2D" parent="Church"]
-position = Vector2(14.2856, 105)
-scale = Vector2(1.78571, 1)
-texture = ExtResource("32_34ttt")
-offset = Vector2(0, -138.55)
-region_enabled = true
-region_rect = Rect2(12.7271, 0, 232.273, 371.273)
-
 [node name="Note" type="StaticBody2D" parent="."]
 position = Vector2(775, 811)
 script = ExtResource("34_2uf6k")
@@ -1085,735 +939,923 @@ shape = SubResource("CircleShape2D_ssj1w")
 [node name="Sprite2D" type="Sprite2D" parent="Note"]
 texture = ExtResource("35_6ai1h")
 
-[node name="Trees" type="Node2D" parent="."]
+[node name="===Buildings===" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Tree17" type="Sprite2D" parent="Trees"]
+[node name="HealersHouse" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(334, 490)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(1104, 500)
+scale = Vector2(0.786824, 0.564094)
+load_scene_file_path = "res://scenes/buildings/inside/healers_house.tscn"
 
-[node name="Tree18" type="Sprite2D" parent="Trees"]
+[node name="Sprite2D" type="Sprite2D" parent="===Buildings===/HealersHouse"]
 y_sort_enabled = true
-position = Vector2(162, 293)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(-1.27093, 124.093)
+scale = Vector2(1, 1.28364)
+texture = ExtResource("5_q2kvk")
+offset = Vector2(0, -70)
 
-[node name="Tree19" type="Sprite2D" parent="Trees"]
+[node name="StaticBody2D" type="StaticBody2D" parent="===Buildings===/HealersHouse"]
+position = Vector2(0, 17.7274)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Buildings===/HealersHouse/StaticBody2D"]
+position = Vector2(-2.54175, 93.9561)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_evpij")
+
+[node name="Hospital" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(991, 609)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(1077, 201)
+scale = Vector2(0.553453, 0.797426)
+load_scene_file_path = "res://scenes/buildings/inside/hospital.tscn"
 
-[node name="Tree20" type="Sprite2D" parent="Trees"]
+[node name="Sprite2D" type="Sprite2D" parent="===Buildings===/Hospital"]
 y_sort_enabled = true
-position = Vector2(639, 281)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(-7.42432, 123.269)
+scale = Vector2(2.00972, 1)
+texture = ExtResource("5_ovsj6")
+offset = Vector2(0, -90)
 
-[node name="Tree21" type="Sprite2D" parent="Trees"]
+[node name="StaticBody2D" type="StaticBody2D" parent="===Buildings===/Hospital"]
+position = Vector2(0, 90.2905)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Buildings===/Hospital/StaticBody2D"]
+position = Vector2(-6.32397, 0.627014)
+shape = SubResource("RectangleShape2D_ke6q1")
+
+[node name="FishermansHouse" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(1016, 383)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(142, 578)
+scale = Vector2(0.466822, 0.388516)
+load_scene_file_path = "res://scenes/buildings/inside/fishermans_house.tscn"
 
-[node name="Tree24" type="Sprite2D" parent="Trees"]
+[node name="FishermansHouseSprite" type="Sprite2D" parent="===Buildings===/FishermansHouse"]
+position = Vector2(-106.682, 23.176)
+scale = Vector2(2.81429, 2.81429)
+texture = ExtResource("4_fbcao")
+offset = Vector2(0, -44.635)
+
+[node name="StaticBody" type="StaticBody2D" parent="===Buildings===/FishermansHouse"]
+position = Vector2(0, 5.14551)
+scale = Vector2(1, -0.338426)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Buildings===/FishermansHouse/StaticBody"]
+position = Vector2(-97.4677, -1.28674)
+shape = SubResource("RectangleShape2D_063ly")
+
+[node name="Library" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(1180, 812)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(459, 147)
+scale = Vector2(0.48, 0.72)
+load_scene_file_path = "res://scenes/buildings/inside/library.tscn"
 
-[node name="Tree22" type="Sprite2D" parent="Trees"]
+[node name="LibrarySprite" type="Sprite2D" parent="===Buildings===/Library"]
+position = Vector2(-100, 73)
+scale = Vector2(1.66667, 1)
+texture = ExtResource("5_qkuxp")
+offset = Vector2(0, -50)
+
+[node name="StaticBody" type="StaticBody2D" parent="===Buildings===/Library"]
+position = Vector2(-10.4167, 76)
+scale = Vector2(0.916667, 0.199999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Buildings===/Library/StaticBody"]
+position = Vector2(-97.4678, 86.392)
+shape = SubResource("RectangleShape2D_063ly")
+
+[node name="Church" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(1205, 239)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+position = Vector2(815, 524)
+scale = Vector2(0.56, 1)
+load_scene_file_path = "res://scenes/buildings/inside/church.tscn"
 
-[node name="Tree23" type="Sprite2D" parent="Trees"]
-y_sort_enabled = true
-position = Vector2(143, 803)
-texture = ExtResource("5_xfkit")
-offset = Vector2(0, -29.13)
+[node name="StaticBody2D" type="StaticBody2D" parent="===Buildings===/Church"]
+position = Vector2(1.78564, 95.0001)
+scale = Vector2(0.928411, 0.51991)
 
-[node name="Rocks" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Buildings===/Church/StaticBody2D"]
+position = Vector2(0.961426, -38.4683)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_t45us")
 
-[node name="BigRock" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(304, -101)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/BigRock"]
-position = Vector2(296.5, 593)
-shape = SubResource("RectangleShape2D_hqrp1")
-
-[node name="BigRockSprite" type="Sprite2D" parent="Rocks/BigRock"]
-y_sort_enabled = true
-position = Vector2(297, 596)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -15.88)
+[node name="ChurchSprite" type="Sprite2D" parent="===Buildings===/Church"]
+position = Vector2(14.2856, 105)
+scale = Vector2(1.78571, 1)
+texture = ExtResource("32_34ttt")
+offset = Vector2(0, -138.55)
 region_enabled = true
-region_rect = Rect2(34.7284, 64.5592, 86.929, 59.5563)
+region_rect = Rect2(12.7271, 0, 232.273, 371.273)
 
-[node name="BigRock2" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(557, -330)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/BigRock2"]
-position = Vector2(296.5, 593)
-shape = SubResource("RectangleShape2D_hqrp1")
-
-[node name="BigRockSprite" type="Sprite2D" parent="Rocks/BigRock2"]
-y_sort_enabled = true
-position = Vector2(297, 596)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -15.88)
-region_enabled = true
-region_rect = Rect2(34.7284, 64.5592, 86.929, 59.5563)
-
-[node name="FirstSmalRock" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(-150, -82)
-
-[node name="FirstSmalRockSprite" type="Sprite2D" parent="Rocks/FirstSmalRock"]
-y_sort_enabled = true
-position = Vector2(390, 599)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -9.19)
-region_enabled = true
-region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/FirstSmalRock"]
-position = Vector2(389, 594)
-shape = SubResource("RectangleShape2D_wasa2")
-
-[node name="FirstSmalRock3" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(630, 199)
-
-[node name="FirstSmalRockSprite" type="Sprite2D" parent="Rocks/FirstSmalRock3"]
-y_sort_enabled = true
-position = Vector2(390, 599)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -9.19)
-region_enabled = true
-region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/FirstSmalRock3"]
-position = Vector2(389, 594)
-shape = SubResource("RectangleShape2D_wasa2")
-
-[node name="FirstSmalRock4" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(887, -49)
-
-[node name="FirstSmalRockSprite" type="Sprite2D" parent="Rocks/FirstSmalRock4"]
-y_sort_enabled = true
-position = Vector2(390, 599)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -9.19)
-region_enabled = true
-region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/FirstSmalRock4"]
-position = Vector2(389, 594)
-shape = SubResource("RectangleShape2D_wasa2")
-
-[node name="FirstSmalRock2" type="StaticBody2D" parent="Rocks"]
-y_sort_enabled = true
-position = Vector2(237, 236)
-
-[node name="FirstSmalRockSprite" type="Sprite2D" parent="Rocks/FirstSmalRock2"]
-y_sort_enabled = true
-position = Vector2(390, 599)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -9.19)
-region_enabled = true
-region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/FirstSmalRock2"]
-position = Vector2(389, 594)
-shape = SubResource("RectangleShape2D_wasa2")
-
-[node name="Lanterns" type="Node2D" parent="."]
+[node name="===Environment===" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Lantern" type="StaticBody2D" parent="Lanterns"]
-y_sort_enabled = true
-position = Vector2(682, 695)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanterns/Lantern"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_k6nkn")
-
-[node name="LanternSprite" type="Sprite2D" parent="Lanterns/Lantern"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -25.64)
-region_enabled = true
-region_rect = Rect2(0, 100.944, 32.916, 123.056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lanterns/Lantern"]
-position = Vector2(0, -63)
-scale = Vector2(0.457031, 0.457031)
-color = Color(1, 0.620333, 0.33, 0.341176)
-energy = 6.1
-texture = ExtResource("38_wi6ey")
-
-[node name="Lantern2" type="StaticBody2D" parent="Lanterns"]
-y_sort_enabled = true
-position = Vector2(970, 695)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanterns/Lantern2"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_k6nkn")
-
-[node name="LanternSprite" type="Sprite2D" parent="Lanterns/Lantern2"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -25.64)
-region_enabled = true
-region_rect = Rect2(0, 100.944, 32.916, 123.056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lanterns/Lantern2"]
-position = Vector2(0, -63)
-scale = Vector2(0.457031, 0.457031)
-color = Color(1, 0.620333, 0.33, 0.341176)
-energy = 6.1
-texture = ExtResource("38_wi6ey")
-
-[node name="Lantern3" type="StaticBody2D" parent="Lanterns"]
-y_sort_enabled = true
-position = Vector2(498, 287)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanterns/Lantern3"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_k6nkn")
-
-[node name="LanternSprite" type="Sprite2D" parent="Lanterns/Lantern3"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -25.64)
-region_enabled = true
-region_rect = Rect2(0, 100.944, 32.916, 123.056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lanterns/Lantern3"]
-position = Vector2(0, -63)
-scale = Vector2(0.457031, 0.457031)
-color = Color(1, 0.620333, 0.33, 0.341176)
-energy = 6.1
-texture = ExtResource("38_wi6ey")
-
-[node name="Lantern4" type="StaticBody2D" parent="Lanterns"]
-y_sort_enabled = true
-position = Vector2(304, 703)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanterns/Lantern4"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_k6nkn")
-
-[node name="LanternSprite" type="Sprite2D" parent="Lanterns/Lantern4"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -25.64)
-region_enabled = true
-region_rect = Rect2(0, 100.944, 32.916, 123.056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lanterns/Lantern4"]
-position = Vector2(0, -63)
-scale = Vector2(0.457031, 0.457031)
-color = Color(1, 0.620333, 0.33, 0.341176)
-energy = 6.1
-texture = ExtResource("38_wi6ey")
-
-[node name="Lantern5" type="StaticBody2D" parent="Lanterns"]
-y_sort_enabled = true
-position = Vector2(1273, 391)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanterns/Lantern5"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_k6nkn")
-
-[node name="LanternSprite" type="Sprite2D" parent="Lanterns/Lantern5"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -25.64)
-region_enabled = true
-region_rect = Rect2(0, 100.944, 32.916, 123.056)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lanterns/Lantern5"]
-position = Vector2(0, -63)
-scale = Vector2(0.457031, 0.457031)
-color = Color(1, 0.620333, 0.33, 0.341176)
-energy = 6.1
-texture = ExtResource("38_wi6ey")
-
-[node name="Graves" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="FirstGrave" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-343, -257)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave3" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-343, -257)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave3"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave3"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave2" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-303, -255)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave2"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave2"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave4" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-343, -224)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave4"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave4"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave6" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-318, -289)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave6"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave6"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave5" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(-264, -224)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave5"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave5"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="SecondGrave" type="StaticBody2D" parent="Graves"]
-position = Vector2(86, 355)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave2" type="StaticBody2D" parent="Graves"]
-position = Vector2(207, 356)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave2"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave2"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave4" type="StaticBody2D" parent="Graves"]
-position = Vector2(207, 356)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave4"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave4"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave5" type="StaticBody2D" parent="Graves"]
-position = Vector2(167, 397)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave5"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave5"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave3" type="StaticBody2D" parent="Graves"]
-position = Vector2(83, 388)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave3"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave3"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="FirstGrave7" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(69, -226)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave7"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave7"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave8" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(69, -226)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave8"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave8"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave9" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(109, -224)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave9"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave9"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave10" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(77, -187)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave10"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave10"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave11" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(48, -264)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave11"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave11"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="FirstGrave12" type="StaticBody2D" parent="Graves"]
-y_sort_enabled = true
-position = Vector2(148, -193)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/FirstGrave12"]
-y_sort_enabled = true
-position = Vector2(513, 615)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -7.635)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/FirstGrave12"]
-position = Vector2(514, 609)
-shape = SubResource("RectangleShape2D_p7nf2")
-
-[node name="SecondGrave6" type="StaticBody2D" parent="Graves"]
-position = Vector2(475, 381)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave6"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave6"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave7" type="StaticBody2D" parent="Graves"]
-position = Vector2(619, 387)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave7"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave7"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave8" type="StaticBody2D" parent="Graves"]
-position = Vector2(619, 387)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave8"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave8"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave9" type="StaticBody2D" parent="Graves"]
-position = Vector2(579, 428)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave9"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave9"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="SecondGrave10" type="StaticBody2D" parent="Graves"]
-position = Vector2(495, 419)
-
-[node name="Sprite2D" type="Sprite2D" parent="Graves/SecondGrave10"]
-position = Vector2(43, 4)
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -6.65)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graves/SecondGrave10"]
-position = Vector2(42.5, -1)
-shape = SubResource("RectangleShape2D_xswcm")
-
-[node name="Fences" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Fence" type="StaticBody2D" parent="Fences"]
-y_sort_enabled = true
-position = Vector2(135, 420)
-
-[node name="Sprite2D" type="Sprite2D" parent="Fences/Fence"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -4.125)
-region_enabled = true
-region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/Fence"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_84nc4")
-
-[node name="Fence2" type="StaticBody2D" parent="Fences"]
-y_sort_enabled = true
-position = Vector2(271, 420)
-
-[node name="Sprite2D" type="Sprite2D" parent="Fences/Fence2"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -4.125)
-region_enabled = true
-region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/Fence2"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_84nc4")
-
-[node name="Fence3" type="StaticBody2D" parent="Fences"]
-y_sort_enabled = true
-position = Vector2(527, 441)
-
-[node name="Sprite2D" type="Sprite2D" parent="Fences/Fence3"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -4.125)
-region_enabled = true
-region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/Fence3"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_84nc4")
-
-[node name="Fence4" type="StaticBody2D" parent="Fences"]
-y_sort_enabled = true
-position = Vector2(641, 345)
-
-[node name="Sprite2D" type="Sprite2D" parent="Fences/Fence4"]
-y_sort_enabled = true
-texture = ExtResource("37_nyms6")
-offset = Vector2(0, -4.125)
-region_enabled = true
-region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/Fence4"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_84nc4")
-
-[node name="Boat" type="Sprite2D" parent="."]
+[node name="Boat" type="Sprite2D" parent="===Environment==="]
 y_sort_enabled = true
 position = Vector2(-66, 715)
-rotation = 6.28319
 texture = ExtResource("39_vrde0")
 offset = Vector2(0, 10.715)
 region_enabled = true
 region_rect = Rect2(4.7505, 4.56108, 122.449, 50.033)
 
-[node name="BoatAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="BoatAnimationPlayer" type="AnimationPlayer" parent="===Environment===/Boat"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_47qpm")
 }
 autoplay = "idle"
 
-[node name="Barrel" type="StaticBody2D" parent="."]
+[node name="Barrels" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="Barrel" type="StaticBody2D" parent="===Environment===/Barrels"]
 position = Vector2(24, 656)
 
-[node name="BarrelSprite" type="Sprite2D" parent="Barrel"]
+[node name="BarrelSprite" type="Sprite2D" parent="===Environment===/Barrels/Barrel"]
 texture = ExtResource("41_e1xyg")
 offset = Vector2(0, -8.99)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrel"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Barrels/Barrel"]
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_idktq")
 
-[node name="Barrel2" type="StaticBody2D" parent="."]
+[node name="Barrel2" type="StaticBody2D" parent="===Environment===/Barrels"]
 position = Vector2(-7, 632)
 
-[node name="BarrelSprite" type="Sprite2D" parent="Barrel2"]
+[node name="BarrelSprite" type="Sprite2D" parent="===Environment===/Barrels/Barrel2"]
 texture = ExtResource("41_e1xyg")
 offset = Vector2(0, -8.99)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrel2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Barrels/Barrel2"]
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_idktq")
 
-[node name="Barrel3" type="StaticBody2D" parent="."]
+[node name="Barrel3" type="StaticBody2D" parent="===Environment===/Barrels"]
 position = Vector2(265, 613)
 
-[node name="BarrelSprite" type="Sprite2D" parent="Barrel3"]
+[node name="BarrelSprite" type="Sprite2D" parent="===Environment===/Barrels/Barrel3"]
 texture = ExtResource("41_e1xyg")
 offset = Vector2(0, -8.99)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrel3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Barrels/Barrel3"]
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_idktq")
 
-[node name="Barrel4" type="StaticBody2D" parent="."]
+[node name="Barrel4" type="StaticBody2D" parent="===Environment===/Barrels"]
 position = Vector2(290, 641)
 
-[node name="BarrelSprite" type="Sprite2D" parent="Barrel4"]
+[node name="BarrelSprite" type="Sprite2D" parent="===Environment===/Barrels/Barrel4"]
 texture = ExtResource("41_e1xyg")
 offset = Vector2(0, -8.99)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrel4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Barrels/Barrel4"]
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_idktq")
+
+[node name="Trees" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="Tree17" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(334, 495)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree18" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(162, 293)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree19" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(991, 609)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree20" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(639, 281)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree21" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(1016, 383)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree24" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(1180, 812)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree22" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(1205, 239)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Tree23" type="Sprite2D" parent="===Environment===/Trees"]
+y_sort_enabled = true
+position = Vector2(143, 803)
+texture = ExtResource("5_xfkit")
+offset = Vector2(0, -29.13)
+
+[node name="Rocks" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="BigRock" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(304, -101)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/BigRock"]
+position = Vector2(296.5, 593)
+shape = SubResource("RectangleShape2D_hqrp1")
+
+[node name="BigRockSprite" type="Sprite2D" parent="===Environment===/Rocks/BigRock"]
+y_sort_enabled = true
+position = Vector2(297, 596)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -15.88)
+region_enabled = true
+region_rect = Rect2(34.7284, 64.5592, 86.929, 59.5563)
+
+[node name="BigRock2" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(557, -330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/BigRock2"]
+position = Vector2(296.5, 593)
+shape = SubResource("RectangleShape2D_hqrp1")
+
+[node name="BigRockSprite" type="Sprite2D" parent="===Environment===/Rocks/BigRock2"]
+y_sort_enabled = true
+position = Vector2(297, 596)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -15.88)
+region_enabled = true
+region_rect = Rect2(34.7284, 64.5592, 86.929, 59.5563)
+
+[node name="FirstSmalRock" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(-150, -82)
+
+[node name="FirstSmalRockSprite" type="Sprite2D" parent="===Environment===/Rocks/FirstSmalRock"]
+y_sort_enabled = true
+position = Vector2(390, 599)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -9.19)
+region_enabled = true
+region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/FirstSmalRock"]
+position = Vector2(389, 594)
+shape = SubResource("RectangleShape2D_wasa2")
+
+[node name="FirstSmalRock3" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(630, 199)
+
+[node name="FirstSmalRockSprite" type="Sprite2D" parent="===Environment===/Rocks/FirstSmalRock3"]
+y_sort_enabled = true
+position = Vector2(390, 599)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -9.19)
+region_enabled = true
+region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/FirstSmalRock3"]
+position = Vector2(389, 594)
+shape = SubResource("RectangleShape2D_wasa2")
+
+[node name="FirstSmalRock4" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(887, -49)
+
+[node name="FirstSmalRockSprite" type="Sprite2D" parent="===Environment===/Rocks/FirstSmalRock4"]
+y_sort_enabled = true
+position = Vector2(390, 599)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -9.19)
+region_enabled = true
+region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/FirstSmalRock4"]
+position = Vector2(389, 594)
+shape = SubResource("RectangleShape2D_wasa2")
+
+[node name="FirstSmalRock2" type="StaticBody2D" parent="===Environment===/Rocks"]
+y_sort_enabled = true
+position = Vector2(237, 236)
+
+[node name="FirstSmalRockSprite" type="Sprite2D" parent="===Environment===/Rocks/FirstSmalRock2"]
+y_sort_enabled = true
+position = Vector2(390, 599)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -9.19)
+region_enabled = true
+region_rect = Rect2(30.1267, 128.863, 33.9937, 31.5997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Rocks/FirstSmalRock2"]
+position = Vector2(389, 594)
+shape = SubResource("RectangleShape2D_wasa2")
+
+[node name="Lanterns" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="Lantern" type="StaticBody2D" parent="===Environment===/Lanterns"]
+y_sort_enabled = true
+position = Vector2(682, 695)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Lanterns/Lantern"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_k6nkn")
+
+[node name="LanternSprite" type="Sprite2D" parent="===Environment===/Lanterns/Lantern"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -25.64)
+region_enabled = true
+region_rect = Rect2(0, 100.944, 32.916, 123.056)
+
+[node name="PointLight2D" type="PointLight2D" parent="===Environment===/Lanterns/Lantern"]
+position = Vector2(0, -63)
+scale = Vector2(0.457031, 0.457031)
+color = Color(1, 0.620333, 0.33, 0.341176)
+energy = 6.1
+texture = ExtResource("38_wi6ey")
+
+[node name="Lantern2" type="StaticBody2D" parent="===Environment===/Lanterns"]
+y_sort_enabled = true
+position = Vector2(970, 695)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Lanterns/Lantern2"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_k6nkn")
+
+[node name="LanternSprite" type="Sprite2D" parent="===Environment===/Lanterns/Lantern2"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -25.64)
+region_enabled = true
+region_rect = Rect2(0, 100.944, 32.916, 123.056)
+
+[node name="PointLight2D" type="PointLight2D" parent="===Environment===/Lanterns/Lantern2"]
+position = Vector2(0, -63)
+scale = Vector2(0.457031, 0.457031)
+color = Color(1, 0.620333, 0.33, 0.341176)
+energy = 6.1
+texture = ExtResource("38_wi6ey")
+
+[node name="Lantern3" type="StaticBody2D" parent="===Environment===/Lanterns"]
+y_sort_enabled = true
+position = Vector2(498, 287)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Lanterns/Lantern3"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_k6nkn")
+
+[node name="LanternSprite" type="Sprite2D" parent="===Environment===/Lanterns/Lantern3"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -25.64)
+region_enabled = true
+region_rect = Rect2(0, 100.944, 32.916, 123.056)
+
+[node name="PointLight2D" type="PointLight2D" parent="===Environment===/Lanterns/Lantern3"]
+position = Vector2(0, -63)
+scale = Vector2(0.457031, 0.457031)
+color = Color(1, 0.620333, 0.33, 0.341176)
+energy = 6.1
+texture = ExtResource("38_wi6ey")
+
+[node name="Lantern4" type="StaticBody2D" parent="===Environment===/Lanterns"]
+y_sort_enabled = true
+position = Vector2(304, 703)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Lanterns/Lantern4"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_k6nkn")
+
+[node name="LanternSprite" type="Sprite2D" parent="===Environment===/Lanterns/Lantern4"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -25.64)
+region_enabled = true
+region_rect = Rect2(0, 100.944, 32.916, 123.056)
+
+[node name="PointLight2D" type="PointLight2D" parent="===Environment===/Lanterns/Lantern4"]
+position = Vector2(0, -63)
+scale = Vector2(0.457031, 0.457031)
+color = Color(1, 0.620333, 0.33, 0.341176)
+energy = 6.1
+texture = ExtResource("38_wi6ey")
+
+[node name="Lantern5" type="StaticBody2D" parent="===Environment===/Lanterns"]
+y_sort_enabled = true
+position = Vector2(1273, 391)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Lanterns/Lantern5"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_k6nkn")
+
+[node name="LanternSprite" type="Sprite2D" parent="===Environment===/Lanterns/Lantern5"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -25.64)
+region_enabled = true
+region_rect = Rect2(0, 100.944, 32.916, 123.056)
+
+[node name="PointLight2D" type="PointLight2D" parent="===Environment===/Lanterns/Lantern5"]
+position = Vector2(0, -63)
+scale = Vector2(0.457031, 0.457031)
+color = Color(1, 0.620333, 0.33, 0.341176)
+energy = 6.1
+texture = ExtResource("38_wi6ey")
+
+[node name="Graves" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="FirstGrave" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-343, -257)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave3" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-343, -257)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave3"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave3"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave2" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-303, -255)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave2"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave2"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave4" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-343, -224)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave4"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave4"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave6" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-318, -289)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave6"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave6"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave5" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(-264, -224)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave5"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave5"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="SecondGrave" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(86, 355)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave2" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(207, 356)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave2"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave2"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave4" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(207, 356)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave4"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave4"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave5" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(167, 397)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave5"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave5"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave3" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(83, 388)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave3"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave3"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="FirstGrave7" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(69, -226)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave7"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave7"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave8" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(69, -226)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave8"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave8"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave9" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(109, -224)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave9"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave9"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave10" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(77, -187)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave10"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave10"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave11" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(48, -264)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave11"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave11"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="FirstGrave12" type="StaticBody2D" parent="===Environment===/Graves"]
+y_sort_enabled = true
+position = Vector2(148, -193)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/FirstGrave12"]
+y_sort_enabled = true
+position = Vector2(513, 615)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -7.635)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(32.7279, 191.54, 29.0682, 31.7064)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/FirstGrave12"]
+position = Vector2(514, 609)
+shape = SubResource("RectangleShape2D_p7nf2")
+
+[node name="SecondGrave6" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(475, 381)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave6"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave6"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave7" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(619, 387)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave7"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave7"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave8" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(619, 387)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave8"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave8"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave9" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(579, 428)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave9"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave9"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="SecondGrave10" type="StaticBody2D" parent="===Environment===/Graves"]
+position = Vector2(495, 419)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Graves/SecondGrave10"]
+position = Vector2(43, 4)
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -6.65)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(65.3142, 192.835, 28.8853, 30.4681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Graves/SecondGrave10"]
+position = Vector2(42.5, -1)
+shape = SubResource("RectangleShape2D_xswcm")
+
+[node name="Fences" type="Node2D" parent="===Environment==="]
+y_sort_enabled = true
+
+[node name="Fence" type="StaticBody2D" parent="===Environment===/Fences"]
+y_sort_enabled = true
+position = Vector2(135, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Fences/Fence"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -4.125)
+region_enabled = true
+region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Fences/Fence"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_84nc4")
+
+[node name="Fence2" type="StaticBody2D" parent="===Environment===/Fences"]
+y_sort_enabled = true
+position = Vector2(271, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Fences/Fence2"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -4.125)
+region_enabled = true
+region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Fences/Fence2"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_84nc4")
+
+[node name="Fence3" type="StaticBody2D" parent="===Environment===/Fences"]
+y_sort_enabled = true
+position = Vector2(527, 441)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Fences/Fence3"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -4.125)
+region_enabled = true
+region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Fences/Fence3"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_84nc4")
+
+[node name="Fence4" type="StaticBody2D" parent="===Environment===/Fences"]
+y_sort_enabled = true
+position = Vector2(641, 345)
+
+[node name="Sprite2D" type="Sprite2D" parent="===Environment===/Fences/Fence4"]
+y_sort_enabled = true
+texture = ExtResource("37_nyms6")
+offset = Vector2(0, -4.125)
+region_enabled = true
+region_rect = Rect2(40.0659, 161.986, 81.3694, 30.5464)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===Environment===/Fences/Fence4"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_84nc4")
+
+[node name="===NPC===" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ElderManNPC" parent="===NPC===" instance=ExtResource("5_g7p4s")]
+y_sort_enabled = true
+position = Vector2(925, 698)
+scale = Vector2(0.365278, 0.365278)
+dialog_path = "res://storage/dialogs/elder_man_dialog.json"
+
+[node name="ElderManNPCAnimatedSprite" type="AnimatedSprite2D" parent="===NPC===/ElderManNPC"]
+scale = Vector2(2.21839, 2.21839)
+sprite_frames = SubResource("SpriteFrames_lg6rm")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.492627
+
+[node name="EventTrigger" parent="===NPC===/ElderManNPC" instance=ExtResource("6_odmwe")]
+position = Vector2(-2.73755, 2.7373)
+scale = Vector2(1.86162, 1.86162)
+event = "talk_to_elder_man"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="===NPC===/ElderManNPC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===NPC===/ElderManNPC/StaticBody2D"]
+position = Vector2(0, 38.327)
+shape = SubResource("CapsuleShape2D_r64ks")
+
+[node name="LibrarianNPC" parent="===NPC===" instance=ExtResource("5_g7p4s")]
+y_sort_enabled = true
+position = Vector2(372, 315)
+scale = Vector2(0.4, 0.4)
+dialog_path = "res://storage/dialogs/librarian_dialog.json"
+
+[node name="LibrarianAnimatedSprite" type="AnimatedSprite2D" parent="===NPC===/LibrarianNPC"]
+y_sort_enabled = true
+scale = Vector2(2.1, 2.1)
+sprite_frames = SubResource("SpriteFrames_qaixa")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="===NPC===/LibrarianNPC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="===NPC===/LibrarianNPC/StaticBody2D"]
+position = Vector2(0, 38.327)
+shape = SubResource("CapsuleShape2D_r64ks")
+
+[node name="EventTrigger" parent="===NPC===/LibrarianNPC" instance=ExtResource("6_odmwe")]
+scale = Vector2(1.8, 1.8)
+event = "talk_to_librarian"
+
+[node name="===Effects===" type="Node2D" parent="."]
+
+[node name="FogParallaxBackground" type="ParallaxBackground" parent="===Effects==="]
+layer = 2
+
+[node name="FogParallaxLayer" type="ParallaxLayer" parent="===Effects===/FogParallaxBackground"]
+motion_mirroring = Vector2(1280, 960)
+
+[node name="FogColorRect" type="ColorRect" parent="===Effects===/FogParallaxBackground/FogParallaxLayer"]
+material = SubResource("ShaderMaterial_8smth")
+offset_right = 1280.0
+offset_bottom = 960.0
+
+[node name="RainParticles" type="GPUParticles2D" parent="===Effects==="]
+material = SubResource("CanvasItemMaterial_mvcmt")
+position = Vector2(640, 472)
+scale = Vector2(7.04, 7.04)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_p6tfr")
+lifetime = 2.0
+preprocess = 0.5
+
+[node name="CanvasModulate" type="CanvasModulate" parent="===Effects==="]
+color = Color(0.039432, 6.70221e-06, 0.221013, 1)
 
 [connection signal="body_entered" from="EndingTriggerDepends/EndingArea" to="EndingTriggerDepends/EndingArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="EndingTriggerDepends/EndingArea/AnimationPlayer" to="EndingTriggerDepends/EndingArea" method="_on_animation_player_animation_finished"]

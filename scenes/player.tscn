@@ -489,7 +489,7 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = ExtResource("6_4hfuy")
-texture_scale = 4.0
+texture_scale = 3.0
 
 [node name="PlayerSound" type="Node2D" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
 position = Vector2(2.73257, 57.6253)
