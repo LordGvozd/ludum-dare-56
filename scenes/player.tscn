@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=103 format=3 uid="uid://dr5g1ggev5v5o"]
-
+[gd_scene load_steps=104 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -444,10 +442,8 @@ script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
 note_text = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/Label")
 promt_label = NodePath("../../CanvasLayer/PlayerUI/Prompt")
-
 note_texture_rect = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/TextureRect")
 note_sound = ExtResource("7_v240k")
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)

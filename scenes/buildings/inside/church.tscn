@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://bwerkoqnpwks6"]
+[gd_scene load_steps=13 format=4 uid="uid://bwerkoqnpwks6"]
 
 [ext_resource type="TileSet" uid="uid://2yp16yp48d24" path="res://tilemaps/church_floor.tres" id="1_56s62"]
 [ext_resource type="Texture2D" uid="uid://clbsjgjj73w8b" path="res://sprites/environment/лавка_01.png" id="2_2f0em"]
 [ext_resource type="TileSet" uid="uid://daw1qe6d3qmpm" path="res://tilemaps/black.tres" id="2_i1kob"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="3_bpgrr"]
-[ext_resource type="PackedScene" uid="uid://d0ed77i1urfa3" path="res://scenes/change_scene_area.tscn" id="5_ip2sg"]
 [ext_resource type="Script" path="res://scripts/notes/note.gd" id="6_k2pdh"]
 [ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/items/note_2.png" id="7_ly7wr"]
-[ext_resource type="Texture2D" uid="uid://cdgofmlxn4toq" path="res://sprites/buterbrod.png" id="7_y5pu2"]
+[ext_resource type="Texture2D" uid="uid://cdgofmlxn4toq" path="res://sprites/ui/buterbrod.png" id="7_y5pu2"]
+[ext_resource type="AudioStream" uid="uid://brcltqu3d2mwf" path="res://audio/sounds/church_bell.wav" id="9_sp4uw"]
+[ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="10_x1e54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8led"]
 size = Vector2(512, 662)
@@ -33,7 +34,7 @@ tile_set = ExtResource("2_i1kob")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_limiter") instance=ExtResource("3_bpgrr")]
 y_sort_enabled = true
-position = Vector2(609, 705)
+position = Vector2(609, 858)
 camera_limiter = NodePath("../CameraLimiterCollisionShape")
 
 [node name="CameraLimiterCollisionShape" type="CollisionShape2D" parent="."]
@@ -254,11 +255,6 @@ shape = SubResource("RectangleShape2D_yfa03")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.332881, 0.332881, 0.332881, 1)
 
-[node name="ChangeSceneArea" parent="." instance=ExtResource("5_ip2sg")]
-position = Vector2(607, 910)
-scale = Vector2(3.44, 1)
-scene_path = "res://scenes/town.tscn"
-
 [node name="Note" type="StaticBody2D" parent="."]
 position = Vector2(526, 822)
 script = ExtResource("6_k2pdh")
@@ -269,3 +265,12 @@ shape = SubResource("CircleShape2D_2d0x1")
 
 [node name="NoteSprite" type="Sprite2D" parent="Note"]
 texture = ExtResource("7_ly7wr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(608, 595)
+stream = ExtResource("9_sp4uw")
+volume_db = -10.0
+autoplay = true
+
+[node name="BuildingExit" parent="." instance=ExtResource("10_x1e54")]
+position = Vector2(608, 918)

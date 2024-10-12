@@ -383,7 +383,7 @@ shape = SubResource("RectangleShape2D_evpij")
 
 [node name="Hospital" parent="." instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(1139, 228)
+position = Vector2(1077, 201)
 scale = Vector2(0.553453, 0.797426)
 load_scene_file_path = "res://scenes/buildings/inside/hospital.tscn"
 
@@ -1048,24 +1048,31 @@ shape = SubResource("CapsuleShape2D_r64ks")
 scale = Vector2(1.8, 1.8)
 event = "talk_to_librarian"
 
-[node name="Church" type="Sprite2D" parent="."]
-position = Vector2(823, 629)
-texture = ExtResource("32_34ttt")
-offset = Vector2(0, -138.55)
-region_enabled = true
-region_rect = Rect2(12.7271, 0, 232.273, 371.273)
+[node name="Church" parent="." instance=ExtResource("3_vuaki")]
+y_sort_enabled = true
+position = Vector2(815, 524)
+scale = Vector2(0.56, 1)
+load_scene_file_path = "res://scenes/buildings/inside/church.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Church"]
-position = Vector2(-7, -9.99994)
-scale = Vector2(0.51991, 0.51991)
+position = Vector2(1.78564, 95.0001)
+scale = Vector2(0.928411, 0.51991)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Church/StaticBody2D"]
 position = Vector2(0.961426, -38.4683)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_t45us")
 
+[node name="ChurchSprite" type="Sprite2D" parent="Church"]
+position = Vector2(14.2856, 105)
+scale = Vector2(1.78571, 1)
+texture = ExtResource("32_34ttt")
+offset = Vector2(0, -138.55)
+region_enabled = true
+region_rect = Rect2(12.7271, 0, 232.273, 371.273)
+
 [node name="Note" type="StaticBody2D" parent="."]
-position = Vector2(808, 780)
+position = Vector2(775, 811)
 script = ExtResource("34_2uf6k")
 note_text = "The Ritual:
 - Necronomicon
