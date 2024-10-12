@@ -9,6 +9,9 @@ class_name NoteDisplay
 var _is_in_note: bool = false
 var _event_on_open: String
 
+@export var note_sound: AudioStream
+@onready var audio_player = $"../PlayerSound/AdditionalPlayer"
+
 func _ready() -> void:
 	if note_ui_container and promt_label and note_text:
 		
@@ -32,12 +35,16 @@ func _on_body_entered(_body: Node2D) -> void:
 		
 		if _body.run_event:
 			_event_on_open = _body.run_event
+
+func _play_note_sound() -> void:
+	audio_player.stream = note_sound
+	audio_player.play()
 	
 func _open():
 		if _event_on_open:
 			EventsStorage.add_event(_event_on_open)
 		note_ui_container.visible = true
-
+		_play_note_sound()
 
 func _on_body_exited(_body: Node2D) -> void:
 	if _body is Note:

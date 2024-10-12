@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=103 format=3 uid="uid://dr5g1ggev5v5o"]
+
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -11,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/characters/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xtkdwh7ucdlo" path="res://sprites/characters/player/attack/down/player_tap_down1.png" id="7_dumy8"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/characters/player/idle/down/player_idle_down3.png" id="7_g6ybp"]
+[ext_resource type="AudioStream" uid="uid://31iroppagbly" path="res://audio/sounds/note_open-close.mp3" id="7_v240k"]
 [ext_resource type="Texture2D" uid="uid://bgpncrqwjepoo" path="res://sprites/characters/player/attack/down/player_tap_down2.png" id="8_1g4vx"]
 [ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/characters/player/idle/down/player_idle_down4.png" id="8_gbfhm"]
 [ext_resource type="Texture2D" uid="uid://d1w332uoar30g" path="res://sprites/characters/player/attack/down/player_tap_down3.png" id="9_3n1aj"]
@@ -441,7 +444,10 @@ script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
 note_text = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/Label")
 promt_label = NodePath("../../CanvasLayer/PlayerUI/Prompt")
+
 note_texture_rect = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/TextureRect")
+note_sound = ExtResource("7_v240k")
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)
@@ -499,6 +505,11 @@ ground_sounds = {
 "grass": ExtResource("87_7mfo5")
 }
 
+[node name="AdditionalPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
+position = Vector2(-2.73257, -57.6253)
+rotation = -0.00393331
+scale = Vector2(2.5059, 2.5059)
+
 [node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
 stream = ExtResource("40_76cvl")
 
@@ -514,8 +525,6 @@ parameters/looping = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="PlayerMovement/PlayerSound"]
 current = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
