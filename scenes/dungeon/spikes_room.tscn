@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://bdhx6eq7fti5g"]
+[gd_scene load_steps=14 format=4 uid="uid://bdhx6eq7fti5g"]
 
-[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_f3li4"]
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/atlases/flor.png" id="1_f3li4"]
 [ext_resource type="PackedScene" uid="uid://c1ywqttyk5jka" path="res://scenes/spikes/fake_spikes_tile.tscn" id="1_y0fd0"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_k0xtq"]
 [ext_resource type="PackedScene" uid="uid://ddcfl2ex8vqgo" path="res://scenes/spikes/spikes_tile_sprite.tscn" id="2_urkq4"]
-[ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/black.png" id="4_jci0n"]
-[ext_resource type="Texture2D" uid="uid://cl8ulfm55yfw7" path="res://sprites/skeleton.png" id="6_cbvxu"]
+[ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/atlases/black.png" id="4_jci0n"]
+[ext_resource type="Texture2D" uid="uid://cl8ulfm55yfw7" path="res://sprites/environment/skeleton.png" id="6_cbvxu"]
+[ext_resource type="PackedScene" uid="uid://18j0hfgll778" path="res://scenes/spikes/spikes_timer.tscn" id="7_4tody"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eyaro"]
 texture = ExtResource("1_f3li4")
@@ -24,9 +25,7 @@ sources/0 = SubResource("TileSetAtlasSource_eyaro")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x4bpa"]
 scenes/2/scene = ExtResource("1_y0fd0")
-scenes/2/display_placeholder = ExtResource("1_y0fd0")
 scenes/3/scene = ExtResource("2_urkq4")
-scenes/3/display_placeholder = ExtResource("2_urkq4")
 
 [sub_resource type="TileSet" id="TileSet_igdtt"]
 tile_size = Vector2i(32, 32)
@@ -75,3 +74,8 @@ y_sort_enabled = true
 position = Vector2(143, 33)
 scale = Vector2(0.76, 0.76)
 texture = ExtResource("6_cbvxu")
+
+[node name="SpikesTimer" parent="." node_paths=PackedStringArray("spikes_tile_map_layer") instance=ExtResource("7_4tody")]
+wait_time = 3.0
+autostart = true
+spikes_tile_map_layer = NodePath("../SpikesTilemap")

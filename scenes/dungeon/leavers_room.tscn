@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=4 uid="uid://c4bdyrmgmx22d"]
 
-[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_8c2mp"]
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/atlases/flor.png" id="1_8c2mp"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_pikie"]
-[ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/black.png" id="2_67kun"]
+[ext_resource type="Texture2D" uid="uid://cki40m6xbxk2a" path="res://sprites/atlases/black.png" id="2_67kun"]
 [ext_resource type="PackedScene" uid="uid://kmcypsggay3h" path="res://scenes/leavers/leaver.tscn" id="2_mbude"]
 [ext_resource type="PackedScene" uid="uid://cddilrvtkrjkt" path="res://scenes/leavers/leavers_container.tscn" id="3_7bbb8"]
 [ext_resource type="PackedScene" uid="uid://d0ed77i1urfa3" path="res://scenes/change_scene_area.tscn" id="5_ublk4"]
 [ext_resource type="PackedScene" uid="uid://cxmierhbc10s5" path="res://scenes/spawner.tscn" id="7_cqsyt"]
 [ext_resource type="PackedScene" uid="uid://enxedkrpkosl" path="res://scenes/spider.tscn" id="8_kh3j8"]
-[ext_resource type="Texture2D" uid="uid://cl8ulfm55yfw7" path="res://sprites/skeleton.png" id="9_mf1e3"]
+[ext_resource type="Texture2D" uid="uid://cl8ulfm55yfw7" path="res://sprites/environment/skeleton.png" id="9_mf1e3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdluf"]
 texture = ExtResource("1_8c2mp")

@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://cv18ebcbhaqa3" path="res://fonts/Bitmgothic.ttf" id="1_b0jh4"]
 [ext_resource type="Script" path="res://scripts/menu/death_screen.gd" id="1_c5jv8"]
-[ext_resource type="Texture2D" uid="uid://m1b8cq3cekx1" path="res://sprites/skull.png" id="2_x5ajq"]
-[ext_resource type="Texture2D" uid="uid://buf0ccvrexbq2" path="res://sprites/you_died_screen.png" id="3_3r1nf"]
+[ext_resource type="Texture2D" uid="uid://m1b8cq3cekx1" path="res://sprites/ui/skull.png" id="2_x5ajq"]
+[ext_resource type="Texture2D" uid="uid://buf0ccvrexbq2" path="res://sprites/ui/you_died_screen.png" id="3_3r1nf"]
 [ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="3_ifn0d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_efg8e"]
