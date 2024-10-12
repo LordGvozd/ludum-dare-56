@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ywqttyk5jka"]
+
+[ext_resource type="Script" path="res://scripts/spikes/fake_spikes_tile_area.gd" id="3_d12u7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ewef"]
+load_path = "res://.godot/imported/spikes1.png-f721fd8430e958d1f8d41c575ac9487d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_od2wr"]
+load_path = "res://.godot/imported/spikes2.png-ff6b4f740a9b947ae45883c1164c073e.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iou0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_3ewef")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_od2wr")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2ocl"]
+size = Vector2(32, 32)
+
+[node name="FakeSpikesTileAnimatedSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_iou0p")
+animation = &"active"
+autoplay = "active"
+
+[node name="FakeSpikesTileArea" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("3_d12u7")
+
+[node name="FakeSpikesTileAreaCollisionShape" type="CollisionShape2D" parent="FakeSpikesTileArea"]
+shape = SubResource("RectangleShape2D_g2ocl")
+
+[connection signal="area_entered" from="FakeSpikesTileArea" to="FakeSpikesTileArea" method="_on_area_entered"]
+[connection signal="area_exited" from="FakeSpikesTileArea" to="FakeSpikesTileArea" method="_on_area_exited"]

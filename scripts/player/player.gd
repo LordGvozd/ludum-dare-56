@@ -7,6 +7,7 @@ class_name Player
 
 @export var camera_limiter: CollisionShape2D
 
+
 @onready var player_attack_area: CollisionShape2D = $PlayerMovement/PlayerAttackArea/PlayerAttackAreaCollisionShape
 @onready var player_camera: PlayerCamera = $PlayerMovement/PlayerCamera
 

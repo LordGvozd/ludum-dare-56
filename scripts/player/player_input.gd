@@ -30,12 +30,19 @@ func is_attack_button_pressed() -> bool:
 	if can_attack and Input.is_action_just_pressed("attack") and input_enable:
 		can_attack = false
 		is_attacking = true
-		player_animated_sprite.play("attack")
+		player_animated_sprite.play("attack_down")
 		player_attack_timer.start()
 		
 		return true
 	else:
 		return false   
+
+
+func is_interact_button_pressed() -> bool:
+	if Input.is_action_just_pressed("interact"):
+		return true
+	else:
+		return false
 
 
 func _on_player_attack_timer_timeout():
