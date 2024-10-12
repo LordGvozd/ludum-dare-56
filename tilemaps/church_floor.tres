@@ -1,0 +1,24 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://2yp16yp48d24"]
+
+[ext_resource type="Texture2D" uid="uid://2h0ulsg1rp35" path="res://sprites/atlases/tilemap_flor.png" id="1_bm78o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqkie"]
+texture = ExtResource("1_bm78o")
+texture_region_size = Vector2i(32, 32)
+1:2/0 = 0
+0:2/0 = 0
+1:8/0 = 0
+0:8/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_yqkie")
