@@ -1,8 +1,7 @@
 extends CharacterBody2D
-
-
 class_name PlayerMovement
 
+var player: Player
 
 @export var speed: int = 200
 @export var acceleration: int = 100

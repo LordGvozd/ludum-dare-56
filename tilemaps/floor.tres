@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=2 format=3 uid="uid://d0yryerdm8gju"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0pir"]
+margins = Vector2i(1, 0)
+texture_region_size = Vector2i(31, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[resource]
+tile_size = Vector2i(31, 32)
+sources/2 = SubResource("TileSetAtlasSource_b0pir")

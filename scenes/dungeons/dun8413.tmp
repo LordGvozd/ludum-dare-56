@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbw5xtcssj3r0"]
+
+[ext_resource type="Script" path="res://scripts/dungeon/cubic.gd" id="1_5hasl"]
+[ext_resource type="Texture2D" uid="uid://6njyrvcj074x" path="res://sprites/bottle_of_blood.png" id="1_63umn"]
+[ext_resource type="Texture2D" uid="uid://dfri4xmp5mll7" path="res://sprites/candles.png" id="2_rpw0i"]
+[ext_resource type="Texture2D" uid="uid://dirj3leak3bm5" path="res://sprites/chair.png" id="3_k82s4"]
+[ext_resource type="Texture2D" uid="uid://djx7bhiq762db" path="res://sprites/fish.png" id="6_kdufd"]
+
+[node name="Cubic" type="Node2D" node_paths=PackedStringArray("squares")]
+script = ExtResource("1_5hasl")
+squares = [NodePath("CanvasLayer/Control/TextureRect"), NodePath("CanvasLayer/Control/TextureRect2"), NodePath("CanvasLayer/Control/TextureRect3"), NodePath("CanvasLayer/Control/TextureRect4")]
+textures = Array[Texture]([ExtResource("1_63umn"), ExtResource("2_rpw0i"), ExtResource("3_k82s4"), ExtResource("6_kdufd")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 1.005
+anchor_bottom = 1.018
+offset_right = 0.599976
+offset_bottom = -0.280029
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 269.0
+offset_right = 436.0
+offset_bottom = 384.0
+texture = ExtResource("3_k82s4")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 404.0
+offset_right = 559.0
+offset_bottom = 519.0
+texture = ExtResource("3_k82s4")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 404.0
+offset_right = 436.0
+offset_bottom = 519.0
+texture = ExtResource("3_k82s4")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 269.0
+offset_right = 559.0
+offset_bottom = 384.0
+texture = ExtResource("3_k82s4")
