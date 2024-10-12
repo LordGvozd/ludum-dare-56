@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/player/player_animation.gd" id="4_kcfpf"]
 [ext_resource type="Texture2D" uid="uid://dvq31c0412vvm" path="res://sprites/characters/player/idle/down/player_idle_down1.png" id="5_av6ti"]
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_kjhrr"]
-[ext_resource type="Texture2D" uid="uid://c4xv31iqikonu" path="res://sprites/light/player_lamp_light.png" id="6_4hfuy"]
 [ext_resource type="Script" path="res://scripts/player/note_display.gd" id="6_cwfsu"]
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/characters/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xtkdwh7ucdlo" path="res://sprites/characters/player/attack/down/player_tap_down1.png" id="7_dumy8"]
@@ -92,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/characters/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
 [ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/ui/note_list.png" id="74_7ftfu"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="83_eo2sa"]
+[ext_resource type="Texture2D" uid="uid://c4x73cj1oihee" path="res://sprites/light/512x512 textures (82).png" id="85_a7io5"]
 [ext_resource type="AudioStream" uid="uid://cqxn71gdsmxke" path="res://audio/sounds/grass_steps.mp3" id="87_7mfo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fwas"]
@@ -482,14 +482,13 @@ script = ExtResource("83_eo2sa")
 [node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
 position = Vector2(-1.90735e-06, 0)
 rotation = -0.00393331
-scale = Vector2(1.9692, 1.9692)
+scale = Vector2(0.866606, 0.866606)
 color = Color(1, 0.627451, 0.333333, 0.611765)
 energy = 3.0
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 1.0
-texture = ExtResource("6_4hfuy")
-texture_scale = 3.0
+texture = ExtResource("85_a7io5")
 
 [node name="PlayerSound" type="Node2D" parent="PlayerMovement" node_paths=PackedStringArray("steps_player", "attack_player")]
 position = Vector2(2.73257, 57.6253)
