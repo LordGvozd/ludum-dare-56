@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=102 format=3 uid="uid://dr5g1ggev5v5o"]
-
+[gd_scene load_steps=104 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -13,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ch6uvwp46qrqr" path="res://sprites/characters/player/idle/down/player_idle_down2.png" id="6_p2t1l"]
 [ext_resource type="Texture2D" uid="uid://xtkdwh7ucdlo" path="res://sprites/characters/player/attack/down/player_tap_down1.png" id="7_dumy8"]
 [ext_resource type="Texture2D" uid="uid://xh7j5800dsn5" path="res://sprites/characters/player/idle/down/player_idle_down3.png" id="7_g6ybp"]
+[ext_resource type="AudioStream" uid="uid://31iroppagbly" path="res://audio/sounds/note_open-close.mp3" id="7_v240k"]
 [ext_resource type="Texture2D" uid="uid://bgpncrqwjepoo" path="res://sprites/characters/player/attack/down/player_tap_down2.png" id="8_1g4vx"]
 [ext_resource type="Texture2D" uid="uid://byenp4ykjbw0v" path="res://sprites/characters/player/idle/down/player_idle_down4.png" id="8_gbfhm"]
 [ext_resource type="Texture2D" uid="uid://d1w332uoar30g" path="res://sprites/characters/player/attack/down/player_tap_down3.png" id="9_3n1aj"]
@@ -83,16 +82,15 @@
 [ext_resource type="Texture2D" uid="uid://j4h2g0xm2e5l" path="res://sprites/characters/player/walk/up/player_walk_top8.png" id="42_5vnj3"]
 [ext_resource type="Texture2D" uid="uid://dn2ci7h87kr51" path="res://sprites/characters/player/walk/right/player_walk_bok8.png" id="42_7fwoe"]
 [ext_resource type="AudioStream" uid="uid://clwasg834ig16" path="res://audio/sounds/hit.mp3" id="42_t6f25"]
-
-[ext_resource type="Texture2D" uid="uid://dkxcskrkjx1xd" path="res://sprites/player/walk/right/player_walk_bok9.png" id="43_rujnt"]
-[ext_resource type="Texture2D" uid="uid://bmdlkkxyh5dok" path="res://sprites/player/walk/up/player_walk_top9.png" id="43_ylcqj"]
-[ext_resource type="Texture2D" uid="uid://cuq41qv6i5edw" path="res://sprites/player/walk/up/player_walk_top10.png" id="44_7nqw7"]
-[ext_resource type="Texture2D" uid="uid://b3vri631n1o6k" path="res://sprites/player/walk/right/player_walk_bok10.png" id="44_qwvqi"]
-[ext_resource type="Texture2D" uid="uid://b0jtnwy5yi308" path="res://sprites/player/walk/up/player_walk_top11.png" id="45_a18p7"]
-[ext_resource type="Texture2D" uid="uid://djh6vix5es7wt" path="res://sprites/player/walk/right/player_walk_bok11.png" id="45_e1dbs"]
-[ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
-[ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
-[ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/note_list.png" id="74_7ftfu"]
+[ext_resource type="Texture2D" uid="uid://dkxcskrkjx1xd" path="res://sprites/characters/player/walk/right/player_walk_bok9.png" id="43_rujnt"]
+[ext_resource type="Texture2D" uid="uid://bmdlkkxyh5dok" path="res://sprites/characters/player/walk/up/player_walk_top9.png" id="43_ylcqj"]
+[ext_resource type="Texture2D" uid="uid://cuq41qv6i5edw" path="res://sprites/characters/player/walk/up/player_walk_top10.png" id="44_7nqw7"]
+[ext_resource type="Texture2D" uid="uid://b3vri631n1o6k" path="res://sprites/characters/player/walk/right/player_walk_bok10.png" id="44_qwvqi"]
+[ext_resource type="Texture2D" uid="uid://b0jtnwy5yi308" path="res://sprites/characters/player/walk/up/player_walk_top11.png" id="45_a18p7"]
+[ext_resource type="Texture2D" uid="uid://djh6vix5es7wt" path="res://sprites/characters/player/walk/right/player_walk_bok11.png" id="45_e1dbs"]
+[ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/characters/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
+[ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/characters/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
+[ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/ui/note_list.png" id="74_7ftfu"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="83_eo2sa"]
 [ext_resource type="AudioStream" uid="uid://cqxn71gdsmxke" path="res://audio/sounds/grass_steps.mp3" id="87_7mfo5"]
 
@@ -412,10 +410,6 @@ script = ExtResource("1_cse06")
 player_input = NodePath("PlayerInput")
 player_movement = NodePath("PlayerMovement")
 player_sound = NodePath("PlayerMovement/PlayerSound")
-camera_limit_left = -200
-camera_limit_top = 100
-camera_limit_right = 1350
-camera_limit_bottom = 970
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("1_5hib8")
@@ -445,11 +439,10 @@ debug_color = Color(0.0201338, 0.494011, 0, 0.42)
 
 [node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label")]
 script = ExtResource("6_cwfsu")
-
-note_ui_container = NodePath("../../CanvasLayer/PlayerUI/Container")
-note_text = NodePath("../../CanvasLayer/PlayerUI/Container/MarginContainer/Label")
+note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
+note_text = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/Label")
 promt_label = NodePath("../../CanvasLayer/PlayerUI/Prompt")
-
+note_sound = ExtResource("7_v240k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)
@@ -507,6 +500,11 @@ ground_sounds = {
 "grass": ExtResource("87_7mfo5")
 }
 
+[node name="AdditionalPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
+position = Vector2(-2.73257, -57.6253)
+rotation = -0.00393331
+scale = Vector2(2.5059, 2.5059)
+
 [node name="StepsPlayer" type="AudioStreamPlayer2D" parent="PlayerMovement/PlayerSound"]
 stream = ExtResource("40_76cvl")
 
@@ -522,8 +520,6 @@ parameters/looping = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="PlayerMovement/PlayerSound"]
 current = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

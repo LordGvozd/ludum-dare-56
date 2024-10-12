@@ -22,13 +22,14 @@ func _process(_delta):
 			var tile_pos = tile_map.local_to_map(global_position)
 			var tile = tile_map.get_cell_tile_data(tile_pos)
 			
-			var tile_material = tile.get_custom_data("material")
-			
-			if tile_material:
-				if steps_player.stream != ground_sounds[tile_material]:
-					steps_player.stop()
-					steps_player.stream = ground_sounds[tile_material]
-					steps_player.play()
+			if tile:
+				var tile_material = tile.get_custom_data("material")
+				
+				if tile_material:
+					if steps_player.stream != ground_sounds[tile_material]:
+						steps_player.stop()
+						steps_player.stream = ground_sounds[tile_material]
+						steps_player.play()
 	
 	if steps_player.playing:
 		if not walking:
