@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=100 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -90,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
 [ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/note_list.png" id="74_7ftfu"]
+[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="83_eo2sa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jp02"]
 radius = 77.8443
@@ -453,6 +454,7 @@ zoom = Vector2(2.5, 2.5)
 limit_smoothed = true
 position_smoothing_speed = 2.0
 editor_draw_limits = true
+script = ExtResource("83_eo2sa")
 
 [node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
 position = Vector2(-1.90735e-06, 0)

@@ -8,31 +8,16 @@ class_name Player
 @export var camera_limiter: CollisionShape2D
 
 @onready var player_attack_area: CollisionShape2D = $PlayerMovement/PlayerAttackArea/PlayerAttackAreaCollisionShape
-@onready var player_camera: Camera2D = $PlayerMovement/PlayerCamera
+@onready var player_camera: PlayerCamera = $PlayerMovement/PlayerCamera
 
 
 func _ready() -> void:
+	player_camera.set_camera_shape(camera_limiter)
 	
-	var shape_size: Vector2 = camera_limiter.shape.size * camera_limiter.global_scale
+	player_movement.player = self
+	player_input.player = self
 	
-	print(shape_size)
 	
-	var left_limiter = camera_limiter.global_position.x - shape_size.x  / 2
-	var right_limiter = camera_limiter.global_position.x + shape_size.x / 2
-	var top_limiter = camera_limiter.global_position.y - shape_size.y / 2
-	var bottom_limiter = camera_limiter.global_position.y + shape_size.y / 2
-	
-	player_camera.limit_left = left_limiter
-	player_camera.limit_top = top_limiter
-	player_camera.limit_right = right_limiter
-	player_camera.limit_bottom = bottom_limiter
-	
-	print(left_limiter, " " ,
-	 	right_limiter, " ", 
-		top_limiter, " ",
-		bottom_limiter)
-
-
 func _process(_delta) -> void:
 	if player_input.is_attack_button_pressed():
 		
@@ -55,3 +40,8 @@ func _on_player_sprite_animation_finished() -> void:
 	if $"PlayerMovement/PlayerSprite".animation == "attack_down":
 		player_attack_area.disabled = false
 		player_sound.play_attack()
+		
+
+func kill():
+	get_tree().change_scene_to_file.bind("res://scenes/death_screen.tscn")\
+			.call_deferred()
