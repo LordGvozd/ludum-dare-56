@@ -24,12 +24,11 @@ func _process(_delta):
 			
 			var tile_material = tile.get_custom_data("material")
 			
-			print(tile_material)
-			
-			if steps_player.stream != ground_sounds[tile_material]:
-				steps_player.stop()
-				steps_player.stream = ground_sounds[tile_material]
-				steps_player.play()
+			if tile_material:
+				if steps_player.stream != ground_sounds[tile_material]:
+					steps_player.stop()
+					steps_player.stream = ground_sounds[tile_material]
+					steps_player.play()
 	
 	if steps_player.playing:
 		if not walking:
