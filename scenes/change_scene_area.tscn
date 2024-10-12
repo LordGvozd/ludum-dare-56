@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ed77i1urfa3"]
+
+[ext_resource type="Script" path="res://scripts/change_scene_area.gd" id="1_1772k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w18j"]
+
+[node name="ChangeSceneArea" type="Area2D"]
+script = ExtResource("1_1772k")
+
+[node name="ChangeSceneAreaCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2w18j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

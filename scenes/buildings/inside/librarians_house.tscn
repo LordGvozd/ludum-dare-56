@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_cxwxy"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_ki2sx"]
 [ext_resource type="PackedScene" uid="uid://rsw7efxc86i8" path="res://scenes/event_trigger.tscn" id="4_7ryr1"]
-[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="5_7wjug"]
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/atlases/flor.png" id="5_7wjug"]
 [ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="5_uiuyn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5avd"]

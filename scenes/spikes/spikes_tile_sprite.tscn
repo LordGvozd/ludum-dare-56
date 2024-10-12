@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddcfl2ex8vqgo"]
+
+[ext_resource type="Script" path="res://scripts/spikes/spikes_tile_area.gd" id="2_a2ol8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ewef"]
+load_path = "res://.godot/imported/spikes1.png-f721fd8430e958d1f8d41c575ac9487d.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnmg2"]
+size = Vector2(32, 32)
+
+[node name="SpikesTileSprite" type="Sprite2D"]
+texture = SubResource("CompressedTexture2D_3ewef")
+
+[node name="SpikesTileArea" type="Area2D" parent="."]
+script = ExtResource("2_a2ol8")
+
+[node name="SpikesTileAreaCollisionShape" type="CollisionShape2D" parent="SpikesTileArea"]
+shape = SubResource("RectangleShape2D_bnmg2")
+
+[connection signal="area_entered" from="SpikesTileArea" to="SpikesTileArea" method="_on_area_entered"]

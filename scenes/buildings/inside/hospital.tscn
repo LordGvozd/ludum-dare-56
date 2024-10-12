@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=4 uid="uid://c8jw2y1ecudwe"]
 
-[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="1_7gpe0"]
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/atlases/flor.png" id="1_7gpe0"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_t6fn8"]
 [ext_resource type="PackedScene" uid="uid://34ch7usjfh5s" path="res://scenes/buildings/building_exit.tscn" id="3_8b2ff"]
 [ext_resource type="Script" path="res://scripts/notes/note.gd" id="4_dkto0"]
-[ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/note_2.png" id="5_h15db"]
+[ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/items/note_2.png" id="5_h15db"]
 [ext_resource type="PackedScene" uid="uid://b3v60sooci4j1" path="res://scenes/trigger_depends.tscn" id="6_apaui"]
-[ext_resource type="Texture2D" uid="uid://datx1nnhw5uh5" path="res://sprites/note.png" id="6_j4bxg"]
-[ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/bed.png" id="8_pu2qg"]
+[ext_resource type="Texture2D" uid="uid://datx1nnhw5uh5" path="res://sprites/items/note.png" id="6_j4bxg"]
+[ext_resource type="Texture2D" uid="uid://bvx4awdw1bccx" path="res://sprites/environment/bed.png" id="8_pu2qg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxmf3"]
 texture = ExtResource("1_7gpe0")

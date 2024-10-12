@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://kmcypsggay3h"]
+
+[ext_resource type="Texture2D" uid="uid://bkugho13wod8v" path="res://icon.svg" id="1_8pdd3"]
+[ext_resource type="Script" path="res://scripts/leavers/leaver.gd" id="1_328al"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8pfu"]
+size = Vector2(112, 20)
+
+[node name="Leaver" type="Node2D"]
+script = ExtResource("1_328al")
+
+[node name="LeaverSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_8pdd3")
+
+[node name="LeaverArea" type="Area2D" parent="."]
+
+[node name="LeaverAreaCollisionShape" type="CollisionShape2D" parent="LeaverArea"]
+position = Vector2(-3, 120)
+shape = SubResource("RectangleShape2D_v8pfu")
+
+[connection signal="body_entered" from="LeaverArea" to="." method="_on_leaver_area_body_entered"]
+[connection signal="body_exited" from="LeaverArea" to="." method="_on_leaver_area_body_exited"]
