@@ -4,6 +4,7 @@ class_name NoteDisplay
 @export var note_ui_container: Control
 @export var note_text: Label
 @export var promt_label: Label
+@export var note_texture_rect: TextureRect
 
 var _is_in_note: bool = false
 var _event_on_open: String
@@ -22,12 +23,12 @@ func _process(_delta: float) -> void:
 		_open()
 		
 
-
 func _on_body_entered(_body: Node2D) -> void:
 	if _body is Note:
 		_is_in_note = true
 		promt_label.text = "Press E to read note"
 		note_text.text = _body.note_text
+		note_texture_rect.texture = _body.texture
 		
 		if _body.run_event:
 			_event_on_open = _body.run_event

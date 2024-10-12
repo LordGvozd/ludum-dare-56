@@ -2,10 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
-
 [ext_resource type="TileSet" uid="uid://bv82re5u10cv6" path="res://tilemaps/town.tres" id="2_ed3ty"]
-[ext_resource type="Texture2D" uid="uid://orvs072gsj6i" path="res://sprites/water.png" id="3_c3vvr"]
-
+[ext_resource type="Texture2D" uid="uid://orvs072gsj6i" path="res://sprites/atlases/water.png" id="3_c3vvr"]
 [ext_resource type="PackedScene" uid="uid://vcyfov2y7acj" path="res://scenes/buildings/building.tscn" id="3_vuaki"]
 [ext_resource type="Texture2D" uid="uid://c8ex4af6ylap0" path="res://sprites/environment/house of ribak.png" id="4_fbcao"]
 [ext_resource type="Texture2D" uid="uid://bvvbieuq4kh3l" path="res://sprites/atlases/tilemap.png" id="4_hjqor"]
@@ -45,7 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://difyfxv50r16m" path="res://sprites/atlases/objects2.png" id="39_vrde0"]
 [ext_resource type="Texture2D" uid="uid://doqjrb388b6aw" path="res://sprites/environment/bochka.png" id="41_e1xyg"]
 
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqw13"]
 texture = ExtResource("4_hjqor")
 texture_region_size = Vector2i(32, 32)
@@ -82,7 +79,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_ee8gp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwnlh"]
-size = Vector2(27.4967, 18.3489)
+size = Vector2(29.4918, 18.3489)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mvcmt"]
 blend_mode = 1
@@ -344,11 +341,10 @@ tile_set = SubResource("TileSet_t8vgo")
 [node name="Player" parent="." node_paths=PackedStringArray("camera_limiter") instance=ExtResource("1_cxiqd")]
 y_sort_enabled = true
 position = Vector2(6, 739)
-
 camera_limiter = NodePath("../CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(655, 521.5)
+position = Vector2(604.5, 521.5)
 scale = Vector2(50.6243, 45.8337)
 shape = SubResource("RectangleShape2D_nwnlh")
 
@@ -362,7 +358,6 @@ lifetime = 2.0
 preprocess = 0.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
 
 [node name="HealersHouse" parent="." instance=ExtResource("3_vuaki")]

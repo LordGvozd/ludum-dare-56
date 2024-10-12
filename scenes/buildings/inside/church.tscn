@@ -1,0 +1,271 @@
+[gd_scene load_steps=12 format=4 uid="uid://bwerkoqnpwks6"]
+
+[ext_resource type="TileSet" uid="uid://2yp16yp48d24" path="res://tilemaps/church_floor.tres" id="1_56s62"]
+[ext_resource type="Texture2D" uid="uid://clbsjgjj73w8b" path="res://sprites/environment/лавка_01.png" id="2_2f0em"]
+[ext_resource type="TileSet" uid="uid://daw1qe6d3qmpm" path="res://tilemaps/black.tres" id="2_i1kob"]
+[ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="3_bpgrr"]
+[ext_resource type="PackedScene" uid="uid://d0ed77i1urfa3" path="res://scenes/change_scene_area.tscn" id="5_ip2sg"]
+[ext_resource type="Script" path="res://scripts/notes/note.gd" id="6_k2pdh"]
+[ext_resource type="Texture2D" uid="uid://du6ln4cj52ao7" path="res://sprites/items/note_2.png" id="7_ly7wr"]
+[ext_resource type="Texture2D" uid="uid://cdgofmlxn4toq" path="res://sprites/buterbrod.png" id="7_y5pu2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8led"]
+size = Vector2(512, 662)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfa03"]
+size = Vector2(116, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d0x1"]
+radius = 15.0333
+
+[node name="Church" type="Node2D"]
+y_sort_enabled = true
+
+[node name="FloorTileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAASABgAAAAAAAMAAAATABgAAAABAAMAAAATABcAAAABAAMAAAATABYAAAABAAMAAAATABUAAAABAAMAAAATABQAAAABAAMAAAATABMAAAABAAMAAAATABIAAAABAAMAAAATABEAAAABAAMAAAATABAAAAABAAMAAAATAA8AAAABAAMAAAATAA4AAAABAAMAAAATAA0AAAABAAMAAAATAAwAAAABAAMAAAASABcAAAAAAAMAAAASABYAAAAAAAMAAAASABUAAAAAAAMAAAASABQAAAAAAAMAAAASABMAAAAAAAMAAAASABIAAAAAAAMAAAASABEAAAAAAAMAAAASABAAAAAAAAMAAAASAA8AAAAAAAMAAAASAA4AAAAAAAMAAAASAA0AAAAAAAMAAAASAAwAAAAAAAMAAAASAAsAAAAAAAIAAAATAAsAAAABAAIAAAAUAAsAAAADAAAAAAAUAAwAAAADAAAAAAAUAA0AAAADAAAAAAAUAA4AAAADAAAAAAAUAA8AAAABAAEAAAAUABAAAAADAAAAAAAUABEAAAADAAEAAAAUABIAAAADAAEAAAAUABMAAAADAAEAAAAUABQAAAADAAAAAAAUABUAAAADAAAAAAAUABYAAAADAAAAAAAUABcAAAADAAAAAAAUABgAAAADAAAAAAAVAAsAAAADAAAAAAAVAAwAAAADAAEAAAAVAA0AAAADAAEAAAAVAA4AAAADAAAAAAAVAA8AAAADAAAAAAAVABAAAAADAAAAAAAVABEAAAADAAEAAAAVABIAAAADAAEAAAAVABMAAAADAAEAAAAVABQAAAADAAAAAAAVABUAAAAAAAAAAAAVABYAAAADAAAAAAAVABcAAAADAAAAAAAVABgAAAADAAAAAAAWAAsAAAADAAAAAAAWAAwAAAADAAAAAAAWAA0AAAADAAAAAAAWAA4AAAADAAAAAAAWAA8AAAADAAAAAAAWABAAAAAAAAAAAAAWABEAAAADAAEAAAAWABIAAAADAAEAAAAWABMAAAADAAEAAAAWABQAAAADAAEAAAAWABUAAAADAAAAAAAWABYAAAACAAIAAAAWABcAAAACAAIAAAAWABgAAAADAAAAAAAXAAsAAAADAAAAAAAXAAwAAAADAAAAAAAXAA0AAAADAAAAAAAXAA4AAAADAAAAAAAXAA8AAAADAAAAAAAXABAAAAADAAAAAAAXABEAAAADAAAAAAAXABIAAAADAAAAAAAXABMAAAADAAAAAAAXABQAAAADAAAAAAAXABUAAAADAAAAAAAXABYAAAADAAAAAAAXABcAAAADAAAAAAAXABgAAAADAAAAAAAOAAsAAAADAAAAAAAOAAwAAAADAAAAAAAOAA0AAAADAAAAAAAOAA4AAAADAAAAAAAOAA8AAAADAAAAAAAOABAAAAADAAAAAAAOABEAAAADAAAAAAAOABIAAAADAAAAAAAOABMAAAADAAAAAAAOABQAAAADAAAAAAAOABUAAAADAAAAAAAOABYAAAADAAAAAAAOABcAAAACAAIAAAAOABgAAAADAAAAAAAPAAsAAAADAAAAAAAPAAwAAAADAAEAAAAPAA0AAAAAAAEAAAAPAA4AAAADAAEAAAAPAA8AAAADAAAAAAAPABAAAAACAAIAAAAPABEAAAADAAAAAAAPABIAAAADAAAAAAAPABMAAAADAAAAAAAPABQAAAADAAAAAAAPABUAAAADAAEAAAAPABYAAAADAAEAAAAPABcAAAADAAAAAAAPABgAAAADAAAAAAAQAAsAAAADAAAAAAAQAAwAAAADAAEAAAAQAA0AAAADAAEAAAAQAA4AAAADAAEAAAAQAA8AAAADAAAAAAAQABAAAAADAAAAAAAQABEAAAABAAEAAAAQABIAAAADAAAAAAAQABMAAAADAAAAAAAQABQAAAABAAEAAAAQABUAAAADAAEAAAAQABYAAAADAAEAAAAQABcAAAADAAAAAAAQABgAAAADAAAAAAARAAsAAAACAAIAAAARAAwAAAADAAAAAAARAA0AAAADAAAAAAARAA4AAAADAAAAAAARAA8AAAADAAAAAAARABAAAAADAAAAAAARABEAAAADAAAAAAARABIAAAADAAAAAAARABMAAAABAAEAAAARABQAAAADAAAAAAARABUAAAADAAAAAAARABYAAAADAAAAAAARABcAAAADAAAAAAARABgAAAACAAIAAAASABkAAAAAAAMAAAATABkAAAABAAMAAAASABoAAAAAAAMAAAATABoAAAABAAMAAAAUABkAAAADAAAAAAAUABoAAAADAAEAAAAVABkAAAADAAEAAAAVABoAAAADAAAAAAAWABkAAAADAAEAAAAXABkAAAADAAAAAAARABkAAAADAAEAAAARABoAAAADAAAAAAAQABkAAAADAAEAAAAQABoAAAADAAEAAAAPABkAAAADAAEAAAAOABkAAAADAAAAAAAQAAoAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAAUAAoAAAADAAAAAAAVAAoAAAADAAAAAAAWAAoAAAADAAAAAAAVAAkAAAADAAAAAAAUAAkAAAADAAAAAAATAAkAAAADAAAAAAASAAkAAAADAAAAAAARAAkAAAADAAAAAAAQAAkAAAADAAAAAAAPAAoAAAADAAAAAAAWABoAAAADAAAAAAAPABoAAAADAAAAAAARABsAAAADAAAAAAASABsAAAAAAAMAAAATABsAAAABAAMAAAAUABsAAAADAAAAAAAVABsAAAADAAAAAAAQABsAAAADAAAAAAASABwAAAAAAAgAAAATABwAAAABAAgAAAA=")
+tile_set = ExtResource("1_56s62")
+
+[node name="WallsTileMap" type="TileMapLayer" parent="."]
+modulate = Color(0, 0, 0, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAYABAAAAAAAAAAAAAYABEAAAAAAAAAAAAYABIAAAAAAAAAAAAYABMAAAAAAAAAAAAYAA4AAAAAAAAAAAAYAA8AAAAAAAAAAAAYAA0AAAAAAAAAAAAYAAwAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAYAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAANABIAAAAAAAAAAAANABMAAAAAAAAAAAANABQAAAAAAAAAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAANABkAAAAAAAAAAAANABoAAAAAAAAAAAAOABoAAAAAAAAAAAANABsAAAAAAAAAAAAOABsAAAAAAAAAAAAPABsAAAAAAAAAAAANABwAAAAAAAAAAAAOABwAAAAAAAAAAAAPABwAAAAAAAAAAAAQABwAAAAAAAAAAAARABwAAAAAAAAAAAAUABwAAAAAAAAAAAAVABwAAAAAAAAAAAAWABwAAAAAAAAAAAAWABsAAAAAAAAAAAAXABsAAAAAAAAAAAAXABwAAAAAAAAAAAAXABoAAAAAAAAAAAAYABsAAAAAAAAAAAAYABwAAAAAAAAAAAAYABoAAAAAAAAAAAAYABkAAAAAAAAAAAAYABgAAAAAAAAAAAAYABcAAAAAAAAAAAAYABYAAAAAAAAAAAAYABUAAAAAAAAAAAAYABQAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAALABAAAAAAAAAAAAALABEAAAAAAAAAAAALABIAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAAAAAAMABEAAAAAAAAAAAAMABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAALABUAAAAAAAAAAAALABYAAAAAAAAAAAALABcAAAAAAAAAAAALABgAAAAAAAAAAAALABkAAAAAAAAAAAALABoAAAAAAAAAAAALABsAAAAAAAAAAAALABwAAAAAAAAAAAAMABMAAAAAAAAAAAAMABQAAAAAAAAAAAAMABUAAAAAAAAAAAAMABYAAAAAAAAAAAAMABcAAAAAAAAAAAAMABgAAAAAAAAAAAAMABkAAAAAAAAAAAAMABoAAAAAAAAAAAAMABsAAAAAAAAAAAAMABwAAAAAAAAAAAAZAAgAAAAAAAAAAAAZAAkAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAZABAAAAAAAAAAAAAZABEAAAAAAAAAAAAZABIAAAAAAAAAAAAZABMAAAAAAAAAAAAZABQAAAAAAAAAAAAZABUAAAAAAAAAAAAZABYAAAAAAAAAAAAZABcAAAAAAAAAAAAZABgAAAAAAAAAAAAZABkAAAAAAAAAAAAZABoAAAAAAAAAAAAZABsAAAAAAAAAAAAZABwAAAAAAAAAAAAaAAgAAAAAAAAAAAAaAAkAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAaAA0AAAAAAAAAAAAaAA4AAAAAAAAAAAAaAA8AAAAAAAAAAAAaABAAAAAAAAAAAAAaABEAAAAAAAAAAAAaABIAAAAAAAAAAAAaABMAAAAAAAAAAAAaABQAAAAAAAAAAAAaABUAAAAAAAAAAAAaABYAAAAAAAAAAAAaABcAAAAAAAAAAAAaABgAAAAAAAAAAAAaABkAAAAAAAAAAAAaABoAAAAAAAAAAAAaABsAAAAAAAAAAAAaABwAAAAAAAAAAAA=")
+tile_set = ExtResource("2_i1kob")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera_limiter") instance=ExtResource("3_bpgrr")]
+y_sort_enabled = true
+position = Vector2(609, 705)
+camera_limiter = NodePath("../CameraLimiterCollisionShape")
+
+[node name="CameraLimiterCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(608, 592)
+shape = SubResource("RectangleShape2D_u8led")
+
+[node name="===Environment===" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bench" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 596)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench2" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 596)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench2"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench2"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench3" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 636)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench3"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench3"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench4" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 636)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench4"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench4"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench5" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 676)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench5"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench5"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench6" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 676)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench6"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench6"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench7" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 716)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench7"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench7"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench8" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 716)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench8"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench8"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench9" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 436)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench9"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench9"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench10" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 436)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench10"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench10"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench11" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 476)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench11"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench11"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench12" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 476)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench12"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench12"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench13" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 516)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench13"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench13"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench14" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 516)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench14"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench14"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench15" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(702, 556)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench15"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench15"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="Bench16" type="StaticBody2D" parent="===Environment==="]
+y_sort_enabled = true
+position = Vector2(514, 556)
+
+[node name="BenchSprite" type="Sprite2D" parent="===Environment===/Bench16"]
+y_sort_enabled = true
+texture = ExtResource("2_2f0em")
+offset = Vector2(0, 3.015)
+
+[node name="BenchCollisionShape" type="CollisionShape2D" parent="===Environment===/Bench16"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_yfa03")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.332881, 0.332881, 0.332881, 1)
+
+[node name="ChangeSceneArea" parent="." instance=ExtResource("5_ip2sg")]
+position = Vector2(607, 910)
+scale = Vector2(3.44, 1)
+scene_path = "res://scenes/town.tscn"
+
+[node name="Note" type="StaticBody2D" parent="."]
+position = Vector2(526, 822)
+script = ExtResource("6_k2pdh")
+texture = ExtResource("7_y5pu2")
+
+[node name="NoteCollisionShape" type="CollisionShape2D" parent="Note"]
+shape = SubResource("CircleShape2D_2d0x1")
+
+[node name="NoteSprite" type="Sprite2D" parent="Note"]
+texture = ExtResource("7_ly7wr")
