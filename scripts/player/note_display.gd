@@ -4,6 +4,7 @@ class_name NoteDisplay
 @export var note_ui_container: Control
 @export var note_text: Label
 @export var promt_label: Label
+@export var open_btn: TouchScreenButton
 
 var _is_in_note: bool = false
 var _event_on_open: String
@@ -26,7 +27,8 @@ func _process(_delta: float) -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	if _body is Note:
 		_is_in_note = true
-		promt_label.text = "Press E to read note"
+		promt_label.text = "Press book to read note"
+		open_btn.visible = true
 		note_text.text = _body.note_text
 		
 		if _body.run_event:
@@ -36,6 +38,7 @@ func _open():
 		if _event_on_open:
 			EventsStorage.add_event(_event_on_open)
 		note_ui_container.visible = true
+		open_btn.visible = false
 
 
 func _on_body_exited(_body: Node2D) -> void:

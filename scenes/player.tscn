@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://dr5g1ggev5v5o"]
+[gd_scene load_steps=102 format=3 uid="uid://dr5g1ggev5v5o"]
 
 [ext_resource type="Script" path="res://scripts/player/player_input.gd" id="1_5hib8"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_cse06"]
@@ -90,6 +90,9 @@
 [ext_resource type="Texture2D" uid="uid://45lux4tvbfee" path="res://sprites/player/walk/right/player_walk_bok12.png" id="46_2kwwy"]
 [ext_resource type="Texture2D" uid="uid://bx3tblgehjal0" path="res://sprites/player/walk/up/player_walk_top12.png" id="46_3jl1y"]
 [ext_resource type="Texture2D" uid="uid://dhotemmwp8yjd" path="res://sprites/note_list.png" id="74_7ftfu"]
+[ext_resource type="Texture2D" uid="uid://cr61u5iixf73g" path="res://sprites/arrow.png" id="91_bvofg"]
+[ext_resource type="Texture2D" uid="uid://datx1nnhw5uh5" path="res://sprites/note.png" id="92_6qdep"]
+[ext_resource type="Texture2D" uid="uid://bqvnbd2kwgodj" path="res://sprites/sword.png" id="93_squtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jp02"]
 radius = 77.8443
@@ -421,11 +424,12 @@ script = ExtResource("3_kqi1q")
 speed = 100
 acceleration = 30
 
-[node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label")]
+[node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label", "open_btn")]
 script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/Container")
 note_text = NodePath("../../CanvasLayer/PlayerUI/Container/MarginContainer/Label")
 promt_label = NodePath("../../CanvasLayer/PlayerUI/Promt")
+open_btn = NodePath("../../CanvasLayer/read")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/NoteDisplay"]
 position = Vector2(1.87997e-08, 4.77958e-06)
@@ -573,8 +577,56 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_jr46q")
 horizontal_alignment = 1
 
+[node name="right" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(246, 712)
+scale = Vector2(0.173333, 0.212254)
+texture_normal = ExtResource("91_bvofg")
+action = "right"
+
+[node name="left" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(154, 814)
+rotation = -3.14159
+scale = Vector2(0.173, 0.212)
+texture_normal = ExtResource("91_bvofg")
+action = "left"
+
+[node name="down" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(246, 814)
+rotation = 1.5708
+scale = Vector2(0.173, 0.212)
+texture_normal = ExtResource("91_bvofg")
+action = "down"
+
+[node name="top" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(154, 712)
+rotation = -1.5708
+scale = Vector2(0.173, 0.212)
+texture_normal = ExtResource("91_bvofg")
+action = "up"
+
+[node name="read" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(824, 712)
+scale = Vector2(4.8125, 4.75)
+texture_normal = ExtResource("92_6qdep")
+action = "interact"
+
+[node name="attack" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(1022, 712)
+scale = Vector2(0.200879, 0.237535)
+texture_normal = ExtResource("93_squtj")
+action = "attack"
+
 [connection signal="timeout" from="PlayerAttackTimer" to="PlayerInput" method="_on_player_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerMovement/NoteDisplay" to="PlayerMovement/NoteDisplay" method="_on_body_exited"]
 [connection signal="animation_finished" from="PlayerMovement/PlayerSprite" to="." method="_on_player_sprite_animation_finished"]
 [connection signal="body_entered" from="PlayerMovement/PlayerAttackArea" to="PlayerAttack" method="_on_player_attack_area_body_entered"]
+[connection signal="pressed" from="CanvasLayer/right" to="PlayerInput" method="_on_right_pressed"]
+[connection signal="released" from="CanvasLayer/right" to="PlayerInput" method="_on_right_released"]
+[connection signal="pressed" from="CanvasLayer/left" to="PlayerInput" method="_on_left_pressed"]
+[connection signal="released" from="CanvasLayer/left" to="PlayerInput" method="_on_left_released"]
+[connection signal="pressed" from="CanvasLayer/down" to="PlayerInput" method="_on_down_pressed"]
+[connection signal="released" from="CanvasLayer/down" to="PlayerInput" method="_on_down_released"]
+[connection signal="pressed" from="CanvasLayer/top" to="PlayerInput" method="_on_top_pressed"]
+[connection signal="released" from="CanvasLayer/top" to="PlayerInput" method="_on_top_released"]
