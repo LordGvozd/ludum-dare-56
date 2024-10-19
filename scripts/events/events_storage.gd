@@ -10,6 +10,7 @@ func register_event_change_callback(callback: Callable) -> void:
 	_callbacks.append(callback)
 
 func load_events() -> Array:
+	print(_events)
 	if  _events:
 		return _events
 

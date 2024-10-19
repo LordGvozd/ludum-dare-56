@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://enxedkrpkosl"]
+[gd_scene load_steps=20 format=3 uid="uid://enxedkrpkosl"]
 
 [ext_resource type="Script" path="res://scripts/spider/spider.gd" id="1_l25br"]
 [ext_resource type="Script" path="res://scripts/spider/spider_movement.gd" id="1_pa2w3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dnfvr2r5o6e4g" path="res://sprites/characters/spider/spider_run6.png" id="9_p488y"]
 [ext_resource type="AudioStream" uid="uid://dvewyty3ro2pj" path="res://audio/sounds/spider_walking.mp3" id="14_j63lq"]
 [ext_resource type="AudioStream" uid="uid://bujt5lqys6ak5" path="res://audio/sounds/kill_hit.mp3" id="15_x4453"]
+[ext_resource type="Texture2D" uid="uid://b4wrtnqw0cuvp" path="res://sprites/light/512x512 textures (23).png" id="16_fbtu4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bo4io"]
 animations = [{
@@ -83,10 +84,8 @@ y_sort_enabled = true
 position = Vector2(0, -8.18192)
 scale = Vector2(5.33333, 5.33333)
 sprite_frames = SubResource("SpriteFrames_bo4io")
-animation = &"died"
+animation = &"run"
 autoplay = "run"
-frame = 3
-frame_progress = 1.0
 offset = Vector2(0, 10)
 
 [node name="SpiderCollisionShape" type="CollisionShape2D" parent="SpiderMovement"]
@@ -106,5 +105,24 @@ autoplay = true
 
 [node name="died" type="AudioStreamPlayer2D" parent="SpiderMovement"]
 stream = ExtResource("15_x4453")
+
+[node name="SpiderEyesLight" type="Node2D" parent="SpiderMovement"]
+light_mask = 2
+
+[node name="SpiderEyePointLight" type="PointLight2D" parent="SpiderMovement/SpiderEyesLight"]
+position = Vector2(-8.33333, 61.2245)
+scale = Vector2(0.0605978, 0.0605978)
+color = Color(1, 0, 0, 0.803922)
+energy = 1.5
+texture = ExtResource("16_fbtu4")
+texture_scale = 0.7
+
+[node name="SpiderEyePointLight2" type="PointLight2D" parent="SpiderMovement/SpiderEyesLight"]
+position = Vector2(8.33325, 61.2244)
+scale = Vector2(0.0605978, 0.0605978)
+color = Color(1, 0, 0, 0.803922)
+energy = 1.5
+texture = ExtResource("16_fbtu4")
+texture_scale = 0.7
 
 [connection signal="body_entered" from="SpiderMovement/SpiderAttackArea" to="SpiderAttack" method="_on_spider_attack_area_body_entered"]

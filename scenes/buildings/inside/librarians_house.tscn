@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c202f72003knk"]
+[gd_scene load_steps=12 format=4 uid="uid://d20c0ou0msp5h"]
 
 [ext_resource type="PackedScene" uid="uid://8tf4qylcc4s6" path="res://scenes/dialog_npc.tscn" id="2_cxwxy"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="2_ki2sx"]
@@ -50,10 +50,6 @@ event = "talk_to_librarian"
 
 [node name="Player" parent="." instance=ExtResource("2_ki2sx")]
 position = Vector2(565, 766)
-camera_limit_left = 305
-camera_limit_top = 480
-camera_limit_right = 831
-camera_limit_bottom = 800
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.259294, 0.259294, 0.259294, 1)

@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://8tf4qylcc4s6"]
+[gd_scene load_steps=6 format=3 uid="uid://8tf4qylcc4s6"]
 
 [ext_resource type="Script" path="res://scripts/npc/dialog_npc.gd" id="1_et86p"]
 [ext_resource type="FontFile" uid="uid://b6iwsul3jv023" path="res://fonts/dpcomic.ttf" id="3_3xeln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_td7ky"]
 radius = 101.079
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gj7y3"]
+light_mode = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_y76hn"]
 font = ExtResource("3_3xeln")
@@ -27,11 +30,13 @@ offset_right = 97.575
 offset_bottom = -80.0
 
 [node name="Label" type="Label" parent="Control"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_gj7y3")
 layout_mode = 0
 offset_left = -21.0
 offset_top = -85.0
 offset_right = 211.0
-offset_bottom = 21.0
+offset_bottom = 2.0
 label_settings = SubResource("LabelSettings_y76hn")
 horizontal_alignment = 1
 vertical_alignment = 1

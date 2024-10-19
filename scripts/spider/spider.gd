@@ -11,6 +11,7 @@ extends Node
 
 @onready var walking_sound_player: AudioStreamPlayer2D = $"SpiderMovement/walking"
 
+@onready var spider_eyes_light: Node2D = $SpiderMovement/SpiderEyesLight
 
 var is_alive: bool = true
 var is_die_animation_played = false
@@ -24,7 +25,8 @@ func _physics_process(_delta):
 		
 		spider_movement.follow(player_position)
 	else:
-
+		
+		spider_eyes_light.visible = false
 		spider_attack_collision_shape.disabled = true
 		spider_collision_shape.disabled = true
 

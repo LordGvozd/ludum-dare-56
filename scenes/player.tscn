@@ -381,7 +381,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jkqd"]
 radius = 17.5411
-height = 65.271
+height = 50.1175
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmlwn"]
 size = Vector2(35.0823, 7.49415)
@@ -438,6 +438,8 @@ shape = SubResource("RectangleShape2D_4fwas")
 debug_color = Color(0.0201338, 0.494011, 0, 0.42)
 
 [node name="NoteDisplay" type="Area2D" parent="PlayerMovement" node_paths=PackedStringArray("note_ui_container", "note_text", "promt_label", "note_texture_rect")]
+position = Vector2(0.0295693, 7.51763)
+scale = Vector2(0.599059, 0.599059)
 script = ExtResource("6_cwfsu")
 note_ui_container = NodePath("../../CanvasLayer/PlayerUI/NoteContainer")
 note_text = NodePath("../../CanvasLayer/PlayerUI/NoteContainer/MarginContainer/Label")
@@ -482,7 +484,7 @@ script = ExtResource("83_eo2sa")
 [node name="PlayerLampPointLight" type="PointLight2D" parent="PlayerMovement"]
 position = Vector2(-1.90735e-06, 0)
 rotation = -0.00393331
-scale = Vector2(0.866606, 0.866606)
+scale = Vector2(1.06708, 1.06708)
 color = Color(1, 0.627451, 0.333333, 0.611765)
 energy = 3.0
 shadow_enabled = true

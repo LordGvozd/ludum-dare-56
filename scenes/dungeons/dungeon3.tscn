@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/dungeon/trap.gd" id="1_hnk42"]
 [ext_resource type="PackedScene" uid="uid://c8ibyhq27o2s" path="res://scenes/dungeons/trap.tscn" id="2_bxd1w"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="3_mbwyy"]
-[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/flor.png" id="4_icj86"]
+[ext_resource type="Texture2D" uid="uid://dg0fal4hf0mbc" path="res://sprites/atlases/flor.png" id="4_icj86"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5uuq7"]
 texture = ExtResource("4_icj86")

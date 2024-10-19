@@ -79,10 +79,6 @@ scene_path = "res://scenes/town.tscn"
 [node name="Player" parent="." instance=ExtResource("1_pikie")]
 y_sort_enabled = true
 position = Vector2(163, 179)
-camera_limit_left = -100
-camera_limit_top = -30
-camera_limit_right = 450
-camera_limit_bottom = 400
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("spawning_points") instance=ExtResource("7_cqsyt")]
 enemy = ExtResource("8_kh3j8")

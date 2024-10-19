@@ -8,5 +8,6 @@
 	"candles_collected": "Talk to healer",
 	"talk_to_healer": "Find recipe in hospital",
 	"recipe_collected": "Take bootle of blood from healer",
-	"bottle_of_blood_collected": "Return to elder man, to start the ritual"
+	"bottle_of_blood_collected": "Return to elder man",
+	"ingredients_collected": "Go to the church"
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bqrmosuypv7lj"]
+[gd_scene load_steps=77 format=4 uid="uid://bqrmosuypv7lj"]
 
 [ext_resource type="PackedScene" uid="uid://ba1naek16e08g" path="res://scenes/buildings/town_enter.tscn" id="1_ct37k"]
 [ext_resource type="PackedScene" uid="uid://dr5g1ggev5v5o" path="res://scenes/player.tscn" id="1_cxiqd"]
@@ -26,10 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://bu51gkd1ji8ci" path="res://sprites/characters/priest/priest_idle6.png" id="11_rxdit"]
 [ext_resource type="Texture2D" uid="uid://bia3gosqsdp6o" path="res://sprites/characters/librarian/librarian_idle4.png" id="12_4ue06"]
 [ext_resource type="Texture2D" uid="uid://bsvhxp0o3bb4p" path="res://sprites/characters/priest/priest_idle7.png" id="12_036o8"]
-[ext_resource type="Script" path="res://scripts/ending/ending_area.gd" id="12_87kfs"]
 [ext_resource type="Texture2D" uid="uid://c4f7udwk1gkhd" path="res://sprites/characters/priest/priest_idle8.png" id="13_3lj0m"]
 [ext_resource type="Texture2D" uid="uid://cun1hapgx4ucb" path="res://sprites/characters/librarian/librarian_idle5.png" id="13_a8bsq"]
-[ext_resource type="AudioStream" uid="uid://dx5ft576cpdwt" path="res://audio/sounds/end_of_earth.wav" id="13_vbr1y"]
 [ext_resource type="Texture2D" uid="uid://0hsn6wrau6qx" path="res://sprites/characters/librarian/librarian_idle6.png" id="14_pjyug"]
 [ext_resource type="Texture2D" uid="uid://d1ffns8pxjkyc" path="res://sprites/characters/librarian/librarian_idle7.png" id="15_bckkp"]
 [ext_resource type="Texture2D" uid="uid://c08jc4154blj6" path="res://sprites/characters/librarian/librarian_idle8.png" id="16_pifcn"]
@@ -84,61 +82,6 @@ size = Vector2(29.4918, 18.3489)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmehj"]
 size = Vector2(1509, 20)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1v24i"]
-radius = 33.541
-
-[sub_resource type="Animation" id="Animation_8g083"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_5yxkt"]
-resource_name = "end"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 2.83333),
-"transitions": PackedFloat32Array(1, 3.24901),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("13_vbr1y")
-}],
-"times": PackedFloat32Array(0.0666667)
-}
-tracks/1/use_blend = true
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hx883"]
-_data = {
-"RESET": SubResource("Animation_8g083"),
-"end": SubResource("Animation_5yxkt")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ssj1w"]
 radius = 13.0384
@@ -857,42 +800,6 @@ rotation = -1.5708
 scale = Vector2(1, 1.19048)
 texture = ExtResource("5_xfkit")
 
-[node name="EndingTriggerDepends" parent="." instance=ExtResource("7_k7k2j")]
-position = Vector2(927, 699)
-depends_on_event = "bottle_of_blood_collected"
-
-[node name="EndingArea" type="Area2D" parent="EndingTriggerDepends"]
-script = ExtResource("12_87kfs")
-
-[node name="EndingAreaCollisionShape" type="CollisionShape2D" parent="EndingTriggerDepends/EndingArea"]
-shape = SubResource("CircleShape2D_1v24i")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="EndingTriggerDepends/EndingArea"]
-
-[node name="Control" type="Control" parent="EndingTriggerDepends/EndingArea/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="EndingTriggerDepends/EndingArea/CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -150.0
-offset_top = -74.0
-offset_right = 1507.0
-offset_bottom = 1092.0
-color = Color(1, 1, 1, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EndingTriggerDepends/EndingArea"]
-libraries = {
-"": SubResource("AnimationLibrary_hx883")
-}
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="EndingTriggerDepends/EndingArea"]
-volume_db = 4.052
-
 [node name="TriggerDepends" parent="." instance=ExtResource("7_k7k2j")]
 position = Vector2(1.52588e-05, 0)
 scale = Vector2(0.966805, 0.964342)
@@ -965,7 +872,7 @@ shape = SubResource("RectangleShape2D_evpij")
 
 [node name="Hospital" parent="===Buildings===" instance=ExtResource("3_vuaki")]
 y_sort_enabled = true
-position = Vector2(1077, 201)
+position = Vector2(1137, 232)
 scale = Vector2(0.553453, 0.797426)
 load_scene_file_path = "res://scenes/buildings/inside/hospital.tscn"
 
@@ -1809,6 +1716,14 @@ event = "talk_to_elder_man"
 position = Vector2(0, 38.327)
 shape = SubResource("CapsuleShape2D_r64ks")
 
+[node name="TriggerDepends" parent="===NPC===/ElderManNPC" instance=ExtResource("7_k7k2j")]
+depends_on_event = "bottle_of_blood_collected"
+
+[node name="EventTrigger2" parent="===NPC===/ElderManNPC/TriggerDepends" instance=ExtResource("6_odmwe")]
+position = Vector2(0, 2.73767)
+scale = Vector2(1.76654, 1.76654)
+event = "ingredients_collected"
+
 [node name="LibrarianNPC" parent="===NPC===" instance=ExtResource("5_g7p4s")]
 y_sort_enabled = true
 position = Vector2(372, 315)
@@ -1856,6 +1771,3 @@ preprocess = 0.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="===Effects==="]
 color = Color(0.039432, 6.70221e-06, 0.221013, 1)
-
-[connection signal="body_entered" from="EndingTriggerDepends/EndingArea" to="EndingTriggerDepends/EndingArea" method="_on_body_entered"]
-[connection signal="animation_finished" from="EndingTriggerDepends/EndingArea/AnimationPlayer" to="EndingTriggerDepends/EndingArea" method="_on_animation_player_animation_finished"]

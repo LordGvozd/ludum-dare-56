@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdgofmlxn4toq"
-path="res://.godot/imported/buterbrod.png-43d83507036f576b87b0c0774e2ba4be.ctex"
+uid="uid://d1gltyobqrdgm"
+path="res://.godot/imported/last_note.png-7904c345e1840f734f41b49d1336249d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/buterbrod.png"
-dest_files=["res://.godot/imported/buterbrod.png-43d83507036f576b87b0c0774e2ba4be.ctex"]
+source_file="res://sprites/ui/last_note.png"
+dest_files=["res://.godot/imported/last_note.png-7904c345e1840f734f41b49d1336249d.ctex"]
 
 [params]
 
